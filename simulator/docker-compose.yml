@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - type: bind
+        source: ./database
+        target: /var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    name: simulator_database
+
+  simulator:
+    image: elyspio/cpe-s7-project:simulator
+        restart: always
+    ports:
+      - 8081:8080
