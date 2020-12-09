@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-12-09T13:52:34.486Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36" etag="II5X-gaWs_xTza1Dt6t7" version="13.11.0" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-09T14:03:48.497Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36" etag="IMFmO7BmAav3Aog9PT5c" version="13.11.0" type="github">
   <diagram id="p3vPmYisS7ZTwc7BDrno" name="Page-1">
-    <mxGraphModel dx="4080" dy="2423" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3327" dy="1998" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -240,7 +240,7 @@
           <mxGeometry x="40" y="270" width="100" height="50" as="geometry" />
         </mxCell>
         <mxCell id="Op86OD81ZePwcXdHFRyQ-98" value="Uart&amp;nbsp;&lt;br&gt;Format JSON&lt;br&gt;Protocole a Créer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-120" y="300" width="104" height="20" as="geometry" />
+          <mxGeometry x="-130" y="290" width="104" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Op86OD81ZePwcXdHFRyQ-99" value="Uart&amp;nbsp;&lt;br&gt;Format JSON&lt;br&gt;Protocole a créer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-340" y="990" width="104" height="20" as="geometry" />
