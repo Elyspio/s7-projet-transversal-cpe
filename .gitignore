@@ -2,3 +2,6 @@
 */.gradle
 **/.gradle
 **/.idea/dataSources
+*/database
+*.class
+*/app/build

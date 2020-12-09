@@ -11,13 +11,14 @@ services:
         source: ./database
         target: /var/lib/postgresql/data
     ports:
-      - 5433:5432
-    container_name: simulator-db
+      - 5434:5432
+    container_name: emergency-manager-db
 
-  simulator:
-    image: elyspio/cpe-s7-project:simulator
+  manager:
+    image: elyspio/cpe-s7-project:emergency-manager
+    restart: always
     environment:
-      DATABASE_PORT: 5433
+      DATABASE_PORT: 5434
     ports:
-      - 8081:8080
-    container_name: s7-project-simulator-engine
+      - 8082:8080
+    container_name: s7-project-emergency-manager-engine
