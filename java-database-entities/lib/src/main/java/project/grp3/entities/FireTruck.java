@@ -9,7 +9,7 @@ import java.util.List;
 public class FireTruck {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "barrack_id")
@@ -26,11 +26,11 @@ public class FireTruck {
     private List<Ressource> ressources;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

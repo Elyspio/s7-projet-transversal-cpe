@@ -9,21 +9,20 @@ public class TruckType {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String label;
     private int capacity;
     private float volume;
-
 
     @OneToMany
     @JoinColumn(name="truck_type_id")
     private List<FireTruck> fireTrucks;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,7 +50,6 @@ public class TruckType {
     public void setVolume(float volume) {
         this.volume = volume;
     }
-
 
     public List<FireTruck> getFireTrucks() {
         return fireTrucks;

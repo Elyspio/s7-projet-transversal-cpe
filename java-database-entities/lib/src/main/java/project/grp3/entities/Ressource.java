@@ -8,7 +8,7 @@ import java.util.List;
 public class Ressource {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "fire_id", nullable = false)
@@ -23,11 +23,11 @@ public class Ressource {
     private List<FireTruck> fireTrucks;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

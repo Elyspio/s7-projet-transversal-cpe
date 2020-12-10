@@ -7,10 +7,10 @@ import java.util.List;
 @Table(name = "Sdis")
 public class Sdis {
 
-
     @Id
     private String name;
     private String department;
+
     @OneToMany
     @JoinColumn(name = "sdis_id")
     private List<Barrack> barracks;

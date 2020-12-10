@@ -9,7 +9,7 @@ public class Fire {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private Date detectionDate;
     private boolean isAlive;
     private Date endDate;
@@ -28,11 +28,11 @@ public class Fire {
     private Sensor sensor;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

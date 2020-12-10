@@ -9,10 +9,9 @@ import java.util.List;
 public class Fireman {
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     private String name;
     private String lastname;
-
 
     @ManyToOne
     @JoinColumn(name = "exhaust_level_id")
@@ -22,16 +21,15 @@ public class Fireman {
     @JoinColumn(name="ressource_id")
     private List<Ressource> ressources;
 
-
     @ManyToOne
     @JoinColumn(name = "barrack_id")
     private Barrack barrack;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
