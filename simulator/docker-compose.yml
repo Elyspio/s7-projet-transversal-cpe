@@ -20,6 +20,7 @@ services:
     image: elyspio/cpe-s7-project:simulator
     environment:
       DATABASE_PORT: 5433
+      OWN_PORT: 8083
     ports:
       - 8083:8080
     container_name: s7-project-simulator-engine
@@ -37,3 +38,13 @@ services:
       ports:
         - 5435:5432
       container_name: truck-db
+
+
+  simulator-swagger:
+    image: swaggerapi/swagger-ui
+    restart: always
+    environment:
+      SWAGGER_JSON_URL: http://localhost:8083/swagger.json
+    ports:
+      - 8093:8080
+    container_name: s7-project-simulator-swagger      

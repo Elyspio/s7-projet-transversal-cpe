@@ -1,7 +1,7 @@
-﻿*/build
-*/.gradle
-**/.gradle
-**/.idea/dataSources
+﻿build
+.gradle
 */database
 *.class
 */app/build
+.idea
+simulator/database-truck

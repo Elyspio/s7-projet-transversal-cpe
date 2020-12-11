@@ -1,5 +1,4 @@
 package project.grp3.simulator;
-
 import io.swagger.jaxrs.config.BeanConfig;
 import project.grp3.simulator.filter.CrossDomainFilter;
 import project.grp3.simulator.resources.HelloResource;
@@ -15,7 +14,7 @@ public class HelloApplication extends Application {
     public HelloApplication() {
         BeanConfig beanConfig = new BeanConfig();
 
-        var port = "8083";
+        var port = "8084";
 
         if (System.getenv().containsKey("OWN_PORT")) {
             port = System.getenv("OWN_PORT");
@@ -47,4 +46,3 @@ public class HelloApplication extends Application {
         return resources;
     }
 }
-

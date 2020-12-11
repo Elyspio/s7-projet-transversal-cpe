@@ -2,8 +2,8 @@
 
 ## Config Prod
 
-| Entity            | Database port | Tomcat Port |
-|-------------------|---------------|-------------|
-| Simulator         | 5433          | 8081        |
-| Emergency Manager | 5434          | 8082        |
-|                   |               |             |
+| Entity            | Database port | Web server port | Swagger port    |
+|-------------------|---------------|-----------------|-----------------|
+| Simulator         | 5433          | 8083            | 8093            |
+| Emergency Manager | 5434          | 8084            | 8094            |
+| Truck Simulator   | 5435          | 8085            | 8095            |

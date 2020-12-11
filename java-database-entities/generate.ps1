@@ -1,8 +1,5 @@
 $dir = $PSScriptRoot
 
-
-
-
 Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$dir/lib/build/"
 
 ./gradlew.bat build

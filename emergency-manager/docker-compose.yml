@@ -12,13 +12,27 @@ services:
         target: /var/lib/postgresql/data
     ports:
       - 5434:5432
-    container_name: emergency-manager-db
+    container_name: s7-project-emergency-manager-db
 
   manager:
     image: elyspio/cpe-s7-project:emergency-manager
     restart: always
     environment:
       DATABASE_PORT: 5434
+      OWN_PORT: 8084
     ports:
-      - 8082:8080
+      - 8084:8080
     container_name: s7-project-emergency-manager-engine
+
+    
+  manager-swagger:
+    image: swaggerapi/swagger-ui
+    restart: always
+    environment:
+      SWAGGER_JSON_URL: http://localhost:8084/swagger.json
+    ports:
+      - 8094:8080
+    container_name: s7-project-emergency-manager-swagger
+
+
+
