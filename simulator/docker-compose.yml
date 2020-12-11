@@ -14,10 +14,26 @@ services:
       - 5433:5432
     container_name: simulator-db
 
+ 
+
   simulator:
     image: elyspio/cpe-s7-project:simulator
     environment:
       DATABASE_PORT: 5433
     ports:
-      - 8081:8080
+      - 8083:8080
     container_name: s7-project-simulator-engine
+
+
+  db-truck:
+      image: postgres
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: example
+      volumes:
+        - type: bind
+          source: ./database-truck
+          target: /var/lib/postgresql/data
+      ports:
+        - 5435:5432
+      container_name: truck-db
