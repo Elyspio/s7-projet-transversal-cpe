@@ -1,0 +1,11 @@
+services:
+  microbit-emergency-simulator:
+    image: elyspio/cpe-s7-project:emergency-manager
+    restart: always
+    environment:
+      DATABASE_PORT: 5434
+      OWN_PORT: 8084
+      EMERGENCY_URL: 
+    ports:
+      - 8087:8087
+    container_name: s7-project-emergency-manager-engine

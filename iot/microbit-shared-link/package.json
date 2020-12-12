@@ -1,0 +1,22 @@
+{
+  "name": "back",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "watch-shared": "nodemon ./share.ts -w ./src",
+    "start": "npm run watch-shared"
+  },
+  "dependencies": {
+    "serialport": "^9.0.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.8",
+    "@types/fs-extra": "^9.0.5",
+    "@types/node": "^14.14.12",
+    "@types/serialport": "^8.0.1",
+    "fs-extra": "^9.0.1",
+    "nodemon": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  }
+}
