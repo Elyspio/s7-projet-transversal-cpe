@@ -3,9 +3,7 @@ services:
     image: elyspio/cpe-s7-project:emergency-manager
     restart: always
     environment:
-      DATABASE_PORT: 5434
-      OWN_PORT: 8084
-      EMERGENCY_URL: 
+      EMERGENCY_URL: "192.168.0.40:8084"
     ports:
       - 8087:8087
-    container_name: s7-project-emergency-manager-engine
+    container_name: s7-project-microbit-emergency-link
