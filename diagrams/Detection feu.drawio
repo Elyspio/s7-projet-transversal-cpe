@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-16T13:44:56.512Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="qZGNPPiqlr0asvVYCDWS" version="14.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-16T14:52:53.346Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="MkpBLp7pGtDeLzNzZv1e" version="14.0.4" type="github">
   <diagram id="kgpKYQtTHZ0yAKxKKP6v" name="Page-1">
     <mxGraphModel dx="1588" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -152,13 +152,13 @@
             <mxPoint x="-25" y="-25" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9IBMMB6tiIiyF1nRFMf0-25" value="Microbit Server &#xa;&quot;Simulator&quot;" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-25" value="Truck Simulator" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
           <mxGeometry x="300" y="440" width="100" height="300" as="geometry" />
         </mxCell>
         <mxCell id="9IBMMB6tiIiyF1nRFMf0-26" value="" style="points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="9IBMMB6tiIiyF1nRFMf0-25">
           <mxGeometry x="45" y="80" width="10" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="9IBMMB6tiIiyF1nRFMf0-27" value="Microbit &#xa;&quot;Simulator&quot;" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-27" value="Fire Simulator" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
           <mxGeometry x="480" y="440" width="100" height="300" as="geometry" />
         </mxCell>
         <mxCell id="9IBMMB6tiIiyF1nRFMf0-28" value="" style="points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="9IBMMB6tiIiyF1nRFMf0-27">
@@ -194,7 +194,7 @@
         <mxCell id="9IBMMB6tiIiyF1nRFMf0-38" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="9IBMMB6tiIiyF1nRFMf0-36">
           <mxGeometry x="51" y="145" width="10" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="9IBMMB6tiIiyF1nRFMf0-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1">
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="9IBMMB6tiIiyF1nRFMf0-41">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="180" y="594" as="targetPoint" />
             <mxPoint x="180" y="564.0344827586207" as="sourcePoint" />
@@ -202,18 +202,47 @@
               <mxPoint x="180" y="530" />
               <mxPoint x="225" y="530" />
               <mxPoint x="225" y="550" />
-              <mxPoint x="180" y="550" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="9IBMMB6tiIiyF1nRFMf0-41" target="9IBMMB6tiIiyF1nRFMf0-25">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="580" />
+              <mxPoint x="300" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-64" value="Ask resources to move" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="9IBMMB6tiIiyF1nRFMf0-63">
+          <mxGeometry x="-0.2481" relative="1" as="geometry">
+            <mxPoint x="16.55" y="-0.03" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9IBMMB6tiIiyF1nRFMf0-41" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="170" y="520" width="10" height="120" as="geometry" />
         </mxCell>
         <mxCell id="9IBMMB6tiIiyF1nRFMf0-52" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="350" y="550" width="10" height="70" as="geometry" />
+          <mxGeometry x="350" y="580" width="10" height="70" as="geometry" />
         </mxCell>
         <mxCell id="9IBMMB6tiIiyF1nRFMf0-53" value="&lt;font style=&quot;font-size: 11px&quot;&gt;Add to database&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
           <mxGeometry x="1080" y="590" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-62" value="&lt;font style=&quot;font-size: 11px&quot;&gt;Find necessary resources&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="510" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="602.97" as="targetPoint" />
+            <mxPoint x="360" y="617.0044827586207" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="360" y="583" />
+              <mxPoint x="405" y="583" />
+              <mxPoint x="405" y="603" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9IBMMB6tiIiyF1nRFMf0-66" value="Simulate travel time" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="560" width="120" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
