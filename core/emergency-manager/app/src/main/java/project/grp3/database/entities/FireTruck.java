@@ -19,10 +19,9 @@ public class FireTruck {
     @JoinColumn(name="truck_type_id")
     private TruckType type;
 
-    @ManyToMany
-    private List<FireType> fireTypes;
 
-    @ManyToMany
+
+    @ManyToMany(mappedBy = "fireTrucks")
     private List<Resource> ressources;
 
 
@@ -50,14 +49,6 @@ public class FireTruck {
 
     public void setType(TruckType type) {
         this.type = type;
-    }
-
-    public List<FireType> getFireTypes() {
-        return fireTypes;
-    }
-
-    public void setFireTypes(List<FireType> fireTypes) {
-        this.fireTypes = fireTypes;
     }
 
 

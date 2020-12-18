@@ -17,8 +17,7 @@ public class Fireman {
     @JoinColumn(name = "exhaust_level_id")
     private ExhaustLevel exhaustLevel;
 
-    @ManyToMany
-    @JoinColumn(name = "ressource_id")
+    @ManyToMany(mappedBy = "firemen")
     private List<Resource> ressources;
 
     @ManyToOne

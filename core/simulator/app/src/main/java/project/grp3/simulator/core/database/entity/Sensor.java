@@ -1,13 +1,13 @@
-package project.grp3.database.entities;
-
+package project.grp3.simulator.core.database.entity;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Sensor")
 public class Sensor {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String city;
@@ -17,13 +17,12 @@ public class Sensor {
     private String street;
 
     @OneToMany
-    @JoinColumn(name = "fire_id")
+    @JoinColumn(name = "sensor_id")
     private List<Fire> fires;
 
 
-    @ManyToMany
-    @JoinColumn(name = "fire_type_id")
-    private List<FireType> fireTypes;
+    @ManyToMany(mappedBy = "sensors")
+    private Set<FireType> fireTypes;
 
 
     public Long getId() {
@@ -43,13 +42,7 @@ public class Sensor {
         this.fires = fires;
     }
 
-    public List<FireType> getFireTypes() {
-        return fireTypes;
-    }
 
-    public void setFireTypes(List<FireType> fireTypes) {
-        this.fireTypes = fireTypes;
-    }
 
     public String getCity() {
         return city;
@@ -89,5 +82,9 @@ public class Sensor {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public Set<FireType> getFireTypes() {
+        return fireTypes;
     }
 }

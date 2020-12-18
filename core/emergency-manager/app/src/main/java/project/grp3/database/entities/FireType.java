@@ -18,16 +18,15 @@ public class FireType {
     private String description;
 
 
-    @ManyToMany
-    @JoinColumn(name = "fire_truck_id")
+    @ManyToMany(mappedBy = "fireTypes")
     private List<TruckType> truckTypes;
+
 
     @OneToMany
     @JoinColumn(name = "fire_type_id")
     private List<Fire> fires;
 
-    @ManyToMany
-    @JoinColumn(name = "sensor_id")
+    @ManyToMany(mappedBy = "fireTypes")
     private List<Sensor> sensors;
 
     public Long getId() {
@@ -78,4 +77,5 @@ public class FireType {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

@@ -20,9 +20,12 @@ public class Sensor {
     @JoinColumn(name = "fire_id")
     private List<Fire> fires;
 
-
     @ManyToMany
-    @JoinColumn(name = "fire_type_id")
+    @JoinTable(
+            name = "sensor_firetype",
+            joinColumns = @JoinColumn(name = "firetype_id"),
+            inverseJoinColumns = @JoinColumn(name = "sensor_id")
+    )
     private List<FireType> fireTypes;
 
 

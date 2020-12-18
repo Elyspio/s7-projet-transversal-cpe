@@ -14,12 +14,22 @@ public class Resource {
     @OneToOne
     @JoinColumn(name = "fire_id", nullable = false)
     private Fire fire;
+
     @ManyToMany
-    @JoinColumn(name = "fireman_id")
-    private List<Fireman> firemen;
+    @JoinTable(
+            name = "fireman_resource",
+            joinColumns = @JoinColumn(name = "fireman_id"),
+            inverseJoinColumns = @JoinColumn(name = "resource_id")
+    )    private List<Fireman> firemen;
+
     @ManyToMany
-    @JoinColumn(name = "fire_truck_id")
+    @JoinTable(
+            name = "firetruck_resource",
+            joinColumns = @JoinColumn(name = "firetruck_id"),
+            inverseJoinColumns = @JoinColumn(name = "resource_id")
+    )
     private List<FireTruck> fireTrucks;
+
     @OneToMany
     @JoinColumn(name = "ressource_log_id")
     private List<Log> logs;

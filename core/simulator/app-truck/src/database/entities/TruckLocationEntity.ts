@@ -6,16 +6,16 @@ export class TruckLocationEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     current_latitude: number
 
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     current_longitude: number
 
     /**
      * Real truck's speed
      */
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     speed: number;
 
     @ManyToOne(() => TruckEntity, truck => truck.id)

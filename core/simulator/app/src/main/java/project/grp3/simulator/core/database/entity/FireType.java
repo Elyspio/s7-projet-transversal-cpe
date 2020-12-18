@@ -1,4 +1,4 @@
-package project.grp3.database.entities;
+package project.grp3.simulator.core.database.entity;
 
 
 import javax.persistence.*;
@@ -10,7 +10,7 @@ import java.util.List;
 public class FireType {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false)
@@ -24,7 +24,11 @@ public class FireType {
     private List<Fire> fires;
 
     @ManyToMany
-    @JoinColumn(name = "sensor_id")
+    @JoinTable(
+            name = "firetype_sensor",
+            joinColumns = @JoinColumn(name = "sensor_id"),
+            inverseJoinColumns = @JoinColumn(name = "firetype_id")
+    )
     private List<Sensor> sensors;
 
     public Long getId() {

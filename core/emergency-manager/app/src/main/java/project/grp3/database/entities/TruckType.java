@@ -19,6 +19,15 @@ public class TruckType {
     @JoinColumn(name="truck_type_id")
     private List<FireTruck> fireTrucks;
 
+
+    @ManyToMany
+    @JoinTable(
+            name = "trucktype_firetype",
+            joinColumns = @JoinColumn(name = "firetype_id"),
+            inverseJoinColumns = @JoinColumn(name = "trucktype_id")
+    )
+    private List<FireType> fireTypes;
+
     public Long getId() {
         return id;
     }
@@ -66,5 +75,13 @@ public class TruckType {
 
     public void setSpeed(float speed) {
         this.speed = speed;
+    }
+
+    public List<FireType> getFireTypes() {
+        return fireTypes;
+    }
+
+    public void setFireTypes(List<FireType> fireTypes) {
+        this.fireTypes = fireTypes;
     }
 }

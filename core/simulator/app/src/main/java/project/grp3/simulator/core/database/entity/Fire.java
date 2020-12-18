@@ -1,16 +1,17 @@
-package project.grp3.database.entities;
+package project.grp3.simulator.core.database.entity;
 
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Fire")
+@Table(name = "Fire", schema = "public")
 public class Fire {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private Date detectionDate;
     private Date endDate;
 

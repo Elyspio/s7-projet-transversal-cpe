@@ -1,4 +1,4 @@
-import {Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {TruckLocationEntity} from "./TruckLocationEntity";
 import {FiremanEntity} from "./FiremanEntity";
 
@@ -14,26 +14,30 @@ export class TruckEntity {
     /**
      * Nominal truck's speed
      */
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     speed: number;
 
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     start_latitude: number
 
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     start_longitude: number
 
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     dest_latitude: number
 
-    @Column({nullable: false})
+    @Column("double precision", {nullable: false})
     dest_longitude: number
+
+
+    @Column("double precision", {nullable: false})
+    resource_longitude: number
 
     /**
      *
      */
-    @Column({default: false})
-    arrived: boolean
+    @Column("int")
+    travelState: TravelState
 
     @OneToMany(() => TruckLocationEntity, truckLocation => truckLocation.truck)
     locations: TruckLocationEntity[]
@@ -43,3 +47,8 @@ export class TruckEntity {
 }
 
 
+enum TravelState {
+    MOVING,
+    OPERATING,
+    ARRIVED
+}
