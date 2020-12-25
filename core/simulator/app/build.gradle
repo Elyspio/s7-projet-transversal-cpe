@@ -27,6 +27,18 @@ dependencies {
 
     compile group: 'io.swagger', name: 'swagger-jaxrs', version: '1.6.2'
 
+
+    // region Swagger generation
+
+    // https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
+    compile group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.6'
+
+    // https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson
+    compile group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
+
+
+    // endregion
+
     implementation('org.glassfish.jersey.containers:jersey-container-servlet:2.31')
     implementation('org.glassfish.jersey.media:jersey-media-json-jackson:2.31')
     implementation('org.glassfish.jersey.inject:jersey-hk2:2.31')
@@ -38,6 +50,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }
 
 test {

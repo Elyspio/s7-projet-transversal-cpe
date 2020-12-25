@@ -1,8 +1,9 @@
 package project.grp3.simulator;
 
 import io.swagger.jaxrs.config.BeanConfig;
-import project.grp3.simulator.filter.CrossDomainFilter;
-import project.grp3.simulator.resources.HelloResource;
+import project.grp3.simulator.core.database.Database;
+import project.grp3.simulator.web.filter.CrossDomainFilter;
+import project.grp3.simulator.web.resource.HelloResource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -10,9 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @ApplicationPath("/")
-public class HelloApplication extends Application {
+public class App extends Application {
 
-    public HelloApplication() {
+    public App() {
         BeanConfig beanConfig = new BeanConfig();
 
         var port = "8083";
