@@ -1,4 +1,4 @@
-const {copy,remove} = require("fs-extra")
+const {copy, remove} = require("fs-extra")
 const path = require("path")
 
 const src = path.resolve(__dirname, "src");

@@ -11,7 +11,7 @@ export namespace Convert {
         const ret = {};
         const fields = csv.split(lineSeparator).map(line => line.split(csvSeparator))
 
-        if (fields.length >= 2 && fields.some(arr => arr.length !== fields[0].length)) throw Error("Malformed csv")
+        if (fields.length >= 2 && fields.some(arr => arr.length !== fields[0].length)) throw Error("Malformed csv: " + csv)
 
         for (const i of fields[0].keys()) {
             ret[fields[0][i]] = ret[fields[1][i]]

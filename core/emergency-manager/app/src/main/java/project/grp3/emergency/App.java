@@ -1,7 +1,9 @@
-package project.grp3.emergency;
+package project.grp3.simulator;
+
 import io.swagger.jaxrs.config.BeanConfig;
-import project.grp3.emergency.filter.CrossDomainFilter;
-import project.grp3.emergency.resources.HelloResource;
+import project.grp3.simulator.core.database.Database;
+import project.grp3.simulator.web.filter.CrossDomainFilter;
+import project.grp3.simulator.web.resource.HelloResource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -9,12 +11,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @ApplicationPath("/")
-public class HelloApplication extends Application {
+public class App extends Application {
 
-    public HelloApplication() {
+    public App() {
         BeanConfig beanConfig = new BeanConfig();
 
-        var port = "8084";
+        var port = "8083";
 
         if (System.getenv().containsKey("OWN_PORT")) {
             port = System.getenv("OWN_PORT");
@@ -46,3 +48,4 @@ public class HelloApplication extends Application {
         return resources;
     }
 }
+
