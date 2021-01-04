@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-12-18T07:08:41.680Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="hFIrNYz9Jll_Ui1hK1bX" version="14.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-01-04T07:46:51.793Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36" etag="WU_4G1iQQ54IrqNEDLjW" version="14.0.5" type="github">
   <diagram id="p3vPmYisS7ZTwc7BDrno" name="Page-1">
-    <mxGraphModel dx="5091" dy="3041" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="4600" dy="2773" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -99,9 +99,6 @@
         </mxCell>
         <mxCell id="8Nmhy1LpH2X3-tH0n8y3-11" value="Appels API&lt;br style=&quot;font-size: 16px&quot;&gt;Format JSON&lt;br&gt;Protocole HTTP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="Op86OD81ZePwcXdHFRyQ-128" vertex="1">
           <mxGeometry x="14" y="906.5" width="166" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="ubGJzU_Vq-xTvHRX4WS8-5" value="Appels API&lt;br style=&quot;font-size: 16px&quot;&gt;Format JSON&lt;br&gt;Protocole HTTP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="Op86OD81ZePwcXdHFRyQ-128" vertex="1">
-          <mxGeometry x="180" y="876.5" width="166" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Op86OD81ZePwcXdHFRyQ-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=40;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="Op86OD81ZePwcXdHFRyQ-128" source="Op86OD81ZePwcXdHFRyQ-5" target="ubGJzU_Vq-xTvHRX4WS8-28" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -325,16 +322,6 @@
         </mxCell>
         <mxCell id="Op86OD81ZePwcXdHFRyQ-134" value="Appels MQTT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="-1420" y="1380" width="216" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="ubGJzU_Vq-xTvHRX4WS8-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="8Nmhy1LpH2X3-tH0n8y3-7" target="ubGJzU_Vq-xTvHRX4WS8-28" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="530" y="580" />
-              <mxPoint x="1000" y="580" />
-              <mxPoint x="1000" y="453" />
-              <mxPoint x="1135" y="453" />
-            </Array>
-          </mxGeometry>
         </mxCell>
         <mxCell id="ubGJzU_Vq-xTvHRX4WS8-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8Nmhy1LpH2X3-tH0n8y3-7" target="Op86OD81ZePwcXdHFRyQ-9" edge="1">
           <mxGeometry relative="1" as="geometry">
