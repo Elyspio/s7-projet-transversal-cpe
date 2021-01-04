@@ -1,10 +1,8 @@
-package project.grp3.simulator.web.resource;
+package project.grp3.emergency.web.resource;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import project.grp3.simulator.core.api.*;
-import project.grp3.simulator.core.api.fire.model.PostFireModel;
-import project.grp3.simulator.core.database.Database;
+import project.grp3.emergency.core.database.Database;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -20,7 +18,6 @@ public class HelloResource {
     @ApiOperation(value = "test the world")
     @Produces("application/json")
     public Response hello() {
-
         return Response
                 .status(Response.Status.OK)
                 .entity(Database.sensorRepository.getAll())
@@ -32,25 +29,9 @@ public class HelloResource {
     @ApiOperation(value = "test the microbit (simulator) link")
     @Produces("application/json")
     public Response testLink() {
-
-        var data = new PostFireModel()
-                .fireTypeId(BigDecimal.valueOf(12))
-                .intensity(BigDecimal.valueOf(3))
-                .sensorId(BigDecimal.valueOf(125));
-
-        PostFireModel response = null;
-        try {
-            response = Apis.getFire().fireNewFire(data).execute().body();
-            return Response
-                    .status(Response.Status.OK)
-                    .entity(response)
-                    .build();
-        } catch (IOException e) {
-            return Response
-                    .status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(e)
-                    .build();
-        }
+        return Response
+                .status(Response.Status.OK)
+                .build();
 
     }
 
