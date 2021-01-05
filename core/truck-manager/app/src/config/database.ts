@@ -2,7 +2,7 @@ import {ConnectionOptions} from "typeorm";
 import * as path from "path";
 
 
-const getEnv = (env: string, fallback) => {
+export const getEnv = (env: string, fallback) => {
     return process.env[env] ?? fallback;
 }
 

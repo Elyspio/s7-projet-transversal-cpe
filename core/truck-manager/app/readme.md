@@ -15,5 +15,6 @@ Environments variables
 | DATABASE_USER     | user of the user for the database connection     | postgres      |
 | DATABASE_PASSWORD | password of the user for the database connection | example       |
 | DATABASE_BASE     | database name for the database connection        | postgres      |
+| SERVER_HTTP_PORT  | Port exposed in the container by the web server  | 8085          |
 
 
