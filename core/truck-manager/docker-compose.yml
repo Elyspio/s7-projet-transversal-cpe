@@ -1,5 +1,4 @@
 version: "3.1"
-
 services:
   db:
     image: postgres
@@ -14,11 +13,11 @@ services:
       - 5435:5432
     container_name: s7-project-truck-manager-db
 
-#
-#  app:
-#    image: elyspio/cpe-s7-project:truck-manager
-#    environment:
-#      DATABASE_PORT: 5435
-#    ports:
-#      - 8085:8080
-#    container_name: s7-project-truck-manager-app
+
+  app:
+    image: elyspio/cpe-s7-project:truck-manager
+    environment:
+      DATABASE_PORT: 5435
+    ports:
+      - 8085:8080
+    container_name: s7-project-truck-manager-app

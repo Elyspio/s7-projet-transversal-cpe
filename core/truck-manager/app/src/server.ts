@@ -13,7 +13,7 @@ let frontPath = path.resolve(rootDir, "..", "..", "front", "build");
     httpsPort: false, // CHANGE
     mount: {
         "/": [
-            `${rootDir}/controllers/**/*.ts`
+            `${rootDir}/controllers/**/*`
         ]
     },
     exclude: [

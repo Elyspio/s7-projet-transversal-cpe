@@ -38,7 +38,6 @@ export class MovingService {
         await Promise.all([
             ...movement.trucks.map(async value => Repositories.truckLocation.insert({
                 truck: await Repositories.truck.getByBusiness(value.id, value.resourceId),
-                date: new Date(),
                 current_longitude:
                 value.start.longitude,
                 current_latitude:

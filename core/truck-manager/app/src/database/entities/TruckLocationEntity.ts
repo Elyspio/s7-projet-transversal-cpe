@@ -1,4 +1,4 @@
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {TruckEntity} from "./TruckEntity";
 import {DateTime} from "@tsed/schema";
 
@@ -9,7 +9,7 @@ export class TruckLocationEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @DateTime()
+    @CreateDateColumn()
     date: Date
 
     @Column("double precision", {nullable: false})

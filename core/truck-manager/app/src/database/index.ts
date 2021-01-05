@@ -4,6 +4,7 @@ import {Repositories} from "./repositories";
 import {TruckRepository} from "./repositories/TruckRepository";
 import {FiremanRepository} from "./repositories/FiremanRepository";
 import {TruckLocationRepository} from "./repositories/TruckLocationRepository";
+import {databaseOptions} from "../config/database";
 
 export class Database {
 
@@ -12,7 +13,7 @@ export class Database {
     public static async get() {
         if (!Database.instance) {
             $log.debug("Start database connection");
-            Database.instance = await createConnection()
+            Database.instance = await createConnection(databaseOptions)
             $log.debug("Database connection done");
         }
         return Database.instance

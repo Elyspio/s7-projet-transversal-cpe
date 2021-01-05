@@ -5,7 +5,7 @@
    "scripts": {
       "start": "nodemon src/app.ts",
       "build": "tsc",
-      "docker": "wsl ../docker/docker.sh",
+      "docker": "powershell -File docker/dockerize.ps1",
       "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
    },
    "dependencies": {
