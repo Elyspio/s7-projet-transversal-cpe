@@ -8,7 +8,7 @@ export class TruckLocationRepository extends Repository<TruckLocationEntity> {
      * @returns a list of trucks that are moving or operating
      */
     async getActives(): Promise<TruckLocationEntity[]> {
-        const actives = (await super.find()).filter(tl => tl.truck.isActive);
+        const actives = (await super.find({relations: ["truck", "truck.firemen", "truck.locations"]})).filter(tl => tl.truck.isActive);
         const tmp: TruckLocationEntity[] = [];
         actives.sort((a, b) => (b.date.getMilliseconds() - a.date.getMilliseconds()))
 
