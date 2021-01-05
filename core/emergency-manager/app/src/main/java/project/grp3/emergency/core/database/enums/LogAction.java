@@ -1,0 +1,10 @@
+package project.grp3.emergency.core.database.enums;
+
+public enum LogAction {
+    CHANGEMENT_INTENSITE_FEU,
+    ENVOIE_DE_CAMION_VERS_FEU,
+    ENVOIE_DE_PERSONNE_VERS_FEU,
+    RETOUR_DE_CAMION_VERS_CASERNE,
+    RETOUR_DE_PERSONNE_VERS_CASERNE,
+    ARRIVER_DE_CAMION;
+}

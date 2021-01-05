@@ -7,21 +7,21 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">example</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5434/postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/emergency</property>
         <property name="connection_pool_size">1</property>
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="show_sql">true</property>
-        <mapping class="project.grp3.database.entities.TruckType"/>
-        <mapping class="project.grp3.database.entities.Sensor"/>
-        <mapping class="project.grp3.database.entities.ExhaustLevel"/>
-        <mapping class="project.grp3.database.entities.Barrack"/>
-        <mapping class="project.grp3.database.entities.Sdis"/>
-        <mapping class="project.grp3.database.entities.Resource"/>
-        <mapping class="project.grp3.database.entities.Log"/>
-        <mapping class="project.grp3.database.entities.FireTruck"/>
-        <mapping class="project.grp3.database.entities.Fireman"/>
-        <mapping class="project.grp3.database.entities.FireType"/>
-        <mapping class="project.grp3.database.entities.Fire"/>
+        <mapping class="project.grp3.emergency.core.database.entities.TruckTypeEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.SensorEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.ExhaustLevelEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.BarrackEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.SdisEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.ResourceEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.LogEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.FireTruckEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.FiremanEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.FireTypeEntity"/>
+        <mapping class="project.grp3.emergency.core.database.entities.FireEntity"/>
     </session-factory>
 </hibernate-configuration>

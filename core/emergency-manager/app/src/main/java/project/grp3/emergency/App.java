@@ -1,9 +1,12 @@
-package project.grp3.simulator;
+package project.grp3.emergency;
 
 import io.swagger.jaxrs.config.BeanConfig;
-import project.grp3.simulator.core.database.Database;
-import project.grp3.simulator.web.filter.CrossDomainFilter;
-import project.grp3.simulator.web.resource.HelloResource;
+import project.grp3.emergency.core.database.Database;
+import project.grp3.emergency.web.filter.CrossDomainFilter;
+import project.grp3.emergency.web.resource.FireTruckResource;
+import project.grp3.emergency.web.resource.FiremanRessource;
+import project.grp3.emergency.web.resource.HelloResource;
+import project.grp3.emergency.web.resource.ResourceRessource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -37,6 +40,9 @@ public class App extends Application {
 
         // Resources
         resources.add(HelloResource.class);
+        resources.add(FiremanRessource.class);
+        resources.add(FireTruckResource.class);
+        resources.add(ResourceRessource.class);
 
         // ALLOW CORS
         resources.add(CrossDomainFilter.class);
