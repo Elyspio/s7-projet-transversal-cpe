@@ -1,4 +1,4 @@
-package project.grp3.simulator.core.database.repository;
+package project.grp3.simulator.core.database.repositories;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -44,13 +44,13 @@ abstract public class Repository<Entity> {
         StandardServiceRegistryBuilder.destroy(registry);
     }
 
-    protected List<Entity> getAll() {
+    public List<Entity> getAll() {
         var cq = manager.getCriteriaBuilder().createQuery(entity);
         var all = cq.select(cq.from(entity));
         return manager.createQuery(all).getResultList();
     }
 
-    protected Entity get(Object primaryKey) {
+    public Entity getById(Object primaryKey) {
         return manager.find(entity, primaryKey);
     }
 

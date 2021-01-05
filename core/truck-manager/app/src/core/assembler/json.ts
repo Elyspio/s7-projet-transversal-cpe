@@ -1,7 +1,17 @@
-export abstract class JsonAssembler<T, U> {
+export abstract class BaseAssembler<Model, Entity> {
 
-    public abstract json(obj: T): U;
+    public abstract toEntity(obj: Model): Entity;
 
-    public abstract object(json: U): T;
+    public abstract toModel(json: Entity): Model;
+
+    public collectionToModel(entities: Entity[]): Model[] {
+        return entities.map(e => this.toModel(e))
+
+    }
+
+    public collectionToEntity(models: Model[]): Entity[] {
+        return models.map(m => this.toEntity(m))
+    }
+
 
 }

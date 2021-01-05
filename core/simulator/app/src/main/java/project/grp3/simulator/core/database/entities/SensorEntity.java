@@ -1,11 +1,12 @@
-package project.grp3.simulator.core.database.entity;
+package project.grp3.simulator.core.database.entities;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "Sensor")
-public class Sensor {
+public class SensorEntity
+{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -18,11 +19,11 @@ public class Sensor {
 
     @OneToMany
     @JoinColumn(name = "sensor_id")
-    private List<Fire> fires;
+    private List<FireEntity> fires;
 
 
     @ManyToMany(mappedBy = "sensors")
-    private Set<FireType> fireTypes;
+    private Set<FireTypeEntity> fireTypes;
 
 
     public Long getId() {
@@ -34,11 +35,11 @@ public class Sensor {
     }
 
 
-    public List<Fire> getFires() {
+    public List<FireEntity> getFires() {
         return fires;
     }
 
-    public void setFires(List<Fire> fires) {
+    public void setFires(List<FireEntity> fires) {
         this.fires = fires;
     }
 
@@ -84,7 +85,7 @@ public class Sensor {
         this.street = street;
     }
 
-    public Set<FireType> getFireTypes() {
+    public Set<FireTypeEntity> getFireTypes() {
         return fireTypes;
     }
 }

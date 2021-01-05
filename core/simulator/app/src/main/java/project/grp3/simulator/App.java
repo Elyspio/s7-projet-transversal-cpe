@@ -1,6 +1,7 @@
 package project.grp3.simulator;
 
 import io.swagger.jaxrs.config.BeanConfig;
+import project.grp3.simulator.config.NetworkConfig;
 import project.grp3.simulator.core.database.Database;
 import project.grp3.simulator.web.filter.CrossDomainFilter;
 import project.grp3.simulator.web.resource.HelloResource;
@@ -16,13 +17,7 @@ public class App extends Application {
     public App() {
         BeanConfig beanConfig = new BeanConfig();
 
-        var port = "8083";
-
-        if (System.getenv().containsKey("OWN_PORT")) {
-            port = System.getenv("OWN_PORT");
-        }
-
-        beanConfig.setHost("localhost:" + port);
+        beanConfig.setHost("localhost:" + NetworkConfig.getInstance().getOwn().getPort());
 
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setBasePath("/");

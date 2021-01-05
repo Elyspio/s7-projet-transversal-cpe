@@ -1,4 +1,1 @@
-
-export const Apis = {
-
-}
+export const Apis = {}

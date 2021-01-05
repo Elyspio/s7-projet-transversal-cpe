@@ -11,6 +11,9 @@ export class TruckEntity {
     @Column({nullable: false})
     id_truck: number;
 
+
+    @Column({nullable: false})
+    id_resource: number
     /**
      * Nominal truck's speed
      */
@@ -29,9 +32,11 @@ export class TruckEntity {
     @Column("double precision", {nullable: false})
     dest_longitude: number
 
+    @Column("double precision", {nullable: false})
+    current_latitude: number
 
     @Column("double precision", {nullable: false})
-    resource_longitude: number
+    current_longitude: number
 
     /**
      *
@@ -44,11 +49,17 @@ export class TruckEntity {
 
     @OneToMany(() => FiremanEntity, fireman => fireman.truck)
     firemen: FiremanEntity[]
+
+
+    public get isActive() {
+        return ([TravelState.MOVING, TravelState.OPERATING].includes(this.travelState))
+    }
+
 }
 
 
-enum TravelState {
+export enum TravelState {
     MOVING,
     OPERATING,
-    ARRIVED
+    DONE
 }

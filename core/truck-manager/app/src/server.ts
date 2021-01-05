@@ -12,7 +12,7 @@ let frontPath = path.resolve(rootDir, "..", "..", "front", "build");
     httpPort: process.env.HTTP_PORT || 8085,
     httpsPort: false, // CHANGE
     mount: {
-        "/core": [
+        "/": [
             `${rootDir}/controllers/**/*.ts`
         ]
     },

@@ -9,6 +9,9 @@ export class FiremanEntity {
     @Column({nullable: false})
     id_fireman: number
 
+    @Column({nullable: false})
+    id_resource: number
+
     @ManyToOne(() => TruckEntity, truck => truck.id)
     @JoinColumn({name: "truck_id"})
     truck: TruckEntity;

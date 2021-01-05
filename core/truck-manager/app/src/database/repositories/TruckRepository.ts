@@ -1,7 +1,16 @@
-import {AbstractRepository, EntityRepository} from "typeorm";
+import {EntityRepository, Repository} from "typeorm";
 import {TruckEntity} from "../entities/TruckEntity";
 
-@EntityRepository()
-export class TruckRepository extends AbstractRepository<TruckEntity> {
+@EntityRepository(TruckEntity)
+export class TruckRepository extends Repository<TruckEntity> {
+
+    public getAll(): Promise<TruckEntity[]> {
+        return super.find()
+    }
+
+    public async getByBusiness(id: number, resourceId: number): Promise<TruckEntity> {
+        return (await this.find({where: {id_truck: id, id_resource: resourceId}}))[0];
+    }
+
 
 }

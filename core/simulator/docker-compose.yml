@@ -15,8 +15,7 @@ services:
     container_name: simulator-db
 
  
-
-  simulator:
+  app:
     image: elyspio/cpe-s7-project:simulator
     environment:
       DATABASE_PORT: 5433
@@ -26,21 +25,8 @@ services:
     container_name: s7-project-simulator-engine
 
 
-  db-truck:
-      image: postgres
-      restart: always
-      environment:
-        POSTGRES_PASSWORD: example
-      volumes:
-        - type: bind
-          source: ./database-truck
-          target: /var/lib/postgresql/data
-      ports:
-        - 5435:5432
-      container_name: truck-db
 
-
-  simulator-swagger:
+  swagger:
     image: swaggerapi/swagger-ui
     restart: always
     environment:

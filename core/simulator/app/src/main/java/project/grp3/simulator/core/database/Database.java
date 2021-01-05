@@ -1,8 +1,8 @@
 package project.grp3.simulator.core.database;
 
-import project.grp3.simulator.core.database.repository.FireRepository;
-import project.grp3.simulator.core.database.repository.FireTypeRepository;
-import project.grp3.simulator.core.database.repository.SensorRepository;
+import project.grp3.simulator.core.database.repositories.FireRepository;
+import project.grp3.simulator.core.database.repositories.FireTypeRepository;
+import project.grp3.simulator.core.database.repositories.SensorRepository;
 
 public class Database {
 

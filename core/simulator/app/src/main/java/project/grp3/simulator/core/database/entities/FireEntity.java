@@ -1,4 +1,4 @@
-package project.grp3.simulator.core.database.entity;
+package project.grp3.simulator.core.database.entities;
 
 
 import javax.persistence.*;
@@ -6,7 +6,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Fire", schema = "public")
-public class Fire {
+public class FireEntity
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -17,12 +18,12 @@ public class Fire {
 
     @ManyToOne
     @JoinColumn(name = "fire_type_id")
-    private FireType type;
+    private FireTypeEntity type;
 
 
     @ManyToOne
     @JoinColumn(name = "sensor_id")
-    private Sensor sensor;
+    private SensorEntity sensor;
 
 
     public Long getId() {
@@ -49,19 +50,19 @@ public class Fire {
         this.endDate = endDate;
     }
 
-    public FireType getType() {
+    public FireTypeEntity getType() {
         return type;
     }
 
-    public void setType(FireType type) {
+    public void setType(FireTypeEntity type) {
         this.type = type;
     }
 
-    public Sensor getSensor() {
+    public SensorEntity getSensor() {
         return sensor;
     }
 
-    public void setSensor(Sensor sensor) {
+    public void setSensor(SensorEntity sensor) {
         this.sensor = sensor;
     }
 }

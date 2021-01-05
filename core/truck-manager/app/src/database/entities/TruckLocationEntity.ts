@@ -1,10 +1,16 @@
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {TruckEntity} from "./TruckEntity";
+import {DateTime} from "@tsed/schema";
 
-@Entity({name: "truck_location"})
+export const truckLocationTableName = "truck_location"
+
+@Entity({name: truckLocationTableName})
 export class TruckLocationEntity {
     @PrimaryGeneratedColumn()
     id: number;
+
+    @DateTime()
+    date: Date
 
     @Column("double precision", {nullable: false})
     current_latitude: number

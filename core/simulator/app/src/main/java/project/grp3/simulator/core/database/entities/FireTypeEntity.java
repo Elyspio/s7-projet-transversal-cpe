@@ -1,13 +1,13 @@
-package project.grp3.simulator.core.database.entity;
+package project.grp3.simulator.core.database.entities;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 @Table(name = "FireType")
-public class FireType {
+public class FireTypeEntity
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -21,7 +21,7 @@ public class FireType {
 
     @OneToMany
     @JoinColumn(name = "fire_type_id")
-    private List<Fire> fires;
+    private List<FireEntity> fires;
 
     @ManyToMany
     @JoinTable(
@@ -29,7 +29,7 @@ public class FireType {
             joinColumns = @JoinColumn(name = "sensor_id"),
             inverseJoinColumns = @JoinColumn(name = "firetype_id")
     )
-    private List<Sensor> sensors;
+    private List<SensorEntity> sensors;
 
     public Long getId() {
         return id;
@@ -39,19 +39,19 @@ public class FireType {
         this.id = id;
     }
 
-    public List<Fire> getFires() {
+    public List<FireEntity> getFires() {
         return fires;
     }
 
-    public void setFires(List<Fire> fires) {
+    public void setFires(List<FireEntity> fires) {
         this.fires = fires;
     }
 
-    public List<Sensor> getSensors() {
+    public List<SensorEntity> getSensors() {
         return sensors;
     }
 
-    public void setSensors(List<Sensor> sensors) {
+    public void setSensors(List<SensorEntity> sensors) {
         this.sensors = sensors;
     }
 
