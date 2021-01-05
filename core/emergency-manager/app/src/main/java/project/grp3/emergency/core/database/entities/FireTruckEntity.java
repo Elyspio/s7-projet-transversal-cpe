@@ -1,5 +1,7 @@
 package project.grp3.emergency.core.database.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class FireTruckEntity {
 
 
     @ManyToMany(mappedBy = "fireTrucks")
-    private List<ResourceEntity> ressources;
+    private List<ResourceEntity> resources;
 
 
     public Long getId() {
@@ -52,11 +54,11 @@ public class FireTruckEntity {
     }
 
 
-    public List<ResourceEntity> getRessources() {
-        return ressources;
+    public List<ResourceEntity> getResources() {
+        return resources;
     }
 
-    public void setRessources(List<ResourceEntity> ressources) {
-        this.ressources = ressources;
+    public void setResources(List<ResourceEntity> ressources) {
+        this.resources = ressources;
     }
 }

@@ -1,5 +1,6 @@
 package project.grp3.emergency.core.database.repositories;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -12,8 +13,9 @@ import java.util.List;
 abstract public class Repository<Entity> {
 
     private static StandardServiceRegistry registry = null;
-    private static EntityManager manager = null;
+    protected static EntityManager manager = null;
     private final Class<Entity> entity;
+    protected static Session session = null;
 
     private static void init() {
         registry = new StandardServiceRegistryBuilder()
@@ -22,6 +24,7 @@ abstract public class Repository<Entity> {
 
         try {
             SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            session = sessionFactory.openSession();
             manager = sessionFactory.createEntityManager();
         } catch (Exception e) {
             // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
@@ -56,11 +59,17 @@ abstract public class Repository<Entity> {
     }
 
     protected Entity update(Entity item){
-        return manager.merge(item);
+        var trans= session.beginTransaction();
+        Entity item2 = (Entity) session.merge(item);
+        trans.commit();
+        return item2;
     }
 
-    public Entity create(FireEntity item){
-        return manager.merge(item);
+    public Entity create(Entity item){
+        var trans= session.beginTransaction();
+        var id = session.save(item);
+        trans.commit();
+        return this.getById((Long) id);
     }
 
     protected Entity get(Object primaryKey) {

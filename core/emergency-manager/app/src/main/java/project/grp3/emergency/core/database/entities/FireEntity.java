@@ -1,5 +1,7 @@
 package project.grp3.emergency.core.database.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,6 +21,7 @@ public class FireEntity {
 
 
     @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "ressource_id")
     private ResourceEntity ressource;
 

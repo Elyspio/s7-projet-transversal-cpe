@@ -1,5 +1,7 @@
 package project.grp3.emergency.core.database.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class SensorEntity {
             joinColumns = @JoinColumn(name = "firetype_id"),
             inverseJoinColumns = @JoinColumn(name = "sensor_id")
     )
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireTypeEntity> fireTypes;
 
 

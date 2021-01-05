@@ -1,6 +1,7 @@
 package project.grp3.emergency.core.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,8 +16,8 @@ public class SdisEntity {
     private String department;
 
     @OneToMany
-    @JsonIgnore
     @JoinColumn(name = "sdis_id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<BarrackEntity> barracks;
 
     public String getName() {

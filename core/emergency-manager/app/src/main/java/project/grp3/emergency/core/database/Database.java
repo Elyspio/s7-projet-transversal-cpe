@@ -11,6 +11,7 @@ public class Database {
     public final static FireTruckRepository fireTruckRepository = new FireTruckRepository();
     public final static ResourceRepository resourceRepository = new ResourceRepository();
     public final static FireRepository fireRepository = new FireRepository();
+    public final static LogRepository logRepository = new LogRepository();
 
     private Database() {
     }

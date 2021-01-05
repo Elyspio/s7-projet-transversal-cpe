@@ -1,5 +1,7 @@
 package project.grp3.emergency.core.api;
 
+import project.grp3.emergency.config.NetworkConfig;
+import project.grp3.emergency.core.api.truck.api.ResourceApi;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -10,22 +12,23 @@ public class Apis {
      * Instance unique non préinitialisée
      */
     private static final Apis instance = new Apis();
-    //private final FireApi fire;
+
+    private final ResourceApi truckApp;
 
     /**
      * Constructeur privé
      */
     private Apis() {
 
-        //Retrofit microbitLink = createBuilder(NetworkConfig.getInstance().getMicrobitSimulatorLink().toString());
+        Retrofit truckServerLink = createBuilder(NetworkConfig.getInstance().getTruckApp().toString());
 
-      //  fire = microbitLink.create(FireApi.class);
+        truckApp = truckServerLink.create(ResourceApi.class);
     }
 
-    /*public static FireApi getFire() {
-        return instance.fire;
+    public static ResourceApi getTruckApp() {
+        return instance.truckApp;
     }
-*/
+
     private Retrofit createBuilder(String endpoint) {
         return new Retrofit.Builder()
                 .baseUrl(endpoint)

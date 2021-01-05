@@ -1,5 +1,6 @@
 package project.grp3.emergency.core.database.entities;
 
+import org.hibernate.annotations.Cascade;
 import project.grp3.emergency.core.database.enums.TruckTravelState;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class ResourceEntity {
     private FireEntity fire;
 
     @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinTable(
             name = "fireman_resource",
             joinColumns = @JoinColumn(name = "fireman_id"),
@@ -23,6 +25,7 @@ public class ResourceEntity {
     )    private List<FiremanEntity> firemen;
 
     @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinTable(
             name = "firetruck_resource",
             joinColumns = @JoinColumn(name = "firetruck_id"),
@@ -31,8 +34,9 @@ public class ResourceEntity {
     private List<FireTruckEntity> fireTrucks;
 
     @OneToMany
-    @JoinColumn(name = "ressource_log_id")
+    @JoinColumn(name = "resource_log_id")
     private List<LogEntity> logs;
+
     private TruckTravelState travelState;
 
 

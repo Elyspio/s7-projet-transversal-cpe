@@ -1,6 +1,7 @@
 package project.grp3.emergency.core.database.entities;
 
 
+import org.hibernate.annotations.Cascade;
 import project.grp3.emergency.core.database.enums.LogAction;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class LogEntity {
     private String value;
     @ManyToOne
     @JoinColumn(name = "resource_id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private ResourceEntity resource;
     private LogAction action;
 

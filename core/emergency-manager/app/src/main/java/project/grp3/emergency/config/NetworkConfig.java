@@ -1,4 +1,4 @@
-package project.grp3.simulator.config;
+package project.grp3.emergency.config;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -9,18 +9,15 @@ public class NetworkConfig {
 
     static {
         instance = new NetworkConfig(
-                ConfigurationEntry.fromString(getEnv("MICROBIT_SIMULATOR_LINK_HOST", "http://localhost:8086")),
-                ConfigurationEntry.fromString(getEnv("OWN_PORT", "http://localhost:8083"))
+                ConfigurationEntry.fromString(getEnv("TRUCK_APP_HOST", "http://localhost:8085"))
         );
     }
 
-    private final ConfigurationEntry microbitSimulatorLink;
-    private final ConfigurationEntry own;
+    private final ConfigurationEntry truckApp;
 
 
-    private NetworkConfig(ConfigurationEntry microbitSimulatorLink, ConfigurationEntry own) {
-        this.microbitSimulatorLink = microbitSimulatorLink;
-        this.own = own;
+    private NetworkConfig(ConfigurationEntry microbitSimulatorLink) {
+        this.truckApp = microbitSimulatorLink;
     }
 
     public static NetworkConfig getInstance() {
@@ -34,13 +31,10 @@ public class NetworkConfig {
         return fallback;
     }
 
-    public ConfigurationEntry getMicrobitSimulatorLink() {
-        return microbitSimulatorLink;
+    public ConfigurationEntry getTruckApp() {
+        return truckApp;
     }
 
-    public ConfigurationEntry getOwn() {
-        return own;
-    }
 
 
     public static class ConfigurationEntry {

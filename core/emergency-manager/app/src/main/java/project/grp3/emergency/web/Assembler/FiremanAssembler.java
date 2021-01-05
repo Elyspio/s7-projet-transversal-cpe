@@ -14,7 +14,7 @@ public class FiremanAssembler extends BaseAssembler<FiremanEntity, Fireman>{
     public Fireman toData(FiremanEntity firemanEntity) {
 
         var ressources = new ArrayList<Long>();
-        for (ResourceEntity item:firemanEntity.getRessources()) {
+        for (ResourceEntity item:firemanEntity.getResources()) {
             ressources.add(item.getId());
         }
         var f = new Fireman(firemanEntity.getId(),firemanEntity.getName(),firemanEntity.getLastname(),firemanEntity.getExhaustLevel().getId(), ressources,firemanEntity.getBarrack().getId());

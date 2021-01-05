@@ -1,6 +1,7 @@
 package project.grp3.emergency.core.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,11 +20,13 @@ public class BarrackEntity {
 
     @OneToMany
     @JoinColumn(name = "barrack_id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
     private List<FiremanEntity> firemen;
 
     @OneToMany
     @JoinColumn(name = "barrack_id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
     private List<FireTruckEntity> fireTrucks;
 
