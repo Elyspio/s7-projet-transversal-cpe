@@ -1,5 +1,5 @@
 import {BodyParams, Controller, Get, Post, UseBefore} from "@tsed/common";
-import {Description, Name, Returns} from "@tsed/schema";
+import {Description, Name, Returns, Status} from "@tsed/schema";
 import {RequireDevelopment} from "../../middleware/common/util";
 import {PostFireModel} from "./models";
 import {Services} from "../../core/services";
@@ -10,19 +10,11 @@ import {Services} from "../../core/services";
 export class FireController {
 
     @Post("/")
-    @Returns(201, PostFireModel)
-    @Description("Envoie d'un 'nouveau' feu vers la passerelle")
+    @Returns(201, String)
+    @Description("Send a new or updated fire to the gateway")
     async newFire(@BodyParams(PostFireModel) body) {
         Services.serial.write(body);
-        return body;
     }
 
-
-    @Get("/test")
-    @UseBefore(RequireDevelopment)
-    @Returns(403)
-    @Returns(200, String).ContentType("text/plain")
-    async getAdmin() {
-        return "Test only content"
-    }
 }
+

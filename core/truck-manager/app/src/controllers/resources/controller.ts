@@ -6,14 +6,10 @@ import {Services} from "../../core/services";
 @Name("Resource")
 @Controller("/resources")
 export class ResourceController {
-
     @Post("/send")
     @Returns(204)
     async send(@BodyParams(MovementModel) params: MovementModel) {
-
         await Services.moving.createMovement(params)
-
-        return params.firemen;
     }
 
     @Post("/:id/back")
@@ -36,6 +32,4 @@ export class ResourceController {
     async location(): Promise<TruckModel[]> {
         return Services.location.getLocations()
     }
-
-
 }

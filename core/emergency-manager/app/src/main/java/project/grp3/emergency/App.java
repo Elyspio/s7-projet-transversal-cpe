@@ -3,8 +3,6 @@ package project.grp3.emergency;
 import io.swagger.jaxrs.config.BeanConfig;
 import project.grp3.emergency.config.NetworkConfig;
 import project.grp3.emergency.core.database.Database;
-import project.grp3.emergency.web.Service.FireService;
-import project.grp3.emergency.web.Service.ResourceService;
 import project.grp3.emergency.web.filter.CrossDomainFilter;
 import project.grp3.emergency.web.resource.*;
 
@@ -14,9 +12,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @ApplicationPath("/")
-public class App extends Application {
+public class App extends Application
+{
 
-    public App() {
+    public App()
+    {
         BeanConfig beanConfig = new BeanConfig();
 
 
@@ -30,7 +30,8 @@ public class App extends Application {
     }
 
     @Override
-    public Set<Class<?>> getClasses() {
+    public Set<Class<?>> getClasses()
+    {
         Set<Class<?>> resources = new HashSet<>();
 
         // Resources
@@ -47,6 +48,9 @@ public class App extends Application {
         // SWAGGER
         resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
         resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+
+
+        Database.init();
 
         return resources;
     }

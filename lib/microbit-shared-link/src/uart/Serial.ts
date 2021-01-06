@@ -4,9 +4,9 @@ import {env} from "process"
 import Readline = SerialPort.parsers.Readline;
 
 export declare interface Serial {
-    on(event: "serial-input", listener: (obj: object) => void): this
+    on(event: "serial-input", listener: (obj: any) => void): this
 
-    emit(event: "serial-input", data: object)
+    emit(event: "serial-input", data: any)
 
     write(data: string);
 
@@ -64,7 +64,7 @@ export class Serial extends EventEmitter {
                 console.log("writing", toWrite);
                 this.serial.write(pad(toWrite + delimeter, microbitMaxLength, String.fromCharCode(0), "right"));
                 this.serial.flush(console.log);
-            }, i * 1000)
+            }, i * 500)
 
         });
 

@@ -1,6 +1,5 @@
 package project.grp3.emergency.core.database.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -8,7 +7,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "TruckType")
-public class TruckTypeEntity {
+public class TruckTypeEntity
+{
 
     @Id
     @GeneratedValue
@@ -19,7 +19,7 @@ public class TruckTypeEntity {
     private float speed;
 
     @OneToMany
-    @JoinColumn(name="truck_type_id")
+    @JoinColumn(name = "truck_type_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireTruckEntity> fireTrucks;
 
@@ -33,60 +33,74 @@ public class TruckTypeEntity {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireTypeEntity> fireTypes;
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
 
-    public String getLabel() {
+    public String getLabel()
+    {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(String label)
+    {
         this.label = label;
     }
 
-    public int getCapacity() {
+    public int getCapacity()
+    {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(int capacity)
+    {
         this.capacity = capacity;
     }
 
-    public float getVolume() {
+    public float getVolume()
+    {
         return volume;
     }
 
-    public void setVolume(float volume) {
+    public void setVolume(float volume)
+    {
         this.volume = volume;
     }
 
-    public List<FireTruckEntity> getFireTrucks() {
+    public List<FireTruckEntity> getFireTrucks()
+    {
         return fireTrucks;
     }
 
-    public void setFireTrucks(List<FireTruckEntity> fireTrucks) {
+    public void setFireTrucks(List<FireTruckEntity> fireTrucks)
+    {
         this.fireTrucks = fireTrucks;
     }
 
-    public float getSpeed() {
+    public float getSpeed()
+    {
         return speed;
     }
 
-    public void setSpeed(float speed) {
+    public void setSpeed(float speed)
+    {
         this.speed = speed;
     }
 
-    public List<FireTypeEntity> getFireTypes() {
+    public List<FireTypeEntity> getFireTypes()
+    {
         return fireTypes;
     }
 
-    public void setFireTypes(List<FireTypeEntity> fireTypes) {
+    public void setFireTypes(List<FireTypeEntity> fireTypes)
+    {
         this.fireTypes = fireTypes;
     }
 }

@@ -5,74 +5,87 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import project.grp3.emergency.core.database.entities.FireEntity;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-abstract public class Repository<Entity> {
+abstract public class Repository<Entity>
+{
 
-    private static StandardServiceRegistry registry = null;
     protected static EntityManager manager = null;
-    private final Class<Entity> entity;
     protected static Session session = null;
+    private static StandardServiceRegistry registry = null;
+    private final Class<Entity> entity;
 
-    private static void init() {
+    protected Repository(Class<Entity> cls)
+    {
+        this.entity = cls;
+        if (registry == null || manager == null)
+        {
+            init();
+        }
+    }
+
+    private static void init()
+    {
         registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
 
-        try {
+        try
+        {
             SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
             session = sessionFactory.openSession();
             manager = sessionFactory.createEntityManager();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
             // so destroy it manually.
             StandardServiceRegistryBuilder.destroy(registry);
         }
     }
 
-    protected Repository(Class<Entity> cls) {
-        this.entity = cls;
-        if (registry == null || manager == null) {
-           init();
-        }
-    }
-
-    protected static EntityManager getManager() {
+    protected static EntityManager getManager()
+    {
         return manager;
     }
 
-    public void close() {
+    public void close()
+    {
         StandardServiceRegistryBuilder.destroy(registry);
     }
 
-    protected List<Entity> getAll() {
+    protected List<Entity> getAll()
+    {
         var cq = manager.getCriteriaBuilder().createQuery(entity);
         var all = cq.select(cq.from(entity));
         return manager.createQuery(cq).getResultList();
     }
 
-    protected Entity getById(Long id) {
-        return manager.find(entity,id);
+    protected Entity getById(Long id)
+    {
+        return manager.find(entity, id);
     }
 
-    protected Entity update(Entity item){
-        var trans= session.beginTransaction();
+    protected Entity update(Entity item)
+    {
+        var trans = session.beginTransaction();
         Entity item2 = (Entity) session.merge(item);
         trans.commit();
         return item2;
     }
 
-    public Entity create(Entity item){
-        var trans= session.beginTransaction();
+    public Entity create(Entity item)
+    {
+        var trans = session.beginTransaction();
         var id = session.save(item);
         trans.commit();
         return this.getById((Long) id);
     }
 
-    protected Entity get(Object primaryKey) {
+    protected Entity get(Object primaryKey)
+    {
         return manager.find(entity, primaryKey);
     }
 

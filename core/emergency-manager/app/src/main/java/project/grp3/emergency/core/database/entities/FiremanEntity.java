@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "Fireman")
-public class FiremanEntity {
+public class FiremanEntity
+{
     @Id
     @GeneratedValue
     private Long id;
@@ -28,52 +29,64 @@ public class FiremanEntity {
     private BarrackEntity barrack;
 
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getLastname() {
+    public String getLastname()
+    {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
+    public void setLastname(String lastname)
+    {
         this.lastname = lastname;
     }
 
-    public ExhaustLevelEntity getExhaustLevel() {
+    public ExhaustLevelEntity getExhaustLevel()
+    {
         return exhaustLevel;
     }
 
-    public void setExhaustLevel(ExhaustLevelEntity exhaustLevel) {
+    public void setExhaustLevel(ExhaustLevelEntity exhaustLevel)
+    {
         this.exhaustLevel = exhaustLevel;
     }
 
-    public BarrackEntity getBarrack() {
+    public BarrackEntity getBarrack()
+    {
         return barrack;
     }
 
-    public void setBarrack(BarrackEntity barrack) {
+    public void setBarrack(BarrackEntity barrack)
+    {
         this.barrack = barrack;
     }
 
 
-    public List<ResourceEntity> getResources() {
+    public List<ResourceEntity> getResources()
+    {
         return resources;
     }
 
-    public void setResources(List<ResourceEntity> ressources) {
+    public void setResources(List<ResourceEntity> ressources)
+    {
         this.resources = ressources;
     }
 

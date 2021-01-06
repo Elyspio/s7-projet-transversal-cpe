@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package project.grp3.simulator.core.api.fire.model;
+package project.grp3.simulator.core.api.microbitsimulator.model;
 
 import java.util.Objects;
 import java.util.Arrays;

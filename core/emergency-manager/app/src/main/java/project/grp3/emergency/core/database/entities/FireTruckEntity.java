@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "FireTruck")
-public class FireTruckEntity {
+public class FireTruckEntity
+{
     @Id
     @GeneratedValue
     private Long id;
@@ -18,9 +19,8 @@ public class FireTruckEntity {
     private BarrackEntity barrack;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name="truck_type_id")
+    @JoinColumn(name = "truck_type_id")
     private TruckTypeEntity type;
-
 
 
     @ManyToMany(mappedBy = "fireTrucks")
@@ -28,38 +28,46 @@ public class FireTruckEntity {
     private List<ResourceEntity> resources;
 
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
 
-    public BarrackEntity getBarrack() {
+    public BarrackEntity getBarrack()
+    {
         return barrack;
     }
 
-    public void setBarrack(BarrackEntity barrack) {
+    public void setBarrack(BarrackEntity barrack)
+    {
         this.barrack = barrack;
     }
 
 
-    public TruckTypeEntity getType() {
+    public TruckTypeEntity getType()
+    {
         return type;
     }
 
-    public void setType(TruckTypeEntity type) {
+    public void setType(TruckTypeEntity type)
+    {
         this.type = type;
     }
 
 
-    public List<ResourceEntity> getResources() {
+    public List<ResourceEntity> getResources()
+    {
         return resources;
     }
 
-    public void setResources(List<ResourceEntity> ressources) {
+    public void setResources(List<ResourceEntity> ressources)
+    {
         this.resources = ressources;
     }
 }

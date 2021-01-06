@@ -6,15 +6,15 @@ import java.util.List;
 public class FireType
 {
 
-    private Long id;
+    private final Long id;
 
-    private String label;
+    private final String label;
 
-    private String description;
+    private final String description;
 
-    private List<Long> fireIds;
+    private final List<Long> fireIds;
 
-    private List<Long> sensors;
+    private final List<Long> sensors;
 
     public FireType(Long id, String label, String description, List<Long> fires, List<Long> sensors)
     {

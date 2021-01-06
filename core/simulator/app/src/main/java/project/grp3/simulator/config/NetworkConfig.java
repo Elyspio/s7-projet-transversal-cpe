@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NetworkConfig {
+public class NetworkConfig
+{
     private final static NetworkConfig instance;
 
-    static {
+    static
+    {
         instance = new NetworkConfig(
                 ConfigurationEntry.fromString(getEnv("MICROBIT_SIMULATOR_LINK_HOST", "http://localhost:8086")),
                 ConfigurationEntry.fromString(getEnv("OWN_PORT", "http://localhost:8083"))
@@ -15,57 +17,68 @@ public class NetworkConfig {
     }
 
     private final ConfigurationEntry microbitSimulatorLink;
-    private final ConfigurationEntry own;
+    private final ConfigurationEntry self;
 
 
-    private NetworkConfig(ConfigurationEntry microbitSimulatorLink, ConfigurationEntry own) {
+    private NetworkConfig(ConfigurationEntry microbitSimulatorLink, ConfigurationEntry self)
+    {
         this.microbitSimulatorLink = microbitSimulatorLink;
-        this.own = own;
+        this.self = self;
     }
 
-    public static NetworkConfig getInstance() {
+    public static NetworkConfig getInstance()
+    {
         return instance;
     }
 
-    private static String getEnv(String key, String fallback) {
-        if (System.getenv().containsKey(key)) {
+    private static String getEnv(String key, String fallback)
+    {
+        if (System.getenv().containsKey(key))
+        {
             return System.getenv(key);
         }
         return fallback;
     }
 
-    public ConfigurationEntry getMicrobitSimulatorLink() {
+    public ConfigurationEntry getMicrobitSimulatorLink()
+    {
         return microbitSimulatorLink;
     }
 
-    public ConfigurationEntry getOwn() {
-        return own;
+    public ConfigurationEntry getSelf()
+    {
+        return self;
     }
 
 
-    public static class ConfigurationEntry {
+    public static class ConfigurationEntry
+    {
         private final String scheme;
         private final String host;
         private final int port;
         private final String path;
 
 
-        ConfigurationEntry(String scheme, String host, int port, String path) {
+        ConfigurationEntry(String scheme, String host, int port, String path)
+        {
             this.scheme = scheme;
             this.host = host;
             this.port = port;
             this.path = path;
         }
 
-        public static ConfigurationEntry fromString(String in) {
+        public static ConfigurationEntry fromString(String in)
+        {
 
             var pattern = Pattern.compile("(https?)://([a-z.]+)(:[0-9]+)?(.*)");
             final Matcher matcher = pattern.matcher(in);
 
             var matchs = new ArrayList<String>();
 
-            while (matcher.find()) {
-                for (int i = 0; i <= matcher.groupCount(); i++) {
+            while (matcher.find())
+            {
+                for (int i = 0; i <= matcher.groupCount(); i++)
+                {
                     matchs.add(matcher.group(i));
                 }
             }
@@ -78,25 +91,30 @@ public class NetworkConfig {
             );
         }
 
-        public String getScheme() {
+        public String getScheme()
+        {
             return scheme;
         }
 
-        public String getHost() {
+        public String getHost()
+        {
             return host;
         }
 
-        public int getPort() {
+        public int getPort()
+        {
             return port;
         }
 
-        public String getPath() {
+        public String getPath()
+        {
             return path;
         }
 
 
         @Override
-        public String toString() {
+        public String toString()
+        {
             return getScheme() + "://" + getHost() + ":" + getPort() + getPath();
         }
     }

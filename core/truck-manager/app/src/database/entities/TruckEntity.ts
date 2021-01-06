@@ -11,7 +11,6 @@ export class TruckEntity {
     @Column({nullable: false})
     id_truck: number;
 
-
     @Column({nullable: false})
     id_resource: number
     /**
@@ -31,12 +30,6 @@ export class TruckEntity {
 
     @Column("double precision", {nullable: false})
     dest_longitude: number
-
-    @Column("double precision", {nullable: false})
-    current_latitude: number
-
-    @Column("double precision", {nullable: false})
-    current_longitude: number
 
     /**
      *

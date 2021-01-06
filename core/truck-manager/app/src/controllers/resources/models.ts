@@ -14,19 +14,7 @@ export class TruckModel {
     id: number;
 
     @Property(Number)
-    resourceId: number
-
-    @Property(Number)
     speed: number
-
-    @Property(LocationModel)
-    start: LocationModel
-
-    @Property(LocationModel)
-    dest: LocationModel
-
-    @Property(LocationModel)
-    current: LocationModel;
 
     @Enum(TravelState)
     travelState: TravelState
@@ -38,12 +26,9 @@ export class FiremanModel {
 
     @Property(Number)
     fireTruckId: number;
-
-    @Property(Number)
-    resourceId: number
 }
 
-class LocationsModel {
+export class LocationsModel {
     @Property(LocationModel)
     start: LocationModel
     @Property(LocationModel)
@@ -56,9 +41,15 @@ export class MovementModel {
 
     @CollectionOf(TruckModel)
     trucks: TruckModel[]
+
     @CollectionOf(FiremanModel)
     firemen: FiremanModel[]
+
+    @Property(Number)
+    resourceId: number
 }
+
+
 
 
 

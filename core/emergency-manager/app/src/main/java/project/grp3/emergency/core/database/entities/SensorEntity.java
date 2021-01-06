@@ -7,7 +7,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "Sensor")
-public class SensorEntity {
+public class SensorEntity
+{
     @Id
     @GeneratedValue
     private Long id;
@@ -19,7 +20,7 @@ public class SensorEntity {
     private String street;
 
     @OneToMany
-    @JoinColumn(name = "fire_id")
+    @JoinColumn(name = "sensor_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireEntity> fires;
 
@@ -33,68 +34,84 @@ public class SensorEntity {
     private List<FireTypeEntity> fireTypes;
 
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
 
-    public List<FireEntity> getFires() {
+    public List<FireEntity> getFires()
+    {
         return fires;
     }
 
-    public void setFires(List<FireEntity> fires) {
+    public void setFires(List<FireEntity> fires)
+    {
         this.fires = fires;
     }
 
-    public List<FireTypeEntity> getFireTypes() {
+    public List<FireTypeEntity> getFireTypes()
+    {
         return fireTypes;
     }
 
-    public void setFireTypes(List<FireTypeEntity> fireTypes) {
+    public void setFireTypes(List<FireTypeEntity> fireTypes)
+    {
         this.fireTypes = fireTypes;
     }
 
-    public String getCity() {
+    public String getCity()
+    {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city)
+    {
         this.city = city;
     }
 
-    public String getState() {
+    public String getState()
+    {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(String state)
+    {
         this.state = state;
     }
 
-    public String getPostalCode() {
+    public String getPostalCode()
+    {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
+    public void setPostalCode(String postalCode)
+    {
         this.postalCode = postalCode;
     }
 
-    public String getCountry() {
+    public String getCountry()
+    {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(String country)
+    {
         this.country = country;
     }
 
-    public String getStreet() {
+    public String getStreet()
+    {
         return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(String street)
+    {
         this.street = street;
     }
 }

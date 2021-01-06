@@ -7,7 +7,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Fire")
-public class FireEntity {
+public class FireEntity
+{
 
     @Id
     @GeneratedValue
@@ -30,52 +31,64 @@ public class FireEntity {
     private SensorEntity sensor;
 
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public Date getDetectionDate() {
+    public Date getDetectionDate()
+    {
         return detectionDate;
     }
 
-    public void setDetectionDate(Date detectionDate) {
+    public void setDetectionDate(Date detectionDate)
+    {
         this.detectionDate = detectionDate;
     }
 
-    public Date getEndDate() {
+    public Date getEndDate()
+    {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(Date endDate)
+    {
         this.endDate = endDate;
     }
 
-    public FireTypeEntity getType() {
+    public FireTypeEntity getType()
+    {
         return type;
     }
 
-    public void setType(FireTypeEntity type) {
+    public void setType(FireTypeEntity type)
+    {
         this.type = type;
     }
 
-    public ResourceEntity getRessource() {
+    public ResourceEntity getRessource()
+    {
         return ressource;
     }
 
-    public void setRessource(ResourceEntity ressource) {
+    public void setRessource(ResourceEntity ressource)
+    {
         this.ressource = ressource;
     }
 
 
-    public SensorEntity getSensor() {
+    public SensorEntity getSensor()
+    {
         return sensor;
     }
 
-    public void setSensor(SensorEntity sensor) {
+    public void setSensor(SensorEntity sensor)
+    {
         this.sensor = sensor;
     }
 }

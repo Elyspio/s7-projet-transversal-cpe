@@ -26,43 +26,53 @@ public class FireEntity
     private SensorEntity sensor;
 
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public Date getDetectionDate() {
+    public Date getDetectionDate()
+    {
         return detectionDate;
     }
 
-    public void setDetectionDate(Date detectionDate) {
+    public void setDetectionDate(Date detectionDate)
+    {
         this.detectionDate = detectionDate;
     }
 
-    public Date getEndDate() {
+    public Date getEndDate()
+    {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(Date endDate)
+    {
         this.endDate = endDate;
     }
 
-    public FireTypeEntity getType() {
+    public FireTypeEntity getType()
+    {
         return type;
     }
 
-    public void setType(FireTypeEntity type) {
+    public void setType(FireTypeEntity type)
+    {
         this.type = type;
     }
 
-    public SensorEntity getSensor() {
+    public SensorEntity getSensor()
+    {
         return sensor;
     }
 
-    public void setSensor(SensorEntity sensor) {
+    public void setSensor(SensorEntity sensor)
+    {
         this.sensor = sensor;
     }
 }

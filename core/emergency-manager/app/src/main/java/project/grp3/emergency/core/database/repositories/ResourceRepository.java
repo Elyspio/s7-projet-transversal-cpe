@@ -1,30 +1,42 @@
 package project.grp3.emergency.core.database.repositories;
 
 import project.grp3.emergency.core.database.Database;
-import project.grp3.emergency.core.database.entities.*;
+import project.grp3.emergency.core.database.entities.FireEntity;
+import project.grp3.emergency.core.database.entities.FireTruckEntity;
+import project.grp3.emergency.core.database.entities.FiremanEntity;
+import project.grp3.emergency.core.database.entities.ResourceEntity;
 import project.grp3.emergency.core.database.enums.TruckTravelState;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
-public class ResourceRepository extends Repository<ResourceEntity> {
-    public ResourceRepository() { super(ResourceEntity.class); }
+public class ResourceRepository extends Repository<ResourceEntity>
+{
+    public ResourceRepository()
+    {
+        super(ResourceEntity.class);
+    }
 
-    public ResourceEntity create(FireEntity fire, Integer intensity){
+    public ResourceEntity create(FireEntity fire, Integer intensity)
+    {
         var resource = new ResourceEntity();
         resource.setFire(fire);
         resource.setTravelState(TruckTravelState.MOVING);
         var trucks = Database.fireTruckRepository.getAll();
         var firemans = Database.firemanRepository.getAll();
         var resources = this.getAll();
-        for (ResourceEntity r: resources) {
-            for (FireTruckEntity truck:trucks) {
-                if(r.getFireTrucks().contains(truck)){
+        for (ResourceEntity r : resources)
+        {
+            for (FireTruckEntity truck : trucks)
+            {
+                if (r.getFireTrucks().contains(truck))
+                {
                     trucks.remove(truck);
                 }
             }
-            for (FiremanEntity fireman:firemans) {
-                if(r.getFiremen().contains(fireman)){
+            for (FiremanEntity fireman : firemans)
+            {
+                if (r.getFiremen().contains(fireman))
+                {
                     firemans.remove(fireman);
                 }
             }
@@ -40,18 +52,24 @@ public class ResourceRepository extends Repository<ResourceEntity> {
         return fire.getRessource();
     }
 
-    public int setArrived(Long ressourceId){
+    public int setArrived(Long ressourceId)
+    {
         var resource = super.getById(ressourceId);
         resource.setTravelState(TruckTravelState.ARRIVED);
         var resource2 = super.update(resource);
-        if(resource2.getId() != null && resource2.getId() == resource.getId()) {
+        if (resource2.getId() != null && resource2.getId() == resource.getId())
+        {
             return 201;
         }
         return 500;
     }
 
-    public ResourceEntity getOne(Long resourceId){
+    public ResourceEntity getOne(Long resourceId)
+    {
         return super.get(resourceId);
     }
 
+    public void getOneByFireId(Long id)
+    {
+    }
 }

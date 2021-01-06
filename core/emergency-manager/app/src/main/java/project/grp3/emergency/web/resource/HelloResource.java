@@ -8,16 +8,16 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
-import java.math.BigDecimal;
 
 @Path("/hello-world")
 @Api(value = "hello")
-public class HelloResource {
+public class HelloResource
+{
     @GET
     @ApiOperation(value = "test the world")
     @Produces("application/json")
-    public Response hello() {
+    public Response hello()
+    {
         return Response
                 .status(Response.Status.OK)
                 .entity(Database.sensorRepository.getAll())
@@ -28,7 +28,8 @@ public class HelloResource {
     @Path("link")
     @ApiOperation(value = "test the microbit (simulator) link")
     @Produces("application/json")
-    public Response testLink() {
+    public Response testLink()
+    {
         return Response
                 .status(Response.Status.OK)
                 .build();

@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "Resource")
-public class ResourceEntity {
+public class ResourceEntity
+{
     @Id
     @GeneratedValue
     private Long id;
@@ -22,7 +23,8 @@ public class ResourceEntity {
             name = "fireman_resource",
             joinColumns = @JoinColumn(name = "fireman_id"),
             inverseJoinColumns = @JoinColumn(name = "resource_id")
-    )    private List<FiremanEntity> firemen;
+    )
+    private List<FiremanEntity> firemen;
 
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -35,49 +37,59 @@ public class ResourceEntity {
 
     @OneToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    @JoinColumn(name = "resource_log_id")
+    @JoinColumn(name = "resource_id")
     private List<LogEntity> logs;
 
     private TruckTravelState travelState;
 
 
-    public Long getId() {
+    public Long getId()
+    {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public FireEntity getFire() {
+    public FireEntity getFire()
+    {
         return this.fire;
     }
 
-    public void setFire(FireEntity fire) {
+    public void setFire(FireEntity fire)
+    {
         this.fire = fire;
     }
 
-    public List<FireTruckEntity> getFireTrucks() {
+    public List<FireTruckEntity> getFireTrucks()
+    {
         return this.fireTrucks;
     }
 
-    public void setFireTrucks(List<FireTruckEntity> fireTrucks) {
+    public void setFireTrucks(List<FireTruckEntity> fireTrucks)
+    {
         this.fireTrucks = fireTrucks;
     }
 
-    public List<FiremanEntity> getFiremen() {
+    public List<FiremanEntity> getFiremen()
+    {
         return this.firemen;
     }
 
-    public void setFiremen(List<FiremanEntity> firemen) {
+    public void setFiremen(List<FiremanEntity> firemen)
+    {
         this.firemen = firemen;
     }
 
-    public TruckTravelState getTravelState() {
+    public TruckTravelState getTravelState()
+    {
         return this.travelState;
     }
 
-    public void setTravelState(TruckTravelState travelState) {
+    public void setTravelState(TruckTravelState travelState)
+    {
         this.travelState = travelState;
     }
 }

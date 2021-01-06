@@ -12,8 +12,9 @@ export class MovingService {
         const firemen: FiremanEntity[] = trucks.reduce((acc, current) => [...acc, ...current.firemen], [])
 
         return {
-            firemen: Assemblers.fireman.collectionToModel(firemen),
-            trucks: Assemblers.truck.collectionToModel(trucks),
+            resourceId: idResource,
+            firemen: Assemblers.fireman.collectionToModel(firemen.map(f => ({model: f}))),
+            trucks: Assemblers.truck.collectionToModel(trucks.map(t => ({model: t}))),
             locations: {
                 start: {
                     longitude: trucks[0].start_longitude,
@@ -28,20 +29,22 @@ export class MovingService {
     }
 
     async createMovement(movement: MovementModel) {
-        await Repositories.truck.insert(Assemblers.truck.collectionToEntity(movement.trucks))
+        await Repositories.truck.insert(Assemblers.truck.collectionToEntity(movement.trucks.map(t => ({model: t, args: [movement.resourceId, movement.locations]}))))
 
         const firemen: FiremanEntity[] = await Promise.all(movement.firemen.map(async f => ({
             ...Assemblers.fireman.toEntity(f),
-            truck: await Repositories.truck.getByBusiness(f.fireTruckId, f.resourceId)
+            id_resource: movement.resourceId,
+            truck: await Repositories.truck.getByBusiness(f.fireTruckId, movement.resourceId)
         })))
 
         await Promise.all([
             ...movement.trucks.map(async value => Repositories.truckLocation.insert({
-                truck: await Repositories.truck.getByBusiness(value.id, value.resourceId),
+                truck: await Repositories.truck.getByBusiness(value.id, movement.resourceId),
                 current_longitude:
-                value.start.longitude,
+                movement.locations.start.longitude,
                 current_latitude:
-                value.start.longitude, speed: 0
+                movement.locations.start.longitude,
+                speed: 0
             })),
             await Repositories.fireman.insert(firemen)
         ])
@@ -49,7 +52,7 @@ export class MovingService {
 
 
     async stopMovement(movement: MovementModel) {
-        await Repositories.truck.update({id_resource: movement.trucks[0].resourceId}, {travelState: TravelState.DONE})
+        await Repositories.truck.update({id_resource: movement.resourceId}, {travelState: TravelState.DONE})
     }
 
     async back(resourceId: number) {

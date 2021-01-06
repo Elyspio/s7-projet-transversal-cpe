@@ -9,14 +9,13 @@ export class FiremanAssembler extends BaseAssembler<FiremanModel, FiremanEntity>
             id_fireman: obj.id,
             id: undefined,
             truck: undefined,
-            id_resource: obj.resourceId
+            id_resource: undefined
         }
     }
 
 
     toModel(entity: FiremanEntity): FiremanModel {
         return {
-            resourceId: entity.id_resource,
             id: entity.id_fireman,
             fireTruckId: entity.truck.id_truck
         };

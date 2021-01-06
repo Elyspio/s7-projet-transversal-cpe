@@ -5,15 +5,20 @@ import project.grp3.emergency.core.database.entities.FireTruckEntity;
 
 import java.util.List;
 
-public class FireTruckRepository extends Repository<FireTruckEntity> {
-    public FireTruckRepository() {
+public class FireTruckRepository extends Repository<FireTruckEntity>
+{
+    public FireTruckRepository()
+    {
         super(FireTruckEntity.class);
     }
 
-    public List<FireTruckEntity> getAll() {
+    public List<FireTruckEntity> getAll()
+    {
         return super.getAll();
     }
-    public FireTruckEntity getById(Long id) {
+
+    public FireTruckEntity getById(Long id)
+    {
         return super.getById(id);
     }
     /*public List<FireTruckEntity> getAllArrived() {

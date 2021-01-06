@@ -22,10 +22,8 @@ export class Database {
                 return new Promise((resolve) => {
                     setTimeout(() => resolve(this.connect()), 5000)
                 })
-
             }
     }
-
 
     private static async get() {
         if (!Database.instance) {

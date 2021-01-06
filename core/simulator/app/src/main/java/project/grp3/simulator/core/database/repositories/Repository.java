@@ -8,49 +8,60 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-abstract public class Repository<Entity> {
+abstract public class Repository<Entity>
+{
 
     private static StandardServiceRegistry registry = null;
     private static EntityManager manager = null;
     private final Class<Entity> entity;
 
-    private static void init() {
+    protected Repository(Class<Entity> cls)
+    {
+        this.entity = cls;
+        if (registry == null || manager == null)
+        {
+            init();
+        }
+    }
+
+    private static void init()
+    {
         registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
 
-        try {
+        try
+        {
             SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
             manager = sessionFactory.createEntityManager();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
             // so destroy it manually.
             StandardServiceRegistryBuilder.destroy(registry);
         }
     }
 
-    protected Repository(Class<Entity> cls) {
-        this.entity = cls;
-        if (registry == null || manager == null) {
-           init();
-        }
-    }
-
-    protected static EntityManager getManager() {
+    protected static EntityManager getManager()
+    {
         return manager;
     }
 
-    public void close() {
+    public void close()
+    {
         StandardServiceRegistryBuilder.destroy(registry);
     }
 
-    public List<Entity> getAll() {
+    public List<Entity> getAll()
+    {
         var cq = manager.getCriteriaBuilder().createQuery(entity);
         var all = cq.select(cq.from(entity));
         return manager.createQuery(all).getResultList();
     }
 
-    public Entity getById(Object primaryKey) {
+    public Entity getById(Object primaryKey)
+    {
         return manager.find(entity, primaryKey);
     }
 

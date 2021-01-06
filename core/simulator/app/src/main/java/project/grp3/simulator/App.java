@@ -2,9 +2,8 @@ package project.grp3.simulator;
 
 import io.swagger.jaxrs.config.BeanConfig;
 import project.grp3.simulator.config.NetworkConfig;
-import project.grp3.simulator.core.database.Database;
 import project.grp3.simulator.web.filter.CrossDomainFilter;
-import project.grp3.simulator.web.resource.HelloResource;
+import project.grp3.simulator.web.resource.FireResource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -12,26 +11,29 @@ import java.util.HashSet;
 import java.util.Set;
 
 @ApplicationPath("/")
-public class App extends Application {
+public class App extends Application
+{
 
-    public App() {
+    public App()
+    {
         BeanConfig beanConfig = new BeanConfig();
 
-        beanConfig.setHost("localhost:" + NetworkConfig.getInstance().getOwn().getPort());
+        beanConfig.setHost("localhost:" + NetworkConfig.getInstance().getSelf().getPort());
 
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setBasePath("/");
-        beanConfig.setResourcePackage("project.grp3.simulator.resources");
+        beanConfig.setResourcePackage("project.grp3.simulator.web.resource");
         beanConfig.setVersion("1.0.2");
         beanConfig.setScan(true);
     }
 
     @Override
-    public Set<Class<?>> getClasses() {
+    public Set<Class<?>> getClasses()
+    {
         Set<Class<?>> resources = new HashSet<>();
 
         // Resources
-        resources.add(HelloResource.class);
+        resources.add(FireResource.class);
 
         // ALLOW CORS
         resources.add(CrossDomainFilter.class);

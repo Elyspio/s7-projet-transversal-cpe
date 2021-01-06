@@ -10,7 +10,7 @@
         <property name="hibernate.connection.password">example</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5434/postgres</property>
         <property name="connection_pool_size">1</property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         <mapping class="project.grp3.emergency.core.database.entities.TruckTypeEntity"/>
         <mapping class="project.grp3.emergency.core.database.entities.SensorEntity"/>

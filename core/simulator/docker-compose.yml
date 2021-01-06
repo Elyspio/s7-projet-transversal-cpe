@@ -15,14 +15,14 @@ services:
     container_name: simulator-db
 
  
-  app:
-    image: elyspio/cpe-s7-project:simulator
-    environment:
-      DATABASE_PORT: 5433
-      OWN_PORT: 8083
-    ports:
-      - 8083:8080
-    container_name: s7-project-simulator-engine
+  # app:
+  #   image: elyspio/cpe-s7-project:simulator
+  #   environment:
+  #     DATABASE_PORT: 5433
+  #     OWN_PORT: 8083
+  #   ports:
+  #     - 8083:8080
+  #   container_name: s7-project-simulator-engine
 
 
 

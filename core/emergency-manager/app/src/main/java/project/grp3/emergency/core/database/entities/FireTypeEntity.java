@@ -5,7 +5,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "FireType")
-public class FireTypeEntity {
+public class FireTypeEntity
+{
 
     @Id
     @GeneratedValue
@@ -29,52 +30,64 @@ public class FireTypeEntity {
     @ManyToMany(mappedBy = "fireTypes")
     private List<SensorEntity> sensors;
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public List<TruckTypeEntity> getTruckTypes() {
+    public List<TruckTypeEntity> getTruckTypes()
+    {
         return truckTypes;
     }
 
-    public void setTruckTypes(List<TruckTypeEntity> truckTypes) {
+    public void setTruckTypes(List<TruckTypeEntity> truckTypes)
+    {
         this.truckTypes = truckTypes;
     }
 
 
-    public List<FireEntity> getFires() {
+    public List<FireEntity> getFires()
+    {
         return fires;
     }
 
-    public void setFires(List<FireEntity> fires) {
+    public void setFires(List<FireEntity> fires)
+    {
         this.fires = fires;
     }
 
-    public List<SensorEntity> getSensors() {
+    public List<SensorEntity> getSensors()
+    {
         return sensors;
     }
 
-    public void setSensors(List<SensorEntity> sensors) {
+    public void setSensors(List<SensorEntity> sensors)
+    {
         this.sensors = sensors;
     }
 
-    public String getLabel() {
+    public String getLabel()
+    {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(String label)
+    {
         this.label = label;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 

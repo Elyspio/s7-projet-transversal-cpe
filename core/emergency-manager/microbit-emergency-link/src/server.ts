@@ -1,33 +1,10 @@
 import {Configuration, Inject} from "@tsed/di";
 import {PlatformApplication} from "@tsed/common";
 import {middlewares} from "./middleware/common/raw";
-import * as path from "path";
 import "@tsed/swagger";
+import {webConfig} from "./config/web";
 
-export const rootDir = __dirname;
-let frontPath = path.resolve(rootDir, "..", "..", "front", "build");
-
-@Configuration({
-    rootDir,
-    httpPort: process.env.HTTP_PORT || 8087,
-    httpsPort: false, // CHANGE
-    mount: {
-        "/core": [
-            `${rootDir}/controllers/**/*.ts`
-        ]
-    },
-    exclude: [
-        "**/*.spec.ts"
-    ],
-    statics: {
-        "/": [
-            {root: frontPath}
-        ]
-    },
-    swagger: [{
-        path: "/swagger",
-    }]
-})
+@Configuration(webConfig)
 export class Server {
 
     @Inject()

@@ -5,7 +5,6 @@ import project.grp3.simulator.core.database.entities.FireTypeEntity;
 import project.grp3.simulator.core.database.entities.SensorEntity;
 import project.grp3.simulator.web.data.FireType;
 
-import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class FireTypeAssembler extends BaseAssembler<FireTypeEntity, FireType>

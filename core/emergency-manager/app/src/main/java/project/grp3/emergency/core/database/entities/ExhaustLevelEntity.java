@@ -9,7 +9,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "ExhaustLevel")
-public class ExhaustLevelEntity {
+public class ExhaustLevelEntity
+{
     @Id
     private Long id;
 
@@ -24,36 +25,44 @@ public class ExhaustLevelEntity {
     @JsonIgnore
     private List<FiremanEntity> firemen;
 
-    public String getLabel() {
+    public String getLabel()
+    {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(String label)
+    {
         this.label = label;
     }
 
-    public List<FiremanEntity> getFiremen() {
+    public List<FiremanEntity> getFiremen()
+    {
         return firemen;
     }
 
-    public void setFiremen(List<FiremanEntity> firemen) {
+    public void setFiremen(List<FiremanEntity> firemen)
+    {
         this.firemen = firemen;
     }
 
 
-    public Integer getValue() {
+    public Integer getValue()
+    {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Integer value)
+    {
         this.value = value;
     }
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 }
