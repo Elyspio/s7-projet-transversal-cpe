@@ -30,10 +30,19 @@ public class FireResource
         newFire.fireTypeId(BigDecimal.valueOf(firetyipeId));
         newFire.intensity(BigDecimal.valueOf(intensity));
         newFire.sensorId(BigDecimal.valueOf(sensorId));
-        return Response
-                .status(Response.Status.OK)
-                .entity(Database.sensorRepository.getAll())
-                .build();
+        try {
+            var response = Apis.getFire().fireNewFire(newFire).execute().body();
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(response)
+                    .build();
+        }
+        catch (IOException e){
+            return Response
+                    .status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(e)
+                    .build();
+        }
     }
 
 
