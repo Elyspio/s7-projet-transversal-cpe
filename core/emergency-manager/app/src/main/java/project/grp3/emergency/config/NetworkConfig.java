@@ -9,15 +9,17 @@ public class NetworkConfig {
 
     static {
         instance = new NetworkConfig(
-                ConfigurationEntry.fromString(getEnv("TRUCK_APP_HOST", "http://localhost:8085"))
+                ConfigurationEntry.fromString(getEnv("MICROBIT_SIMULATOR_LINK_HOST", "http://localhost:8086")),
+                ConfigurationEntry.fromString(getEnv("OWN_PORT", "http://localhost:8084"))
         );
     }
 
     private final ConfigurationEntry truckApp;
+    private final ConfigurationEntry self;
 
-
-    private NetworkConfig(ConfigurationEntry microbitSimulatorLink) {
+    private NetworkConfig(ConfigurationEntry microbitSimulatorLink, ConfigurationEntry self) {
         this.truckApp = microbitSimulatorLink;
+        this.self = self;
     }
 
     public static NetworkConfig getInstance() {
@@ -35,6 +37,10 @@ public class NetworkConfig {
         return truckApp;
     }
 
+    public ConfigurationEntry getSelf()
+    {
+        return self;
+    }
 
 
     public static class ConfigurationEntry {

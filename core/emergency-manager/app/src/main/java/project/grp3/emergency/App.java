@@ -1,6 +1,7 @@
 package project.grp3.emergency;
 
 import io.swagger.jaxrs.config.BeanConfig;
+import project.grp3.emergency.config.NetworkConfig;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.web.Service.FireService;
 import project.grp3.emergency.web.Service.ResourceService;
@@ -18,13 +19,8 @@ public class App extends Application {
     public App() {
         BeanConfig beanConfig = new BeanConfig();
 
-        var port = "8084";
 
-        if (System.getenv().containsKey("OWN_PORT")) {
-            port = System.getenv("OWN_PORT");
-        }
-
-        beanConfig.setHost("localhost:" + port);
+        beanConfig.setHost("localhost:" + NetworkConfig.getInstance().getSelf().getPort());
 
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setBasePath("/");
