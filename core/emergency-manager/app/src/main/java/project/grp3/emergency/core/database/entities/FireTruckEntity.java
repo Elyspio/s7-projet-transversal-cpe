@@ -24,6 +24,7 @@ public class FireTruckEntity {
 
 
     @ManyToMany(mappedBy = "fireTrucks")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<ResourceEntity> resources;
 
 

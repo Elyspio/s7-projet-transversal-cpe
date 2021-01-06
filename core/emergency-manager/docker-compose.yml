@@ -19,9 +19,9 @@ services:
     restart: always
     environment:
       DATABASE_PORT: 5434
-      OWN_PORT: 8084
+      OWN_PORT: 8083
     ports:
-      - 8084:8080
+      - 8083:8080
     container_name: s7-project-emergency-manager-engine
 
     

@@ -15,9 +15,10 @@ public class LogEntity {
     @Column(nullable = false)
     private String value;
     @ManyToOne
-    @JoinColumn(name = "resource_id")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @JoinColumn(name = "resource_id", nullable = false)
     private ResourceEntity resource;
+
+    @Column(nullable = false)
     private LogAction action;
 
     public Long getId() {

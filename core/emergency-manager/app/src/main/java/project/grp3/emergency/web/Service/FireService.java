@@ -18,8 +18,8 @@ public class FireService {
         }
         else {
             var fire = Database.fireRepository.create(sensorId,fireTypeId);
-            var resource2 = Database.resourceRepository.create(fire,intensity);
-            var resource = Database.resourceRepository.getOne(fire.getId());
+            var resource = Database.resourceRepository.create(fire,intensity);
+            //var resource = Database.resourceRepository.getOne(fire.getId());
             var logNewFire = Database.logRepository.create(intensity,resource, LogAction.CHANGEMENT_INTENSITE_FEU);
             var logSendTruck = Database.logRepository.create(intensity,resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
             //var api = Apis.getTruckApp();

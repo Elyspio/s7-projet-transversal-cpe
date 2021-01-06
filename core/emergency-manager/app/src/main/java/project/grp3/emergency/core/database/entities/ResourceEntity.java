@@ -34,6 +34,7 @@ public class ResourceEntity {
     private List<FireTruckEntity> fireTrucks;
 
     @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "resource_log_id")
     private List<LogEntity> logs;
 

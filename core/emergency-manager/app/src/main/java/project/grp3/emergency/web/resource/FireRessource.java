@@ -31,7 +31,7 @@ public class FireRessource {
         }
         else{
             return Response
-                    .status(Response.Status.ACCEPTED)
+                    .status(204)
                     .build();
         }
 

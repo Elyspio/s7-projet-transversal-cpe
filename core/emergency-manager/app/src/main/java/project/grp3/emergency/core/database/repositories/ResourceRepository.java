@@ -36,7 +36,7 @@ public class ResourceRepository extends Repository<ResourceEntity> {
         resource.setFiremen(f);
         resource.setFireTrucks(t);
         fire.setRessource(resource);
-        Database.fireRepository.update(fire);
+        fire = Database.fireRepository.update(fire);
         return fire.getRessource();
     }
 

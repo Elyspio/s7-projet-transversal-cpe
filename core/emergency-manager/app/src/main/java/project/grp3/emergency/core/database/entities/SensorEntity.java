@@ -20,6 +20,7 @@ public class SensorEntity {
 
     @OneToMany
     @JoinColumn(name = "fire_id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireEntity> fires;
 
     @ManyToMany
