@@ -1,6 +1,8 @@
 import {LocationModel} from "../../controllers/resources/models";
 import {Repositories} from "../../database/repositories";
 import {Assemblers} from "../assembler";
+import {TruckLocationEntity} from "../../database/entities/TruckLocationEntity";
+import {TravelState, TruckEntity} from "../../database/entities/TruckEntity";
 
 function deltaBetweenLocations(a: LocationModel, b: LocationModel) {
     const R = 6371; // km
@@ -41,6 +43,19 @@ export class LocationService {
 
     public async getLocations() {
         return (await Repositories.truckLocation.getActives()).map(tl => Assemblers.truck.toModel(tl.truck));
+    }
+
+    public static  async move(f:TruckLocationEntity){
+        //todo Améliorer le déplacement
+        f.current_latitude = f.truck.dest_latitude
+        f.current_longitude = f.truck.dest_longitude
+        await Repositories.truckLocation.insert(f)
+
+        if(f.current_longitude == f.truck.dest_longitude && f.current_latitude==f.truck.dest_latitude){
+            const t:TruckEntity = f.truck;
+            t.travelState = TravelState.DONE;
+            await Repositories.truck.merge(t)
+        }
     }
 
 }

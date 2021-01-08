@@ -3,6 +3,8 @@ import {Repositories} from "../../database/repositories";
 import {FiremanEntity} from "../../database/entities/FiremanEntity";
 import {Assemblers} from "../assembler";
 import {TravelState} from "../../database/entities/TruckEntity";
+import {TruckLocationEntity} from "../../database/entities/TruckLocationEntity";
+import {LocationService} from "./LocationService";
 
 
 export class MovingService {
@@ -48,6 +50,16 @@ export class MovingService {
             })),
             await Repositories.fireman.insert(firemen)
         ])
+    }
+
+   public static async  moveTrucks(){
+        const fireTrucks:TruckLocationEntity[] = await Repositories.truckLocation.getActives()
+        fireTrucks.forEach(f =>{
+            if(f.truck.travelState == TravelState.MOVING){
+                LocationService.move(f);
+            }
+        })
+
     }
 
 

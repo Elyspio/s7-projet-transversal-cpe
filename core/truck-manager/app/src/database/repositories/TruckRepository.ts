@@ -1,5 +1,5 @@
 import {EntityRepository, Repository} from "typeorm";
-import {TruckEntity} from "../entities/TruckEntity";
+import {TravelState, TruckEntity} from "../entities/TruckEntity";
 
 @EntityRepository(TruckEntity)
 export class TruckRepository extends Repository<TruckEntity> {
@@ -11,6 +11,7 @@ export class TruckRepository extends Repository<TruckEntity> {
     public async getByBusiness(id: number, resourceId: number): Promise<TruckEntity> {
         return (await this.find({where: {id_truck: id, id_resource: resourceId}}))[0];
     }
+
 
 
 }

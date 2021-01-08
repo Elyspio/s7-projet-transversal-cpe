@@ -22,4 +22,6 @@ export class TruckLocationRepository extends Repository<TruckLocationEntity> {
         return tmp
     }
 
+
+
 }
