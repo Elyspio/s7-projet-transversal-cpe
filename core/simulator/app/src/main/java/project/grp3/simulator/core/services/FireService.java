@@ -29,7 +29,7 @@ public class FireService extends Services.Service
     public Long getNewFireIntencity(FireEntity fire)
     {
 
-        logger.info("Calculation of new fire intensity for fire with " + fire.getId());
+        logger.info("Calculation of new fire intensity for fire with id=" + fire.getId());
 
         SensorEntity sensor = fire.getSensor();
         try
@@ -103,6 +103,21 @@ public class FireService extends Services.Service
     {
         fire.setIntensity(intensity);
         Database.fireRepository.update(fire);
+
+        PostFireModel model = new PostFireModel();
+
+        model.setIntensity(BigDecimal.valueOf(intensity));
+        model.setFireTypeId(BigDecimal.valueOf(fire.getType().getId()));
+        model.setSensorId(BigDecimal.valueOf(fire.getSensor().getId()));
+
+        try
+        {
+            Apis.microbit().fireNewFire(model).execute();
+        }
+        catch (IOException e)
+        {
+            System.err.println("Failed to fetch microbit server " + e.getMessage() );
+        }
     }
 
 

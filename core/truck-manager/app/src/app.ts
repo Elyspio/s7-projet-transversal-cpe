@@ -17,7 +17,7 @@ async function bootstrap() {
         $log.debug("Start server...");
         const platform = await PlatformExpress.bootstrap(Server, {});
         await platform.listen();
-        setInterval(function(){ MovingService.moveTrucks() }, 3000);
+        setInterval(MovingService.moveTrucks, 3000);
         $log.debug("Server initialized");
     } catch (er) {
         $log.error(er);

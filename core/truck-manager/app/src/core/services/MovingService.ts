@@ -9,6 +9,14 @@ import {LocationService} from "./LocationService";
 
 export class MovingService {
 
+    public static async moveTrucks() {
+        const fireTrucks: TruckLocationEntity[] = await Repositories.truckLocation.getActives()
+        fireTrucks.filter(f => f.truck.travelState === TravelState.MOVING).forEach(f => {
+            LocationService.move(f);
+        })
+
+    }
+
     async getMovement(idResource: number): Promise<MovementModel> {
         const trucks = await Repositories.truck.find({where: {id_resource: idResource}});
         const firemen: FiremanEntity[] = trucks.reduce((acc, current) => [...acc, ...current.firemen], [])
@@ -51,17 +59,6 @@ export class MovingService {
             await Repositories.fireman.insert(firemen)
         ])
     }
-
-   public static async  moveTrucks(){
-        const fireTrucks:TruckLocationEntity[] = await Repositories.truckLocation.getActives()
-        fireTrucks.forEach(f =>{
-            if(f.truck.travelState == TravelState.MOVING){
-                LocationService.move(f);
-            }
-        })
-
-    }
-
 
     async stopMovement(movement: MovementModel) {
         await Repositories.truck.update({id_resource: movement.resourceId}, {travelState: TravelState.DONE})

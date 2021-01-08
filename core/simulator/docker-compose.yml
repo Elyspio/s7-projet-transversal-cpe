@@ -20,7 +20,7 @@ services:
   app:
     image: elyspio/cpe-s7-project:simulator
     environment:
-      OWN_HOST: http://${OWN_HOST}
+      OWN_HOST: ${OWN_HOST}
 
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_URL: ${DATABASE_URL}
@@ -30,7 +30,7 @@ services:
 
       CATALINA_OUT: /var/log/catalina
 
-      MICROBIT_SIMULATOR_LINK_HOST: ${HOST_IP}:8086
+      MICROBIT_SIMULATOR_LINK_HOST: ${MICROBIT_SIMULATOR_LINK_HOST}
 
       TRUCK_SERVER_HOST: ${TRUCK_SERVER_HOST}
 
@@ -50,7 +50,7 @@ services:
     image: swaggerapi/swagger-ui
     restart: always
     environment:
-      SWAGGER_JSON_URL: http://localhost:${OWN_PORT}/swagger.json
+      SWAGGER_JSON_URL: ${OWN_HOST}/swagger.json
     ports:
       - 8093:8080
     container_name: s7-project-simulator-swagger      

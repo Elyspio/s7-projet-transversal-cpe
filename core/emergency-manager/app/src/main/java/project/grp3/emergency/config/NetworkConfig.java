@@ -69,21 +69,18 @@ public class NetworkConfig
         private final String scheme;
         private final String host;
         private final int port;
-        private final String path;
 
 
-        ConfigurationEntry(String scheme, String host, int port, String path)
+        ConfigurationEntry(String scheme, String host, int port)
         {
             this.scheme = scheme;
             this.host = host;
             this.port = port;
-            this.path = path;
         }
 
         public static ConfigurationEntry fromString(String in)
         {
-
-            var pattern = Pattern.compile("(https?)://([a-z.]+)(:[0-9]+)?(.*)");
+            var pattern = Pattern.compile("^(?:((?:https?|s?ftp))://)([^:/\\s]+)(?::(\\d*))?(?:/([^\\s?#]+)?([?][^?#]*)?(#.*)?)?");
             final Matcher matcher = pattern.matcher(in);
 
             var matchs = new ArrayList<String>();
@@ -99,8 +96,7 @@ public class NetworkConfig
             return new ConfigurationEntry(
                     matchs.get(1),
                     matchs.get(2),
-                    Integer.parseInt(matchs.get(3) != null ? matchs.get(3).substring(1) : "80"),
-                    matchs.get(4)
+                    Integer.parseInt(matchs.get(3))
             );
         }
 
@@ -119,16 +115,12 @@ public class NetworkConfig
             return port;
         }
 
-        public String getPath()
-        {
-            return path;
-        }
 
 
         @Override
         public String toString()
         {
-            return getScheme() + "://" + getHost() + ":" + getPort() + getPath();
+            return getScheme() + "://" + getHost() + ":" + getPort();
         }
     }
 

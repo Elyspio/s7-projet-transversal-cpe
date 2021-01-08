@@ -27,6 +27,19 @@ function toRad(Value) {
 
 export class LocationService {
 
+    public static async move(f: TruckLocationEntity) {
+        //todo Améliorer le déplacement
+        f.current_latitude = f.truck.dest_latitude
+        f.current_longitude = f.truck.dest_longitude
+        await Repositories.truckLocation.insert(f)
+
+        if (f.current_longitude === f.truck.dest_longitude && f.current_latitude === f.truck.dest_latitude) {
+            const t: TruckEntity = f.truck;
+            t.travelState = TravelState.DONE;
+            await Repositories.truck.save(t)
+        }
+    }
+
     /**
      * Get Trucks near a location
      * @param location
@@ -34,6 +47,7 @@ export class LocationService {
      */
     public async getNear(location: LocationModel, padding = 1) {
         const actives = await Repositories.truckLocation.getActives()
+        console.log("actives.length", actives.length)
         const ids = actives
             .filter(tl => deltaBetweenLocations({latitude: tl.current_latitude, longitude: tl.current_longitude}, location) < padding)
             .map(tl => tl.truck.id_resource)
@@ -43,19 +57,6 @@ export class LocationService {
 
     public async getLocations() {
         return (await Repositories.truckLocation.getActives()).map(tl => Assemblers.truck.toModel(tl.truck));
-    }
-
-    public static  async move(f:TruckLocationEntity){
-        //todo Améliorer le déplacement
-        f.current_latitude = f.truck.dest_latitude
-        f.current_longitude = f.truck.dest_longitude
-        await Repositories.truckLocation.insert(f)
-
-        if(f.current_longitude == f.truck.dest_longitude && f.current_latitude==f.truck.dest_latitude){
-            const t:TruckEntity = f.truck;
-            t.travelState = TravelState.DONE;
-            await Repositories.truck.merge(t)
-        }
     }
 
 }

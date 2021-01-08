@@ -10,7 +10,6 @@ export class TruckLocationRepository extends Repository<TruckLocationEntity> {
     async getActives(): Promise<TruckLocationEntity[]> {
         const actives = (await super.find({relations: ["truck", "truck.firemen", "truck.locations"]})).filter(tl => tl.truck.isActive);
         const tmp: TruckLocationEntity[] = [];
-        console.log(actives)
         actives.sort((a, b) => (b.date.getTime() - a.date.getTime()))
 
         actives.forEach(value => {
@@ -21,7 +20,4 @@ export class TruckLocationRepository extends Repository<TruckLocationEntity> {
 
         return tmp
     }
-
-
-
 }

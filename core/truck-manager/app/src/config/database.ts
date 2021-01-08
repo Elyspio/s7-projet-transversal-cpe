@@ -15,7 +15,7 @@ export const databaseOptions: ConnectionOptions =  {
     "password": getEnv("DATABASE_PASSWORD", "example"),
     "database": getEnv("DATABASE_DATABASE", "postgres"),
     "synchronize": true,
-    "logging": true,
+    "logging": false,
     entities: [path.resolve(__dirname, "..", "database", "entities", "*")]
 
 }

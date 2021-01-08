@@ -22,7 +22,6 @@ public class FireRessource
     @Consumes("application/json")
     @Produces("application/json")
     public Response newFire(FireResourceNewFire params)
-
     {
         var fire = FireService.handleFire(params.sensorId, params.fireTypeId, params.intensity);
         if (fire)

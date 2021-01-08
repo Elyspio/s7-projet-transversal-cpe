@@ -20,7 +20,7 @@ services:
     image: elyspio/cpe-s7-project:emergency-manager
     restart: always
     environment:
-      OWN_HOST: http://${OWN_HOST}
+      OWN_HOST: ${OWN_HOST}
 
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_URL: ${DATABASE_URL}
@@ -40,7 +40,7 @@ services:
     image: swaggerapi/swagger-ui
     restart: always
     environment:
-      SWAGGER_JSON_URL: http://localhost:8084/swagger.json
+      SWAGGER_JSON_URL: ${OWN_HOST}/swagger.json
     ports:
       - 8094:8080
     container_name: s7-project-emergency-manager-swagger

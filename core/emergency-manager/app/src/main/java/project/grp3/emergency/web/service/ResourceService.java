@@ -56,40 +56,32 @@ public class ResourceService
                 availableFiremen.add(fireman);
             }
         }
-        var f = new ArrayList<FiremanEntity>();
-        availableFiremen.sort(new Comparator<FiremanEntity>()
-        {
-            @Override
-            public int compare(FiremanEntity o1, FiremanEntity o2)
-            {
-                return o1.getExhaustLevel().getValue() - o2.getExhaustLevel().getValue();
-            }
-        });
-        availableTrucks.sort(new Comparator<FireTruckEntity>()
-        {
-            @Override
-            public int compare(FireTruckEntity o1, FireTruckEntity o2)
-            {
-                return (int) (o1.getType().getVolume() - o2.getType().getVolume());
-            }
-        });
-        int i = 0;
-        int j = 0;
+        availableFiremen.sort(Comparator.comparingInt(o -> o.getExhaustLevel().getValue()));
+        availableTrucks.sort((o1, o2) -> (int) (o1.getType().getVolume() - o2.getType().getVolume()));
+        int sumVolume = 0;
+        int truckIndex = 0;
         int place = 0;
-        var t = new ArrayList<FireTruckEntity>();
-        while (i < intensity && availableTrucks.size() < f.size())
+
+        var truckList = new ArrayList<FireTruckEntity>();
+
+        while (sumVolume < intensity && availableTrucks.size() < truckList.size())
         {
-            i += availableTrucks.get(j).getType().getVolume();
-            t.add(availableTrucks.get(j));
-            place += availableTrucks.get(j).getType().getCapacity();
-            j++;
+            sumVolume += availableTrucks.get(truckIndex).getType().getVolume();
+            truckList.add(availableTrucks.get(truckIndex));
+            place += availableTrucks.get(truckIndex).getType().getCapacity();
+            truckIndex++;
+
         }
-        while (f.size() < place)
+
+
+        var firemen = new ArrayList<FiremanEntity>();
+        while (firemen.size() < place)
         {
-            f.add(availableFiremen.get(0));
+            firemen.add(availableFiremen.get(0));
         }
-        resource.setFiremen(f);
-        resource.setFireTrucks(t);
+
+        resource.setFiremen(firemen);
+        resource.setFireTrucks(truckList);
         return Database.resourceRepository.create(fire, resource);
     }
 
