@@ -1,14 +1,19 @@
 package project.grp3.emergency.core.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TruckType")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class TruckTypeEntity
 {
+
 
     @Id
     @GeneratedValue
@@ -17,13 +22,10 @@ public class TruckTypeEntity
     private int capacity;
     private float volume;
     private float speed;
-
     @OneToMany
     @JoinColumn(name = "truck_type_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireTruckEntity> fireTrucks;
-
-
     @ManyToMany
     @JoinTable(
             name = "trucktype_firetype",
@@ -32,6 +34,21 @@ public class TruckTypeEntity
     )
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireTypeEntity> fireTypes;
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof TruckTypeEntity)) return false;
+        TruckTypeEntity e = (TruckTypeEntity) o;
+        return Objects.equals(id, e.id);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(id);
+    }
 
     public Long getId()
     {

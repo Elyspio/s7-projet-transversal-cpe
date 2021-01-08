@@ -1,12 +1,16 @@
 package project.grp3.emergency.core.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity()
 @Table(name = "Sdis")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class SdisEntity
 {
 
@@ -14,11 +18,25 @@ public class SdisEntity
     private Long id;
     private String name;
     private String department;
-
     @OneToMany
     @JoinColumn(name = "sdis_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<BarrackEntity> barracks;
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof SdisEntity)) return false;
+        SdisEntity logEntity = (SdisEntity) o;
+        return Objects.equals(id, logEntity.id);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(id);
+    }
 
     public String getName()
     {

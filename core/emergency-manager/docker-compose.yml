@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   db:
-    image: postgres
+    image: postgres:alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: example
@@ -33,6 +33,13 @@ services:
     ports:
       - 8094:8080
     container_name: s7-project-emergency-manager-swagger
-
-
-
+  
+  # web:
+  #   image: elyspio/cpe-s7-project:emergency-web
+  #   restart: always
+  #   environment:
+  #     DATABASE_PORT: 5434
+  #     OWN_PORT: 8084
+  #   ports:
+  #     - 3084:8080
+  #   container_name: s7-project-emergency-manager-web

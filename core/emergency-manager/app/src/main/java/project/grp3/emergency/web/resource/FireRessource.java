@@ -2,8 +2,8 @@ package project.grp3.emergency.web.resource;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import project.grp3.emergency.web.service.FireService;
 import project.grp3.emergency.web.resource.models.FireResourceNewFire;
+import project.grp3.emergency.web.service.FireService;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

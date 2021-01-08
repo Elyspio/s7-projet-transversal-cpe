@@ -1,4 +1,4 @@
-package project.grp3.emergency.web.filter;
+package project.grp3.emergency.web.filters;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;

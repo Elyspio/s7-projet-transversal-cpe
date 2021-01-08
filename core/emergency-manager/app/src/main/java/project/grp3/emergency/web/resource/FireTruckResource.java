@@ -3,7 +3,7 @@ package project.grp3.emergency.web.resource;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import project.grp3.emergency.core.database.Database;
-import project.grp3.emergency.web.assembler.FireTruckAssembler;
+import project.grp3.emergency.web.assemblers.FireTruckAssembler;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
