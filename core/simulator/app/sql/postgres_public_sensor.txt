@@ -1,0 +1,4 @@
+insert into public.sensor (id, city, country, postalcode, state, street)
+values  (1, 'Villeurbanne', 'France', '69100', 'Rhone-Alpes', '3 Rue Victor Grignard'),
+        (2, 'Caluire et Cuire', 'France', '69300', 'Rhone-Alpes', '97 rue pasteur'),
+        (3, 'Lyon', 'France', '69008', 'Rhone-Alpes', '24 rue santos dumont');

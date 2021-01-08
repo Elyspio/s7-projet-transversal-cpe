@@ -52,6 +52,7 @@ public class App extends Application
 
         Database.init();
 
+
         return resources;
     }
 }

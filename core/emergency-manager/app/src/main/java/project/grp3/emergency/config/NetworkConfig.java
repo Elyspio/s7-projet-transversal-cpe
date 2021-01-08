@@ -11,17 +11,26 @@ public class NetworkConfig
     static
     {
         instance = new NetworkConfig(
-                ConfigurationEntry.fromString(getEnv("MICROBIT_SIMULATOR_LINK_HOST", "http://localhost:8086")),
-                ConfigurationEntry.fromString(getEnv("OWN_PORT", "http://localhost:8084"))
+                new DatabaseEntry(
+                        getEnv("DATABASE_URL", "localhost"),
+                        getEnv("DATABASE_PORT", "5434"),
+                        getEnv("DATABASE_PASSWORD", "example"),
+                        getEnv("DATABASE_USER", "postgres"),
+                        getEnv("DATABASE_DATABASE", "postgres")
+                ),
+                ConfigurationEntry.fromString(getEnv("TRUCK_SERVER_HOST", "http://localhost:8085")),
+                ConfigurationEntry.fromString(getEnv("OWN_HOST", "http://localhost:8084"))
         );
     }
 
+    private final DatabaseEntry database;
     private final ConfigurationEntry truckApp;
     private final ConfigurationEntry self;
 
-    private NetworkConfig(ConfigurationEntry microbitSimulatorLink, ConfigurationEntry self)
+    private NetworkConfig(DatabaseEntry database, ConfigurationEntry truckServer, ConfigurationEntry self)
     {
-        this.truckApp = microbitSimulatorLink;
+        this.database = database;
+        this.truckApp = truckServer;
         this.self = self;
     }
 
@@ -47,6 +56,11 @@ public class NetworkConfig
     public ConfigurationEntry getSelf()
     {
         return self;
+    }
+
+    public DatabaseEntry getDatabase()
+    {
+        return database;
     }
 
 
@@ -115,6 +129,52 @@ public class NetworkConfig
         public String toString()
         {
             return getScheme() + "://" + getHost() + ":" + getPort() + getPath();
+        }
+    }
+
+
+    public static class DatabaseEntry
+    {
+        private final String url;
+        private final String password;
+        private final String user;
+        private final String database;
+        private final String port;
+
+
+        public DatabaseEntry(String url, String port, String password, String user, String database)
+        {
+            this.url = url;
+            this.port = port;
+            this.password = password;
+            this.user = user;
+            this.database = database;
+        }
+
+        public String getUrl()
+        {
+            return url;
+        }
+
+        public String getPassword()
+        {
+            return password;
+        }
+
+        public String getUser()
+        {
+            return user;
+        }
+
+        public String getDatabase()
+        {
+            return database;
+        }
+
+        @Override
+        public String toString()
+        {
+            return "jdbc:postgresql://%s:%s/%s".formatted(url, port, database);
         }
     }
 

@@ -2,6 +2,7 @@ package project.grp3.simulator;
 
 import io.swagger.jaxrs.config.BeanConfig;
 import project.grp3.simulator.config.NetworkConfig;
+import project.grp3.simulator.core.managment.Managment;
 import project.grp3.simulator.web.filter.CrossDomainFilter;
 import project.grp3.simulator.web.resource.FireResource;
 
@@ -18,13 +19,24 @@ public class App extends Application
     {
         BeanConfig beanConfig = new BeanConfig();
 
-        beanConfig.setHost("localhost:" + NetworkConfig.getInstance().getSelf().getPort());
+        beanConfig.setHost("localhost:" + NetworkConfig.getInstance().self().getPort());
 
         beanConfig.setSchemes(new String[]{"http"});
         beanConfig.setBasePath("/");
         beanConfig.setResourcePackage("project.grp3.simulator.web.resource");
         beanConfig.setVersion("1.0.2");
         beanConfig.setScan(true);
+
+        try
+        {
+            Managment.init();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override

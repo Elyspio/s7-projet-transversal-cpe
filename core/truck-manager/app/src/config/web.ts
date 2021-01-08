@@ -7,7 +7,7 @@ const rootDir = path.resolve(__dirname, "..")
 
 export const webConfig: Partial<Configuration> = {
     rootDir,
-    httpPort: getEnv("SERVER_HTTP_PORT", 8085),
+    httpPort: getEnv("OWN_PORT", 8085),
     httpsPort: false, // CHANGE
     mount: {
         "/": [

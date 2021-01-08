@@ -1,4 +1,5 @@
-package project.grp3.emergency.core.api.emergency.api;
+package project.grp3.simulator.core.api.emergency.api;
+
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -2,21 +2,20 @@ package project.grp3.emergency.core.database.repositories;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import project.grp3.emergency.config.NetworkConfig;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.TransactionRequiredException;
 import java.util.List;
 
 abstract public class Repository<Entity>
 {
 
+    private static final StandardServiceRegistry registry = null;
     protected static EntityManager manager = null;
     protected static Session session = null;
-    private static StandardServiceRegistry registry = null;
     private final Class<Entity> entity;
 
     protected Repository(Class<Entity> cls)
@@ -30,13 +29,20 @@ abstract public class Repository<Entity>
 
     private static void init()
     {
-        registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
-                .build();
-
         try
         {
-            SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            /**Load the hibernate.cfg.xml from the classpath**/
+            Configuration cfg = new Configuration();
+            cfg.configure();
+            var config = NetworkConfig.getInstance().getDatabase();
+            cfg.setProperty("hibernate.connection.url", config.toString());
+            cfg.setProperty("hibernate.connection.username", config.getUser());
+            cfg.setProperty("hibernate.connection.password", config.getPassword());
+
+
+            SessionFactory sessionFactory = cfg.buildSessionFactory();
+
+
             session = sessionFactory.openSession();
             manager = sessionFactory.createEntityManager();
         }
@@ -72,10 +78,10 @@ abstract public class Repository<Entity>
 
     protected Entity update(Entity item)
     {
-            var trans = session.beginTransaction();
-            Entity item2 = (Entity) session.merge(item);
-            trans.commit();
-            return item2;
+        var trans = session.beginTransaction();
+        Entity item2 = (Entity) session.merge(item);
+        trans.commit();
+        return item2;
     }
 
     public Entity create(Entity item)

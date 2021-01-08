@@ -46,13 +46,13 @@ public class ResourceGetResource
     public static class FireTruck
     {
         public Long barrackId;
-        public List<FireType> types;
+        public TruckType type;
         public Long id;
 
-        public FireTruck(Long id, Long barrackId, List<FireType> types)
+        public FireTruck(Long id, Long barrackId, TruckType type)
         {
             this.barrackId = barrackId;
-            this.types = types;
+            this.type = type;
             this.id = id;
         }
 
@@ -61,11 +61,7 @@ public class ResourceGetResource
             return new FireTruck(
                     entity.getId(),
                     entity.getBarrack().getId(),
-                    entity.getType()
-                            .getFireTypes()
-                            .stream()
-                            .map(FireType::from)
-                            .collect(Collectors.toList())
+                    TruckType.from(entity.getType())
             );
         }
     }
@@ -149,6 +145,39 @@ public class ResourceGetResource
                     entity.getPostalCode(),
                     entity.getCountry(),
                     entity.getStreet()
+            );
+        }
+    }
+
+    public static class TruckType
+    {
+
+        public final Long id;
+        public final String label;
+        public final int capacity;
+        public final float volume;
+        public final float speed;
+        public final List<FireType> fireTypes;
+
+        public TruckType(Long id, String label, int capacity, float volume, float speed, List<FireType> fireTypes)
+        {
+            this.id = id;
+            this.label = label;
+            this.capacity = capacity;
+            this.volume = volume;
+            this.speed = speed;
+            this.fireTypes = fireTypes;
+        }
+
+        public static TruckType from(TruckTypeEntity entity)
+        {
+            return new TruckType(
+                    entity.getId(),
+                    entity.getLabel(),
+                    entity.getCapacity(),
+                    entity.getVolume(),
+                    entity.getSpeed(),
+                    entity.getFireTypes().stream().map(FireType::from).collect(Collectors.toList())
             );
         }
     }

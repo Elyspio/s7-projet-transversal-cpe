@@ -25,6 +25,7 @@ public class FireEntity
     @JoinColumn(name = "sensor_id")
     private SensorEntity sensor;
 
+    private Long intensity;
 
     public Long getId()
     {
@@ -74,5 +75,15 @@ public class FireEntity
     public void setSensor(SensorEntity sensor)
     {
         this.sensor = sensor;
+    }
+
+    public Long getIntensity()
+    {
+        return intensity;
+    }
+
+    public void setIntensity(Long intensity)
+    {
+        this.intensity = intensity;
     }
 }

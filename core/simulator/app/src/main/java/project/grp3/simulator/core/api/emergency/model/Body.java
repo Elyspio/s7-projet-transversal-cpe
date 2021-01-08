@@ -24,79 +24,29 @@ import java.util.Objects;
 
 public class Body
 {
-    @SerializedName("sensorId")
-    private Long sensorId = null;
+    @SerializedName("resourceId")
+    private Long resourceId = null;
 
-    @SerializedName("intensity")
-    private Integer intensity = null;
-
-    @SerializedName("fireTypeId")
-    private Long fireTypeId = null;
-
-    public Body sensorId(Long sensorId)
+    public Body resourceId(Long resourceId)
     {
-        this.sensorId = sensorId;
+        this.resourceId = resourceId;
         return this;
     }
 
     /**
-     * Get sensorId
+     * Get resourceId
      *
-     * @return sensorId
+     * @return resourceId
      **/
     @Schema(description = "")
-    public Long getSensorId()
+    public Long getResourceId()
     {
-        return sensorId;
+        return resourceId;
     }
 
-    public void setSensorId(Long sensorId)
+    public void setResourceId(Long resourceId)
     {
-        this.sensorId = sensorId;
-    }
-
-    public Body intensity(Integer intensity)
-    {
-        this.intensity = intensity;
-        return this;
-    }
-
-    /**
-     * Get intensity
-     *
-     * @return intensity
-     **/
-    @Schema(description = "")
-    public Integer getIntensity()
-    {
-        return intensity;
-    }
-
-    public void setIntensity(Integer intensity)
-    {
-        this.intensity = intensity;
-    }
-
-    public Body fireTypeId(Long fireTypeId)
-    {
-        this.fireTypeId = fireTypeId;
-        return this;
-    }
-
-    /**
-     * Get fireTypeId
-     *
-     * @return fireTypeId
-     **/
-    @Schema(description = "")
-    public Long getFireTypeId()
-    {
-        return fireTypeId;
-    }
-
-    public void setFireTypeId(Long fireTypeId)
-    {
-        this.fireTypeId = fireTypeId;
+        this.resourceId = resourceId;
     }
 
 
@@ -112,15 +62,13 @@ public class Body
             return false;
         }
         Body body = (Body) o;
-        return Objects.equals(this.sensorId, body.sensorId) &&
-                Objects.equals(this.intensity, body.intensity) &&
-                Objects.equals(this.fireTypeId, body.fireTypeId);
+        return Objects.equals(this.resourceId, body.resourceId);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(sensorId, intensity, fireTypeId);
+        return Objects.hash(resourceId);
     }
 
 
@@ -130,9 +78,7 @@ public class Body
         StringBuilder sb = new StringBuilder();
         sb.append("class Body {\n");
 
-        sb.append("    sensorId: ").append(toIndentedString(sensorId)).append("\n");
-        sb.append("    intensity: ").append(toIndentedString(intensity)).append("\n");
-        sb.append("    fireTypeId: ").append(toIndentedString(fireTypeId)).append("\n");
+        sb.append("    resourceId: ").append(toIndentedString(resourceId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

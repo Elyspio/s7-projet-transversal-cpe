@@ -2,12 +2,9 @@ package project.grp3.emergency.core.database.repositories;
 
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireEntity;
-import project.grp3.emergency.core.database.entities.FireTruckEntity;
-import project.grp3.emergency.core.database.entities.FiremanEntity;
 import project.grp3.emergency.core.database.entities.ResourceEntity;
 import project.grp3.emergency.core.database.enums.TruckTravelState;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResourceRepository extends Repository<ResourceEntity>

@@ -13,7 +13,8 @@ import java.util.Comparator;
 public class ResourceService
 {
 
-    public static ResourceEntity create(FireEntity fire, Integer intensity){
+    public static ResourceEntity create(FireEntity fire, Integer intensity)
+    {
         var resource = new ResourceEntity();
         resource.setFire(fire);
         resource.setTravelState(TruckTravelState.MOVING);
@@ -36,7 +37,7 @@ public class ResourceService
             }
             if (!exist && truck.getType().getFireTypes().contains(fire.getType()))
             {
-                    availableTrucks.add(truck);
+                availableTrucks.add(truck);
             }
         }
         for (FiremanEntity fireman : firemans)
@@ -50,46 +51,54 @@ public class ResourceService
                     break;
                 }
             }
-            if (!exist && fireman.getExhaustLevel().getValue()!=0)
+            if (!exist && fireman.getExhaustLevel().getValue() != 0)
             {
                 availableFiremen.add(fireman);
             }
         }
         var f = new ArrayList<FiremanEntity>();
-        availableFiremen.sort(new Comparator<FiremanEntity>() {
+        availableFiremen.sort(new Comparator<FiremanEntity>()
+        {
             @Override
-            public int compare(FiremanEntity o1, FiremanEntity o2) {
+            public int compare(FiremanEntity o1, FiremanEntity o2)
+            {
                 return o1.getExhaustLevel().getValue() - o2.getExhaustLevel().getValue();
             }
         });
-        availableTrucks.sort(new Comparator<FireTruckEntity>() {
+        availableTrucks.sort(new Comparator<FireTruckEntity>()
+        {
             @Override
-            public int compare(FireTruckEntity o1, FireTruckEntity o2) {
+            public int compare(FireTruckEntity o1, FireTruckEntity o2)
+            {
                 return (int) (o1.getType().getVolume() - o2.getType().getVolume());
             }
         });
-        int i =0;
-        int j =0;
-        int place= 0;
+        int i = 0;
+        int j = 0;
+        int place = 0;
         var t = new ArrayList<FireTruckEntity>();
-        while(i<intensity && availableTrucks.size()<f.size()){
+        while (i < intensity && availableTrucks.size() < f.size())
+        {
             i += availableTrucks.get(j).getType().getVolume();
             t.add(availableTrucks.get(j));
-            place+=availableTrucks.get(j).getType().getCapacity();
+            place += availableTrucks.get(j).getType().getCapacity();
             j++;
         }
-        while(f.size()<place){
+        while (f.size() < place)
+        {
             f.add(availableFiremen.get(0));
         }
         resource.setFiremen(f);
         resource.setFireTrucks(t);
-        return Database.resourceRepository.create(fire,resource);
+        return Database.resourceRepository.create(fire, resource);
     }
 
-    public void setArrived(Long resourceId){
+    public void setArrived(Long resourceId)
+    {
         var resource = Database.resourceRepository.getOne(resourceId);
-        for (FiremanEntity item: resource.getFiremen()){
-            item.getExhaustLevel().setValue(item.getExhaustLevel().getValue()-25);
+        for (FiremanEntity item : resource.getFiremen())
+        {
+            item.getExhaustLevel().setValue(item.getExhaustLevel().getValue() - 25);
         }
         Database.resourceRepository.setArrived(resourceId);
     }

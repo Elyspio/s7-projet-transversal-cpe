@@ -1,7 +1,5 @@
 package project.grp3.emergency.core.exception;
 
-import javax.persistence.Entity;
-
 public class EntityNotFound extends Exception
 {
 

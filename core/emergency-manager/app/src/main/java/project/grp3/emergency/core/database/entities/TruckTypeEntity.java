@@ -22,10 +22,12 @@ public class TruckTypeEntity
     private int capacity;
     private float volume;
     private float speed;
+
     @OneToMany
     @JoinColumn(name = "truck_type_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireTruckEntity> fireTrucks;
+
     @ManyToMany
     @JoinTable(
             name = "trucktype_firetype",

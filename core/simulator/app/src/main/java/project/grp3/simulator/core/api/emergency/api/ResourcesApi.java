@@ -1,20 +1,34 @@
-package project.grp3.emergency.core.api.emergency.api;
+package project.grp3.simulator.core.api.emergency.api;
 
+
+import project.grp3.simulator.core.api.emergency.model.ResourceGetResource;
 import retrofit2.Call;
+import retrofit2.http.GET;
 import retrofit2.http.PUT;
 
 public interface ResourcesApi
 {
     /**
-     * get notice that a ressource is back
+     * get a resource from its id
      *
-     * @param ressourceId (optional)
+     * @param id (required)
+     * @return Call&lt;ResourceGetResource&gt;
+     */
+    @GET("resources/{id}")
+    Call<ResourceGetResource> getResource(
+            @retrofit2.http.Path("id") Long id
+    );
+
+    /**
+     * get notice that a resource is back
+     *
+     * @param resourceId (optional)
      * @return Call&lt;Void&gt;
      */
     @retrofit2.http.Multipart
     @PUT("resources")
-    Call<Void> ressourceBack(
-            @retrofit2.http.Part("ressourceId") Long ressourceId
+    Call<Void> resourceBack(
+            @retrofit2.http.Part("resourceId") Long resourceId
     );
 
 }

@@ -9,7 +9,7 @@
         <property name="hibernate.connection.password">postgres</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
         <property name="connection_pool_size">1</property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         <mapping class="project.grp3.simulator.core.database.entities.FireEntity"/>
         <mapping class="project.grp3.simulator.core.database.entities.FireTypeEntity"/>
