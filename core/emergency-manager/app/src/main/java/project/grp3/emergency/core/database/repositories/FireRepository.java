@@ -34,7 +34,7 @@ public class FireRepository extends Repository<FireEntity>
         //var all = cq.select(cq.from(FireEntity.class));
         /*all.where(manager.getCriteriaBuilder().and(manager.getCriteriaBuilder().equal(cq.from(FireEntity.class).get("sensor"), sensorId),manager.getCriteriaBuilder().isNull(cq.from(FireEntity.class).get("endDate"))));
 
-        */
+         */
         List<Predicate> criteres = new ArrayList<Predicate>();
         criteres.add(manager.getCriteriaBuilder().isNull(root.get("endDate")));
         criteres.add(manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
@@ -58,8 +58,9 @@ public class FireRepository extends Repository<FireEntity>
         return manager.createQuery(cq).getSingleResult();
     }
 
-    public FireEntity update(FireEntity item){
+    public FireEntity update(FireEntity item)
+    {
         return super.update(item);
-}
+    }
 
 }

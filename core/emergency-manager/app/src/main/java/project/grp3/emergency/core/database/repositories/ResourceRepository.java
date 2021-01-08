@@ -17,10 +17,11 @@ public class ResourceRepository extends Repository<ResourceEntity>
         super(ResourceEntity.class);
     }
 
-    public List<ResourceEntity> getAllActif(){
+    public List<ResourceEntity> getAllActif()
+    {
         var cq = manager.getCriteriaBuilder().createQuery(ResourceEntity.class);
         var all = cq.select(cq.from(ResourceEntity.class));
-        all.where(manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"),TruckTravelState.ARRIVED));
+        all.where(manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"), TruckTravelState.ARRIVED));
         return manager.createQuery(cq).getResultList();
     }
 
@@ -34,28 +35,36 @@ public class ResourceRepository extends Repository<ResourceEntity>
         var availableTrucks = new ArrayList<FireTruckEntity>();
         var availableFiremen = new ArrayList<FiremanEntity>();
         var resources = this.getAllActif();
-        var exist= false;
-        for (FireTruckEntity truck : trucks) {
+        var exist = false;
+        for (FireTruckEntity truck : trucks)
+        {
             exist = false;
-            for (ResourceEntity r : resources) {
-                if (r.getFireTrucks().contains(truck)) {
-                    exist=true;
+            for (ResourceEntity r : resources)
+            {
+                if (r.getFireTrucks().contains(truck))
+                {
+                    exist = true;
                     break;
                 }
             }
-            if(!exist){
+            if (!exist)
+            {
                 availableTrucks.add(truck);
             }
         }
-        for (FiremanEntity fireman : firemans) {
+        for (FiremanEntity fireman : firemans)
+        {
             exist = false;
-            for (ResourceEntity r : resources) {
-                if (!r.getFiremen().contains(fireman)) {
-                    exist=true;
+            for (ResourceEntity r : resources)
+            {
+                if (!r.getFiremen().contains(fireman))
+                {
+                    exist = true;
                     break;
                 }
             }
-            if(!exist){
+            if (!exist)
+            {
                 availableFiremen.add(fireman);
             }
         }

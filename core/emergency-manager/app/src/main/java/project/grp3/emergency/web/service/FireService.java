@@ -5,7 +5,6 @@ import project.grp3.emergency.core.api.truck.model.*;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireTruckEntity;
 import project.grp3.emergency.core.database.entities.FiremanEntity;
-import project.grp3.emergency.core.database.entities.SensorEntity;
 import project.grp3.emergency.core.database.enums.LogAction;
 
 import java.math.BigDecimal;
@@ -27,7 +26,8 @@ public class FireService
             var fire = Database.fireRepository.getActifBySensorId(s);
             var resource = Database.resourceRepository.getOne(fire.getRessource().getId());
             Database.logRepository.create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
-            if(intensity == 0){
+            if (intensity == 0)
+            {
                 fire.setEndDate(Date.from(Instant.now()));
                 Database.fireRepository.update(fire);
                 //TODO Faire l'appel vers le rapellage de camion
@@ -42,17 +42,19 @@ public class FireService
             Database.logRepository.create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
             Database.logRepository.create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
             var m = new MovementModel();
-            var lP=new ArrayList<FiremanModel>();
+            var lP = new ArrayList<FiremanModel>();
             var fMod = new FiremanModel();
-            var j =0;
-            var i=0;
-            for (FiremanEntity f:resource.getFiremen()) {
+            var j = 0;
+            var i = 0;
+            for (FiremanEntity f : resource.getFiremen())
+            {
                 fMod.setId(BigDecimal.valueOf(f.getId()));
                 fMod.setFireTruckId(BigDecimal.valueOf(resource.getFireTrucks().get(i).getId()));
                 fMod.setResourceId(BigDecimal.valueOf(resource.getId()));
                 lP.add(fMod);
                 j++;
-                if(j==4){
+                if (j == 4)
+                {
                     i++;
                 }
             }
@@ -65,9 +67,10 @@ public class FireService
             locationDest.setLongitude(BigDecimal.valueOf(4.8698));
             locations.setDest(locationDest);
             locations.setStart(locationStart);
-            var lT=new ArrayList<TruckModel>();
+            var lT = new ArrayList<TruckModel>();
             var tMod = new TruckModel();
-            for (FireTruckEntity t:resource.getFireTrucks()) {
+            for (FireTruckEntity t : resource.getFireTrucks())
+            {
                 tMod.current(locationStart);
                 tMod.setId(BigDecimal.valueOf(t.getId()));
                 tMod.setDest(locationDest);
@@ -76,7 +79,8 @@ public class FireService
                 tMod.setSpeed(BigDecimal.valueOf(t.getType().getSpeed()));
                 lT.add(tMod);
                 j++;
-                if(j==4){
+                if (j == 4)
+                {
                     i++;
                 }
             }
