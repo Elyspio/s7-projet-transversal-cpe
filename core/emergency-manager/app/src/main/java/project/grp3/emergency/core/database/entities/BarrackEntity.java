@@ -1,15 +1,20 @@
 package project.grp3.emergency.core.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Barrack")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class BarrackEntity
 {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -18,22 +23,34 @@ public class BarrackEntity
     private String postalCode;
     private String country;
     private String street;
-
     @OneToMany
     @JoinColumn(name = "barrack_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
     private List<FiremanEntity> firemen;
-
     @OneToMany
     @JoinColumn(name = "barrack_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
     private List<FireTruckEntity> fireTrucks;
-
     @ManyToOne
     @JoinColumn(name = "sdis_id")
     private SdisEntity sdis;
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof BarrackEntity)) return false;
+        BarrackEntity that = (BarrackEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(id, city, state, postalCode, country, street, firemen, fireTrucks, sdis);
+    }
 
     public String getCity()
     {

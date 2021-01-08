@@ -3,7 +3,7 @@ package project.grp3.emergency.web.resource;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import project.grp3.emergency.core.database.Database;
-import project.grp3.emergency.web.assembler.FiremanAssembler;
+import project.grp3.emergency.web.assemblers.FiremanAssembler;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,11 +21,8 @@ public class FiremanRessource
     public Response firemen()
     {
         return Response
-                .status(Response.Status.OK)
-                .entity(Database.firemanRepository.getAll()
-                        .stream()
-                        .map(firemanEntity -> new FiremanAssembler().toData(firemanEntity))
-                        .toArray())
+                .ok()
+                .entity(new FiremanAssembler().toData(Database.firemanRepository.getAll()))
                 .build();
     }
 
@@ -36,7 +33,7 @@ public class FiremanRessource
     public Response firemenById(@PathParam("id") Long id)
     {
         return Response
-                .status(Response.Status.OK)
+                .ok()
                 .entity(new FiremanAssembler().toData(Database.firemanRepository.getById(id)))
                 .build();
 

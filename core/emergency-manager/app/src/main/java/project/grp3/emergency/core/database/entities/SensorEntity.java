@@ -1,29 +1,31 @@
 package project.grp3.emergency.core.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Sensor")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class SensorEntity
 {
+
     @Id
     @GeneratedValue
     private Long id;
-
     private String city;
     private String state;
     private String postalCode;
     private String country;
     private String street;
-
     @OneToMany
     @JoinColumn(name = "sensor_id")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireEntity> fires;
-
     @ManyToMany
     @JoinTable(
             name = "sensor_firetype",
@@ -33,6 +35,20 @@ public class SensorEntity
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<FireTypeEntity> fireTypes;
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof SensorEntity)) return false;
+        SensorEntity e = (SensorEntity) o;
+        return Objects.equals(id, e.id);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(id);
+    }
 
     public Long getId()
     {

@@ -1,22 +1,26 @@
 package project.grp3.emergency.core.database.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Cascade;
 import project.grp3.emergency.core.database.enums.TruckTravelState;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Resource")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class ResourceEntity
 {
+
     @Id
     @GeneratedValue
     private Long id;
     @OneToOne
     @JoinColumn(name = "fire_id", nullable = false)
     private FireEntity fire;
-
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinTable(
@@ -25,7 +29,6 @@ public class ResourceEntity
             inverseJoinColumns = @JoinColumn(name = "resource_id")
     )
     private List<FiremanEntity> firemen;
-
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinTable(
@@ -34,14 +37,26 @@ public class ResourceEntity
             inverseJoinColumns = @JoinColumn(name = "resource_id")
     )
     private List<FireTruckEntity> fireTrucks;
-
     @OneToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "resource_id")
     private List<LogEntity> logs;
-
     private TruckTravelState travelState;
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof ResourceEntity)) return false;
+        ResourceEntity logEntity = (ResourceEntity) o;
+        return Objects.equals(id, logEntity.id);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(id);
+    }
 
     public Long getId()
     {

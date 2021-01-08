@@ -8,3 +8,4 @@ core/emergency-manager/database
 core/simulator/database
 core/simulator/database-truck
 core/truck-manager/database
+core/.vscode

@@ -3,7 +3,7 @@ package project.grp3.emergency;
 import io.swagger.jaxrs.config.BeanConfig;
 import project.grp3.emergency.config.NetworkConfig;
 import project.grp3.emergency.core.database.Database;
-import project.grp3.emergency.web.filter.CrossDomainFilter;
+import project.grp3.emergency.web.filters.CrossDomainFilter;
 import project.grp3.emergency.web.resource.*;
 
 import javax.ws.rs.ApplicationPath;
@@ -38,7 +38,7 @@ public class App extends Application
         resources.add(HelloResource.class);
         resources.add(FiremanRessource.class);
         resources.add(FireTruckResource.class);
-        resources.add(ResourceRessource.class);
+        resources.add(ResourceResource.class);
         resources.add(FireRessource.class);
 
         // ALLOW CORS
