@@ -16,5 +16,6 @@ public class SensorRepository extends Repository<SensorEntity>
         return super.getAll();
     }
 
+    public SensorEntity getOneById(Long id){ return super.get(id); }
 
 }

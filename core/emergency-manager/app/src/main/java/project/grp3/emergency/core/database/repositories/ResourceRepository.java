@@ -8,12 +8,20 @@ import project.grp3.emergency.core.database.entities.ResourceEntity;
 import project.grp3.emergency.core.database.enums.TruckTravelState;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ResourceRepository extends Repository<ResourceEntity>
 {
     public ResourceRepository()
     {
         super(ResourceEntity.class);
+    }
+
+    public List<ResourceEntity> getAllActif(){
+        var cq = manager.getCriteriaBuilder().createQuery(ResourceEntity.class);
+        var all = cq.select(cq.from(ResourceEntity.class));
+        all.where(manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"),TruckTravelState.ARRIVED));
+        return manager.createQuery(cq).getResultList();
     }
 
     public ResourceEntity create(FireEntity fire, Integer intensity)
@@ -23,28 +31,38 @@ public class ResourceRepository extends Repository<ResourceEntity>
         resource.setTravelState(TruckTravelState.MOVING);
         var trucks = Database.fireTruckRepository.getAll();
         var firemans = Database.firemanRepository.getAll();
-        var resources = this.getAll();
-        for (ResourceEntity r : resources)
-        {
-            for (FireTruckEntity truck : trucks)
-            {
-                if (r.getFireTrucks().contains(truck))
-                {
-                    trucks.remove(truck);
+        var availableTrucks = new ArrayList<FireTruckEntity>();
+        var availableFiremen = new ArrayList<FiremanEntity>();
+        var resources = this.getAllActif();
+        var exist= false;
+        for (FireTruckEntity truck : trucks) {
+            exist = false;
+            for (ResourceEntity r : resources) {
+                if (r.getFireTrucks().contains(truck)) {
+                    exist=true;
+                    break;
                 }
             }
-            for (FiremanEntity fireman : firemans)
-            {
-                if (r.getFiremen().contains(fireman))
-                {
-                    firemans.remove(fireman);
+            if(!exist){
+                availableTrucks.add(truck);
+            }
+        }
+        for (FiremanEntity fireman : firemans) {
+            exist = false;
+            for (ResourceEntity r : resources) {
+                if (!r.getFiremen().contains(fireman)) {
+                    exist=true;
+                    break;
                 }
+            }
+            if(!exist){
+                availableFiremen.add(fireman);
             }
         }
         var f = new ArrayList<FiremanEntity>();
-        f.add(firemans.get(0));
+        f.add(availableFiremen.get(0));
         var t = new ArrayList<FireTruckEntity>();
-        t.add(trucks.get(0));
+        t.add(availableTrucks.get(0));
         resource.setFiremen(f);
         resource.setFireTrucks(t);
         fire.setRessource(resource);
@@ -69,7 +87,5 @@ public class ResourceRepository extends Repository<ResourceEntity>
         return super.get(resourceId);
     }
 
-    public void getOneByFireId(Long id)
-    {
-    }
+
 }
