@@ -41,7 +41,7 @@ public class FireService
         {
             //Create a new fire and send ressources
             var fire = Database.fireRepository.create(sensorId, fireTypeId);
-            var resource = Database.resourceRepository.create(fire, intensity);
+            var resource = ResourceService.create(fire, intensity);
             //var resource = Database.resourceRepository.getOne(fire.getId());
             Database.logRepository.create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
             Database.logRepository.create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
@@ -60,7 +60,7 @@ public class FireService
                 fMod.setResourceId(BigDecimal.valueOf(resource.getId()));
                 lP.add(fMod);
                 j++;
-                if (j == 4)
+                if (j == resource.getFireTrucks().get(i).getType().getCapacity())
                 {
                     i++;
                 }
@@ -85,11 +85,6 @@ public class FireService
                 tMod.setTravelState(BigDecimal.valueOf(Long.parseLong(String.valueOf(resource.getTravelState()))));
                 tMod.setSpeed(BigDecimal.valueOf(t.getType().getSpeed()));
                 lT.add(tMod);
-                j++;
-                if (j == 4)
-                {
-                    i++;
-                }
             }
 
 

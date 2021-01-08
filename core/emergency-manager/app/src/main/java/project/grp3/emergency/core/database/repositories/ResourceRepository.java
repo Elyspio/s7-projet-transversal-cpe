@@ -25,55 +25,8 @@ public class ResourceRepository extends Repository<ResourceEntity>
         return manager.createQuery(cq).getResultList();
     }
 
-    public ResourceEntity create(FireEntity fire, Integer intensity)
+    public ResourceEntity create(FireEntity fire, ResourceEntity resource)
     {
-        var resource = new ResourceEntity();
-        resource.setFire(fire);
-        resource.setTravelState(TruckTravelState.MOVING);
-        var trucks = Database.fireTruckRepository.getAll();
-        var firemans = Database.firemanRepository.getAll();
-        var availableTrucks = new ArrayList<FireTruckEntity>();
-        var availableFiremen = new ArrayList<FiremanEntity>();
-        var resources = this.getAllActif();
-        var exist = false;
-        for (FireTruckEntity truck : trucks)
-        {
-            exist = false;
-            for (ResourceEntity r : resources)
-            {
-                if (r.getFireTrucks().contains(truck))
-                {
-                    exist = true;
-                    break;
-                }
-            }
-            if (!exist)
-            {
-                availableTrucks.add(truck);
-            }
-        }
-        for (FiremanEntity fireman : firemans)
-        {
-            exist = false;
-            for (ResourceEntity r : resources)
-            {
-                if (!r.getFiremen().contains(fireman))
-                {
-                    exist = true;
-                    break;
-                }
-            }
-            if (!exist)
-            {
-                availableFiremen.add(fireman);
-            }
-        }
-        var f = new ArrayList<FiremanEntity>();
-        f.add(availableFiremen.get(0));
-        var t = new ArrayList<FireTruckEntity>();
-        t.add(availableTrucks.get(0));
-        resource.setFiremen(f);
-        resource.setFireTrucks(t);
         fire.setRessource(resource);
         fire = Database.fireRepository.update(fire);
         return fire.getRessource();
