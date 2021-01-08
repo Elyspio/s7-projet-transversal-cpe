@@ -16,7 +16,7 @@ public class TruckTypeEntity
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String label;
     private int capacity;

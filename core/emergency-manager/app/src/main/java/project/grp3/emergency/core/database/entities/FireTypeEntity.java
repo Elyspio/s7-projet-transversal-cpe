@@ -13,7 +13,7 @@ import java.util.Objects;
 public class FireTypeEntity
 {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(nullable = false)
     private String label;

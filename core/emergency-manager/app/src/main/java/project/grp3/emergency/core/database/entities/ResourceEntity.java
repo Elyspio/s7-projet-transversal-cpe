@@ -16,7 +16,7 @@ public class ResourceEntity
 {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @OneToOne
     @JoinColumn(name = "fire_id", nullable = false)

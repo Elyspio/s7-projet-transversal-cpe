@@ -16,7 +16,7 @@ public class FireTruckEntity
 {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @ManyToOne(optional = false)
     @JoinColumn(name = "barrack_id")

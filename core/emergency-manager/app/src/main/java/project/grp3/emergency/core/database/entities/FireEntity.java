@@ -15,7 +15,7 @@ public class FireEntity
 {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private Date detectionDate;
     private Date endDate;

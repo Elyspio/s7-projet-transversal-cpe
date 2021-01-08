@@ -15,7 +15,7 @@ public class SensorEntity
 {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String city;
     private String state;
