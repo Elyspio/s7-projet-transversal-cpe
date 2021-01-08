@@ -34,11 +34,9 @@ public class ResourceService
                     break;
                 }
             }
-            if (!exist)
+            if (!exist && truck.getType().getFireTypes().contains(fire.getType()))
             {
-                if(truck.getType().getFireTypes().contains(fire.getType())){
                     availableTrucks.add(truck);
-                }
             }
         }
         for (FiremanEntity fireman : firemans)
@@ -52,7 +50,7 @@ public class ResourceService
                     break;
                 }
             }
-            if (!exist)
+            if (!exist && fireman.getExhaustLevel().getValue()!=0)
             {
                 availableFiremen.add(fireman);
             }
@@ -88,5 +86,12 @@ public class ResourceService
         return Database.resourceRepository.create(fire,resource);
     }
 
+    public void setArrived(Long resourceId){
+        var resource = Database.resourceRepository.getOne(resourceId);
+        for (FiremanEntity item: resource.getFiremen()){
+            item.getExhaustLevel().setValue(item.getExhaustLevel().getValue()-25);
+        }
+        Database.resourceRepository.setArrived(resourceId);
+    }
 
 }
