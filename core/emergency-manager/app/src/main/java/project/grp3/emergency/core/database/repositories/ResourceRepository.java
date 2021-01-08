@@ -79,16 +79,11 @@ public class ResourceRepository extends Repository<ResourceEntity>
         return fire.getRessource();
     }
 
-    public int setArrived(Long ressourceId)
+    public void setArrived(Long ressourceId)
     {
         var resource = super.getById(ressourceId);
         resource.setTravelState(TruckTravelState.ARRIVED);
         var resource2 = super.update(resource);
-        if (resource2.getId() != null && resource2.getId() == resource.getId())
-        {
-            return 201;
-        }
-        return 500;
     }
 
     public ResourceEntity getOne(Long resourceId)

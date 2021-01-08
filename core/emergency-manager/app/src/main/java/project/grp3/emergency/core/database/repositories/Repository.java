@@ -7,6 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.TransactionRequiredException;
 import java.util.List;
 
 abstract public class Repository<Entity>
@@ -70,10 +72,10 @@ abstract public class Repository<Entity>
 
     protected Entity update(Entity item)
     {
-        var trans = session.beginTransaction();
-        Entity item2 = (Entity) session.merge(item);
-        trans.commit();
-        return item2;
+            var trans = session.beginTransaction();
+            Entity item2 = (Entity) session.merge(item);
+            trans.commit();
+            return item2;
     }
 
     public Entity create(Entity item)

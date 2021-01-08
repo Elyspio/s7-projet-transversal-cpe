@@ -18,14 +18,17 @@ public class FireService
     public static boolean handleFire(Long sensorId, Long fireTypeId, Integer intensity)
     {
         //var fire = new FireEntity();
+        //Get The sensor Id linked to the fire
         var api = Apis.getTruckApp();
         var s = Database.sensorRepository.getOneById(sensorId);
         boolean exist = Database.fireRepository.isExist(s);
         if (exist)
         {
+            //If the fire already exist, add a log lign to indicate the new intensity
             var fire = Database.fireRepository.getActifBySensorId(s);
             var resource = Database.resourceRepository.getOne(fire.getRessource().getId());
             Database.logRepository.create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
+            //if Intensity is 0 the nthe fire is dead, call back thr truck to the Barrack
             if (intensity == 0)
             {
                 fire.setEndDate(Date.from(Instant.now()));
@@ -36,11 +39,15 @@ public class FireService
         }
         else
         {
+            //Create a new fire and send ressources
             var fire = Database.fireRepository.create(sensorId, fireTypeId);
             var resource = Database.resourceRepository.create(fire, intensity);
             //var resource = Database.resourceRepository.getOne(fire.getId());
             Database.logRepository.create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
             Database.logRepository.create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
+
+
+            //Call the truc app to notice it to handle the ressource mouvement.
             var m = new MovementModel();
             var lP = new ArrayList<FiremanModel>();
             var fMod = new FiremanModel();

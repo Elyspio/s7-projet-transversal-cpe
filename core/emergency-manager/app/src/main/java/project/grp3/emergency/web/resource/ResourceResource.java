@@ -22,10 +22,10 @@ public class ResourceResource
     @Produces("application/json")
     public Response resourceBack(@FormParam("resourceId") Long resourceId)
     {
-
+        Database.resourceRepository.setArrived(resourceId);
 
         return Response
-                .status(Database.resourceRepository.setArrived(resourceId))
+                .ok()
                 .build();
     }
 
