@@ -2,8 +2,9 @@ package project.grp3.emergency.web.resource;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import project.grp3.emergency.core.services.Services;
 import project.grp3.emergency.web.resource.models.FireResourceNewFire;
-import project.grp3.emergency.web.service.FireService;
+import project.grp3.emergency.core.services.FireService;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -23,7 +24,7 @@ public class FireRessource
     @Produces("application/json")
     public Response newFire(FireResourceNewFire params)
     {
-        var fire = FireService.handleFire(params.sensorId, params.fireTypeId, params.intensity);
+        var fire = Services.fire.handleFire(params.sensorId, params.fireTypeId, params.intensity);
         if (fire)
         {
             return Response

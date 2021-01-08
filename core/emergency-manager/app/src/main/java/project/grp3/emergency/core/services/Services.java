@@ -4,6 +4,7 @@ public class Services
 {
 
     public final static ResourceService resource = new ResourceService();
+    public final static FireService fire = new FireService();
 
     private Services()
     {
