@@ -1,6 +1,5 @@
 import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {TruckEntity} from "./TruckEntity";
-import {DateTime} from "@tsed/schema";
 
 export const truckLocationTableName = "truck_location"
 

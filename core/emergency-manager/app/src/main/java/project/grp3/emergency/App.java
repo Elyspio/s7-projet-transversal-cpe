@@ -40,7 +40,7 @@ public class App extends Application
         resources.add(FiremanRessource.class);
         resources.add(FireTruckResource.class);
         resources.add(ResourceResource.class);
-        resources.add(FireRessource.class);
+        resources.add(FireResource.class);
 
         // ALLOW CORS
         resources.add(CrossDomainFilter.class);

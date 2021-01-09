@@ -1,7 +1,10 @@
 package project.grp3.emergency.core.services;
 
 import project.grp3.emergency.core.api.Apis;
-import project.grp3.emergency.core.api.truck.model.*;
+import project.grp3.emergency.core.api.truck.model.FiremanModel;
+import project.grp3.emergency.core.api.truck.model.LocationModel;
+import project.grp3.emergency.core.api.truck.model.MovementModel;
+import project.grp3.emergency.core.api.truck.model.TruckModel;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireTruckEntity;
 import project.grp3.emergency.core.database.entities.FiremanEntity;
@@ -10,9 +13,9 @@ import project.grp3.emergency.core.database.enums.LogAction;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class FireService extends Services.Service
 {
@@ -26,12 +29,12 @@ public class FireService extends Services.Service
     {
         //var fire = new FireEntity();
         //Get The sensor Id linked to the fire
-        var api = Apis.getTruckApp();
+        var api = Apis.truck();
         var s = Database.sensorRepository().getOneById(sensorId);
         boolean exist = Database.fireRepository().isExist(s);
         if (exist)
         {
-            //If the fire already exist, add a log lign to indicate the new intensity
+            //If the fire already exist, add a log line to indicate the new intensity
             var fire = Database.fireRepository().getActifBySensorId(s);
             var resource = Database.resourceRepository().getOne(fire.getRessource().getId());
             Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
@@ -46,7 +49,7 @@ public class FireService extends Services.Service
         }
         else
         {
-            //Create a new fire and send ressources
+            //Create a new fire and send resources
             var fire = Database.fireRepository().create(sensorId, fireTypeId);
             var resource = Services.resource().create(fire, intensity);
             //var resource = Database.resourceRepository.getOne(fire.getId());
@@ -54,55 +57,100 @@ public class FireService extends Services.Service
             Database.logRepository().create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
 
 
-            //Call the truc app to notice it to handle the ressource mouvement.
-            var m = new MovementModel();
-            var lP = new ArrayList<FiremanModel>();
-            var fMod = new FiremanModel();
-            var j = 0;
-            var i = 0;
-            for (FiremanEntity f : resource.getFiremen())
-            {
-                fMod.setId(BigDecimal.valueOf(f.getId()));
-                fMod.setFireTruckId(BigDecimal.valueOf(resource.getFireTrucks().get(i).getId()));
-                fMod.setResourceId(BigDecimal.valueOf(resource.getId()));
-                lP.add(fMod);
-                j++;
-                if (j == resource.getFireTrucks().get(i).getType().getCapacity())
+            var geocodingApi = Apis.geocoding();
+
+            //Call the truck app to notice it to handle the resource movement.
+            var callModel = new MovementModel();
+
+            callModel.setResourceId(BigDecimal.valueOf(resource.getId()));
+
+
+            List<TruckModel> truckModels = resource.getFireTrucks().stream().map(truck -> {
+                var model = new TruckModel();
+                model.setId(BigDecimal.valueOf(truck.getId()));
+                model.setSpeed(BigDecimal.valueOf(truck.getType().getSpeed()));
+                var barrack = truck.getBarrack();
+                var location = new LocationModel();
+
+                try
                 {
-                    i++;
+                    var locationData = geocodingApi.search(barrack.getStreet(), barrack.getPostalCode(), "json").execute().body().get(0);
+                    location.setLatitude(BigDecimal.valueOf(Double.parseDouble(locationData.lat)));
+                    location.setLongitude(BigDecimal.valueOf(Double.parseDouble(locationData.lon)));
+                    model.setStart(location);
                 }
-            }
-            var locationStart = new LocationModel();
-            var locationDest = new LocationModel();
-            var locations = new LocationsModel();
-            locationStart.setLatitude(BigDecimal.valueOf(45.7607));
-            locationStart.setLongitude(BigDecimal.valueOf(4.8520));
-            locationDest.setLatitude(BigDecimal.valueOf(45.7841));
-            locationDest.setLongitude(BigDecimal.valueOf(4.8698));
-            locations.setDest(locationDest);
-            locations.setStart(locationStart);
-            var lT = new ArrayList<TruckModel>();
-            var tMod = new TruckModel();
-            for (FireTruckEntity t : resource.getFireTrucks())
-            {
-                tMod.current(locationStart);
-                tMod.setId(BigDecimal.valueOf(t.getId()));
-                tMod.setDest(locationDest);
-                tMod.setStart(locationStart);
-                tMod.setResourceId(BigDecimal.valueOf(resource.getId()));
-                tMod.setTravelState(BigDecimal.valueOf(resource.getTravelState().ordinal()));
-                tMod.setSpeed(BigDecimal.valueOf(t.getType().getSpeed()));
-                lT.add(tMod);
-            }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+
+                return model;
+            }).collect(Collectors.toList());
 
 
-            m.setFiremen(lP);
-            m.setTrucks(lT);
-            m.setLocations(locations);
-            //logger.info("I will send the ressources to the Truck Appp");
-            api.resourceSend(m).execute();
+            List<FiremanModel> firemenModel = affectFiremanToTruck(resource.getFireTrucks(), resource.getFiremen());
+
+
+            callModel.setFiremen(firemenModel);
+            callModel.setTrucks(truckModels);
+
+            LocationModel destLocation = new LocationModel();
+
+            var destLocationData = geocodingApi.search(fire.getSensor().getStreet(), fire.getSensor().getPostalCode(), "json")
+                    .execute()
+                    .body()
+                    .get(0);
+
+            destLocation.setLatitude(BigDecimal.valueOf(Double.parseDouble(destLocationData.lat)));
+            destLocation.setLongitude(BigDecimal.valueOf(Double.parseDouble(destLocationData.lon)));
+
+
+            callModel.setDest(destLocation);
+
+            api.resourceSend(callModel).execute();
         }
         return exist;
+    }
+
+
+    public List<FiremanModel> affectFiremanToTruck(List<FireTruckEntity> trucks, List<FiremanEntity> firemen)
+    {
+        var ret = new ArrayList<FiremanModel>();
+        int truckIndex = 0;
+
+
+        var associated = new HashMap<FireTruckEntity, Integer>();
+        trucks.forEach(t -> associated.put(t, 0));
+
+
+        var stack = new Stack<FiremanModel>();
+        stack.addAll(firemen
+                .stream()
+                .map(f -> new FiremanModel().id(BigDecimal.valueOf(f.getId())))
+                .collect(Collectors.toList())
+        );
+
+
+        while (!stack.isEmpty())
+        {
+            FireTruckEntity truck = trucks.get(truckIndex);
+            var remainingSpace = truck.getType().getCapacity() - associated.get(truck);
+
+            if (remainingSpace > 0)
+            {
+                FiremanModel fire = stack.pop().fireTruckId(BigDecimal.valueOf(truck.getId()));
+                fire.fireTruckId(BigDecimal.valueOf(truck.getId()));
+                ret.add(fire);
+                associated.put(truck, associated.get(truck) + 1);
+            }
+
+            truckIndex = (truckIndex + 1) % trucks.size();
+
+        }
+
+        return ret;
+
+
     }
 
 }

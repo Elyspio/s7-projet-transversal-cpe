@@ -1,10 +1,10 @@
 import {Configuration, Inject} from "@tsed/di";
 import {PlatformApplication} from "@tsed/common";
 import {middlewares} from "./middleware/common/raw";
-import * as path from "path";
 import "@tsed/swagger";
-export const rootDir = __dirname;
 import {webConfig} from "./config/web";
+
+export const rootDir = __dirname;
 
 @Configuration(webConfig)
 export class Server {

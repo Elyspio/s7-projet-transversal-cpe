@@ -1,7 +1,6 @@
 import {BaseAssembler} from "./json";
 import {FiremanModel} from "../../controllers/resources/models";
 import {FiremanEntity} from "../../database/entities/FiremanEntity";
-import {Repositories} from "../../database/repositories";
 
 export class FiremanAssembler extends BaseAssembler<FiremanModel, FiremanEntity> {
     toEntity(obj: FiremanModel): FiremanEntity {

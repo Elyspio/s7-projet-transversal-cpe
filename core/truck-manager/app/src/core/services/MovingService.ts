@@ -25,21 +25,15 @@ export class MovingService {
             resourceId: idResource,
             firemen: Assemblers.fireman.collectionToModel(firemen.map(f => ({model: f}))),
             trucks: Assemblers.truck.collectionToModel(trucks.map(t => ({model: t}))),
-            locations: {
-                start: {
-                    longitude: trucks[0].start_longitude,
-                    latitude: trucks[0].start_latitude,
-                },
-                dest: {
-                    longitude: trucks[0].dest_longitude,
-                    latitude: trucks[0].dest_latitude,
-                },
-            }
+            dest: {
+                longitude: trucks[0].dest_longitude,
+                latitude: trucks[0].dest_latitude,
+            },
         }
     }
 
     async createMovement(movement: MovementModel) {
-        await Repositories.truck.insert(Assemblers.truck.collectionToEntity(movement.trucks.map(t => ({model: t, args: [movement.resourceId, movement.locations]}))))
+        await Repositories.truck.insert(Assemblers.truck.collectionToEntity(movement.trucks.map(t => ({model: t, args: [movement.resourceId, t.start, movement.dest]}))))
 
         const firemen: FiremanEntity[] = await Promise.all(movement.firemen.map(async f => ({
             ...Assemblers.fireman.toEntity(f),
@@ -50,10 +44,8 @@ export class MovingService {
         await Promise.all([
             ...movement.trucks.map(async value => Repositories.truckLocation.insert({
                 truck: await Repositories.truck.getByBusiness(value.id, movement.resourceId),
-                current_longitude:
-                movement.locations.start.longitude,
-                current_latitude:
-                movement.locations.start.longitude,
+                current_longitude: value.start.longitude,
+                current_latitude: value.start.latitude,
                 speed: 0
             })),
             await Repositories.fireman.insert(firemen)
@@ -70,10 +62,7 @@ export class MovingService {
 
         await this.createMovement({
             ...movement,
-            locations: {
-                dest: movement.locations.start,
-                start: movement.locations.dest,
-            }
+            dest: movement.dest,
         })
 
     }

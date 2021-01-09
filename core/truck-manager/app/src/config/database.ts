@@ -7,8 +7,8 @@ export const getEnv = (env: string, fallback) => {
 }
 
 
-export const databaseOptions: ConnectionOptions =  {
-    "type":  "postgres",
+export const databaseOptions: ConnectionOptions = {
+    "type": "postgres",
     "host": getEnv("DATABASE_URL", "localhost"),
     "port": getEnv("DATABASE_PORT", 5435),
     "username": getEnv("DATABASE_USER", "postgres"),
