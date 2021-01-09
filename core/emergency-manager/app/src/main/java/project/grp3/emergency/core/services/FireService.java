@@ -6,7 +6,6 @@ import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireTruckEntity;
 import project.grp3.emergency.core.database.entities.FiremanEntity;
 import project.grp3.emergency.core.database.enums.LogAction;
-import project.grp3.emergency.core.database.enums.TruckTravelState;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -18,27 +17,29 @@ import java.util.logging.Logger;
 public class FireService extends Services.Service
 {
 
-    FireService(){
+    FireService()
+    {
         Logger logger = Logger.getLogger(FireService.class.getName());
     }
-    
-    public boolean handleFire(Long sensorId, Long fireTypeId, Integer intensity) throws IOException {
+
+    public boolean handleFire(Long sensorId, Long fireTypeId, Integer intensity) throws IOException
+    {
         //var fire = new FireEntity();
         //Get The sensor Id linked to the fire
         var api = Apis.getTruckApp();
-        var s = Database.sensorRepository.getOneById(sensorId);
-        boolean exist = Database.fireRepository.isExist(s);
+        var s = Database.sensorRepository().getOneById(sensorId);
+        boolean exist = Database.fireRepository().isExist(s);
         if (exist)
         {
             //If the fire already exist, add a log lign to indicate the new intensity
-            var fire = Database.fireRepository.getActifBySensorId(s);
-            var resource = Database.resourceRepository.getOne(fire.getRessource().getId());
-            Database.logRepository.create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
+            var fire = Database.fireRepository().getActifBySensorId(s);
+            var resource = Database.resourceRepository().getOne(fire.getRessource().getId());
+            Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
             //if Intensity is 0 the nthe fire is dead, call back thr truck to the Barrack
             if (intensity == 0)
             {
                 fire.setEndDate(Date.from(Instant.now()));
-                Database.fireRepository.update(fire);
+                Database.fireRepository().update(fire);
                 //TODO Faire l'appel vers le rapellage de camion
                 api.resourceBack(BigDecimal.valueOf(resource.getId()));
             }
@@ -46,11 +47,11 @@ public class FireService extends Services.Service
         else
         {
             //Create a new fire and send ressources
-            var fire = Database.fireRepository.create(sensorId, fireTypeId);
-            var resource = Services.resource.create(fire, intensity);
+            var fire = Database.fireRepository().create(sensorId, fireTypeId);
+            var resource = Services.resource().create(fire, intensity);
             //var resource = Database.resourceRepository.getOne(fire.getId());
-            Database.logRepository.create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
-            Database.logRepository.create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
+            Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
+            Database.logRepository().create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
 
 
             //Call the truc app to notice it to handle the ressource mouvement.

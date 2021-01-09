@@ -4,5 +4,5 @@ public enum TruckTravelState
 {
     MOVING,
     OPERATING,
-    ARRIVED;
+    AVAILABLE;
 }

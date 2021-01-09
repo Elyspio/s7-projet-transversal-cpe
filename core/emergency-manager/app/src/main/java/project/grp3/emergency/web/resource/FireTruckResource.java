@@ -22,7 +22,7 @@ public class FireTruckResource
     {
         return Response
                 .status(Response.Status.OK)
-                .entity(Database.fireTruckRepository.getAll()
+                .entity(Database.fireTruckRepository().getAll()
                         .stream()
                         .map(fireTruckEntity -> new FireTruckAssembler().toData(fireTruckEntity))
                         .toArray())
@@ -37,7 +37,7 @@ public class FireTruckResource
     {
         return Response
                 .status(Response.Status.OK)
-                .entity(new FireTruckAssembler().toData(Database.fireTruckRepository.getById(id)))
+                .entity(new FireTruckAssembler().toData(Database.fireTruckRepository().getById(id)))
                 .build();
 
     }

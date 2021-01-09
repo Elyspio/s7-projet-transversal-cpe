@@ -3,6 +3,7 @@ package project.grp3.emergency;
 import io.swagger.jaxrs.config.BeanConfig;
 import project.grp3.emergency.config.NetworkConfig;
 import project.grp3.emergency.core.database.Database;
+import project.grp3.emergency.core.services.Services;
 import project.grp3.emergency.web.filters.CrossDomainFilter;
 import project.grp3.emergency.web.resource.*;
 
@@ -51,7 +52,7 @@ public class App extends Application
 
 
         Database.init();
-
+        Services.init();
 
         return resources;
     }

@@ -18,7 +18,7 @@ public interface ResourceApi
      * @return Call&lt;Object&gt;
      */
     @POST("resources/{id}/back")
-    Call<Object> resourceBack(
+    Call<Void> resourceBack(
             @retrofit2.http.Path("id") BigDecimal id
     );
 
@@ -51,7 +51,7 @@ public interface ResourceApi
             "Content-Type:application/json"
     })
     @POST("resources/send")
-    Call<Object> resourceSend(
+    Call<Void> resourceSend(
             @retrofit2.http.Body MovementModel body
     );
 

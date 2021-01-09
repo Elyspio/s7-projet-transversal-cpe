@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.exception.EntityNotFound;
 import project.grp3.emergency.core.exception.EntityNotFoundResponse;
 import project.grp3.emergency.core.services.Services;
@@ -22,7 +21,7 @@ public class ResourceResource
     @Produces("application/json")
     public Response resourceBack(@FormParam("resourceId") Long resourceId)
     {
-        Database.resourceRepository.setArrived(resourceId);
+        Services.resource().setArrived(resourceId);
 
         return Response
                 .ok()
@@ -42,7 +41,7 @@ public class ResourceResource
         ResourceGetResource res = null;
         try
         {
-            res = Services.resource.getById(id);
+            res = Services.resource().getById(id);
             return Response
                     .ok()
                     .entity(res)

@@ -31,7 +31,7 @@ abstract public class Repository<Entity>
     {
         try
         {
-            /**Load the hibernate.cfg.xml from the classpath**/
+            /* Load the hibernate.cfg.xml from the classpath */
             Configuration cfg = new Configuration();
             cfg.configure();
             var config = NetworkConfig.getInstance().getDatabase();
@@ -39,9 +39,7 @@ abstract public class Repository<Entity>
             cfg.setProperty("hibernate.connection.username", config.getUser());
             cfg.setProperty("hibernate.connection.password", config.getPassword());
 
-
             SessionFactory sessionFactory = cfg.buildSessionFactory();
-
 
             session = sessionFactory.openSession();
             manager = sessionFactory.createEntityManager();

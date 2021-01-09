@@ -5,11 +5,29 @@ import java.util.logging.Logger;
 public class Services
 {
 
-    public final static ResourceService resource = new ResourceService();
-    public final static FireService fire = new FireService();
+    private static Services instance;
+    private final ResourceService resource;
+    private final FireService fire;
 
     private Services()
     {
+        fire = new FireService();
+        resource = new ResourceService();
+    }
+
+    public static void init()
+    {
+        instance = new Services();
+    }
+
+    public static FireService fire()
+    {
+        return instance.fire;
+    }
+
+    public static ResourceService resource()
+    {
+        return instance.resource;
     }
 
     public static abstract class Service

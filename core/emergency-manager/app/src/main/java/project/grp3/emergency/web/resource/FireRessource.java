@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import project.grp3.emergency.core.services.Services;
 import project.grp3.emergency.web.resource.models.FireResourceNewFire;
-import project.grp3.emergency.core.services.FireService;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -23,20 +22,33 @@ public class FireRessource
     @ApiOperation(value = "add or update a fire")
     @Consumes("application/json")
     @Produces("application/json")
-    public Response newFire(FireResourceNewFire params) throws IOException {
-        var fire = Services.fire.handleFire(params.sensorId, params.fireTypeId, params.intensity);
-        if (fire)
+    public Response newFire(FireResourceNewFire params)
+    {
+
+        try
         {
-            return Response
-                    .status(Response.Status.CREATED)
-                    .build();
+            boolean fire = Services.fire().handleFire(params.sensorId, params.fireTypeId, params.intensity);
+
+            if (fire)
+            {
+                return Response
+                        .status(Response.Status.CREATED)
+                        .build();
+            }
+            else
+            {
+                return Response
+                        .status(204)
+                        .build();
+            }
+
         }
-        else
+        catch (IOException e)
         {
-            return Response
-                    .status(204)
-                    .build();
+            e.printStackTrace();
+            return Response.serverError().entity(e).build();
         }
+
 
     }
 }

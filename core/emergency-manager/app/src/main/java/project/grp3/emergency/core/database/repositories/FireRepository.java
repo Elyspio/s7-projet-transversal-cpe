@@ -22,8 +22,8 @@ public class FireRepository extends Repository<FireEntity>
     {
         var fire = new FireEntity();
         fire.setDetectionDate(Date.from(Instant.now()));
-        fire.setSensor(Database.sensorRepository.getById(sensorId));
-        fire.setType(Database.fireTypeRepository.getById(fireTypeId));
+        fire.setSensor(Database.sensorRepository().getById(sensorId));
+        fire.setType(Database.fireTypeRepository().getById(fireTypeId));
         return super.create(fire);
     }
 
@@ -31,17 +31,13 @@ public class FireRepository extends Repository<FireEntity>
     {
         var cq = manager.getCriteriaBuilder().createQuery(FireEntity.class);
         var root = cq.from(FireEntity.class);
-        //var all = cq.select(cq.from(FireEntity.class));
-        /*all.where(manager.getCriteriaBuilder().and(manager.getCriteriaBuilder().equal(cq.from(FireEntity.class).get("sensor"), sensorId),manager.getCriteriaBuilder().isNull(cq.from(FireEntity.class).get("endDate"))));
-
-         */
-        List<Predicate> criteres = new ArrayList<Predicate>();
+        List<Predicate> criteres = new ArrayList<>();
         criteres.add(manager.getCriteriaBuilder().isNull(root.get("endDate")));
         criteres.add(manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
 
         cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true);
-        var res = manager.createQuery(cq).getResultList();
-        return !res.isEmpty();
+        var res = manager.createQuery(cq).getResultStream().toArray();
+        return res.length > 0;
     }
 
     // FIXME DORIAN

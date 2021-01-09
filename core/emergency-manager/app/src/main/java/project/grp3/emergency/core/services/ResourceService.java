@@ -16,7 +16,7 @@ public class ResourceService
 {
     public ResourceGetResource getById(Long id) throws EntityNotFound
     {
-        var entity = Database.resourceRepository.getOne(id);
+        var entity = Database.resourceRepository().getOne(id);
 
         if (entity != null)
         {
@@ -53,62 +53,23 @@ public class ResourceService
     public ResourceEntity create(FireEntity fire, Integer intensity)
     {
         var resource = new ResourceEntity();
+
         resource.setFire(fire);
         resource.setTravelState(TruckTravelState.MOVING);
-        var trucks = Database.fireTruckRepository.getAll();
-        var firemans = Database.firemanRepository.getAll();
-        var availableTrucks = new ArrayList<FireTruckEntity>();
-        var availableFiremen = new ArrayList<FiremanEntity>();
-        var resources = Database.resourceRepository.getAllActif();
-        var exist = false;
-        if(resources.isEmpty()){
-            availableTrucks = (ArrayList<FireTruckEntity>) trucks;
-            availableFiremen = (ArrayList<FiremanEntity>) firemans;
-        }
-        else {
-            for (FireTruckEntity truck : trucks)
-                {
-                    exist = false;
-                    for (ResourceEntity r : resources)
-                    {
-                        if (r.getFireTrucks().contains(truck))
-                        {
-                            exist = true;
-                            break;
-                        }
-                    }
-                    if (!exist && fire.getType().getTruckTypes().contains(truck.getType()))
-                    {
-                        availableTrucks.add(truck);
-                    }
-                }
-            for (FiremanEntity fireman : firemans)
-            {
-                exist = false;
-                for (ResourceEntity r : resources)
-                {
-                    if (r.getFiremen().contains(fireman))
-                    {
-                        exist = true;
-                        break;
-                    }
-                }
-                if (!exist && fireman.getExhaustLevel().getValue() != 0)
-                {
-                    availableFiremen.add(fireman);
-                }
-            }
 
-        }
-        availableFiremen.sort(Comparator.comparingInt(o -> o.getExhaustLevel().getValue()));
+        var availableTrucks = Database.fireTruckRepository().getAvailable();
+        var availableFiremen = Database.firemanRepository().getAvailable();
+
         availableTrucks.sort((o1, o2) -> (int) (o1.getType().getVolume() - o2.getType().getVolume()));
+        availableFiremen.sort(Comparator.comparingInt(o -> o.getExhaustLevel().getValue()));
+
         int sumVolume = 0;
         int truckIndex = 0;
         int place = 0;
 
         var truckList = new ArrayList<FireTruckEntity>();
 
-        while (sumVolume < intensity && truckList.size() < availableTrucks.size()  )
+        while (sumVolume < intensity && truckList.size() < availableTrucks.size())
         {
             sumVolume += availableTrucks.get(truckIndex).getType().getVolume();
             truckList.add(availableTrucks.get(truckIndex));
@@ -118,25 +79,26 @@ public class ResourceService
         }
 
 
+        truckIndex = 0;
         var firemen = new ArrayList<FiremanEntity>();
         while (firemen.size() < place && truckList.size() < availableFiremen.size())
         {
-            firemen.add(availableFiremen.get(0));
+            firemen.add(availableFiremen.get(truckIndex++));
         }
 
         resource.setFiremen(firemen);
         resource.setFireTrucks(truckList);
-        return Database.resourceRepository.create(fire, resource);
+        return Database.resourceRepository().create(fire, resource);
     }
 
     public void setArrived(Long resourceId)
     {
-        var resource = Database.resourceRepository.getOne(resourceId);
+        var resource = Database.resourceRepository().getOne(resourceId);
         for (FiremanEntity item : resource.getFiremen())
         {
             item.getExhaustLevel().setValue(item.getExhaustLevel().getValue() - 25);
         }
-        Database.resourceRepository.setArrived(resourceId);
+        Database.resourceRepository().setArrived(resourceId);
     }
 
 }

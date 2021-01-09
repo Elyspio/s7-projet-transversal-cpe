@@ -14,7 +14,7 @@ export class ResourceController {
     }
 
     @Post("/:id/back")
-    @Returns(204, null)
+    @Returns(204)
     async back(@PathParams("id") resourceId: number) {
         await Services.moving.back(resourceId)
     }

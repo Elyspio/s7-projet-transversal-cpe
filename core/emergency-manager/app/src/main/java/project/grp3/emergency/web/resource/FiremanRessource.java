@@ -22,7 +22,7 @@ public class FiremanRessource
     {
         return Response
                 .ok()
-                .entity(new FiremanAssembler().toData(Database.firemanRepository.getAll()))
+                .entity(new FiremanAssembler().toData(Database.firemanRepository().getAll()))
                 .build();
     }
 
@@ -34,7 +34,7 @@ public class FiremanRessource
     {
         return Response
                 .ok()
-                .entity(new FiremanAssembler().toData(Database.firemanRepository.getById(id)))
+                .entity(new FiremanAssembler().toData(Database.firemanRepository().getById(id)))
                 .build();
 
     }

@@ -18,21 +18,21 @@ public class ResourceRepository extends Repository<ResourceEntity>
     {
         var cq = manager.getCriteriaBuilder().createQuery(ResourceEntity.class);
         var all = cq.select(cq.from(ResourceEntity.class));
-        all.where(manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"), TruckTravelState.ARRIVED));
+        all.where(manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"), TruckTravelState.AVAILABLE));
         return manager.createQuery(cq).getResultList();
     }
 
     public ResourceEntity create(FireEntity fire, ResourceEntity resource)
     {
         fire.setRessource(resource);
-        fire = Database.fireRepository.update(fire);
+        fire = Database.fireRepository().update(fire);
         return fire.getRessource();
     }
 
     public void setArrived(Long ressourceId)
     {
         var resource = super.getById(ressourceId);
-        resource.setTravelState(TruckTravelState.ARRIVED);
+        resource.setTravelState(TruckTravelState.AVAILABLE);
         var resource2 = super.update(resource);
     }
 

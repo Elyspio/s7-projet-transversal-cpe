@@ -20,7 +20,7 @@ public class HelloResource
     {
         return Response
                 .status(Response.Status.OK)
-                .entity(Database.sensorRepository.getAll())
+                .entity(Database.sensorRepository().getAll())
                 .build();
     }
 

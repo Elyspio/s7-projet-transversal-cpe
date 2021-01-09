@@ -116,7 +116,6 @@ public class NetworkConfig
         }
 
 
-
         @Override
         public String toString()
         {
