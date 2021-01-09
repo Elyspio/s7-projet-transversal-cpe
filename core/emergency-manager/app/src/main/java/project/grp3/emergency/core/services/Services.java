@@ -1,5 +1,7 @@
 package project.grp3.emergency.core.services;
 
+import java.util.logging.Logger;
+
 public class Services
 {
 
@@ -8,5 +10,10 @@ public class Services
 
     private Services()
     {
+    }
+
+    public static abstract class Service
+    {
+        protected Logger logger;
     }
 }

@@ -11,6 +11,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 
 
 @Path("/fires")
@@ -22,8 +23,7 @@ public class FireRessource
     @ApiOperation(value = "add or update a fire")
     @Consumes("application/json")
     @Produces("application/json")
-    public Response newFire(FireResourceNewFire params)
-    {
+    public Response newFire(FireResourceNewFire params) throws IOException {
         var fire = Services.fire.handleFire(params.sensorId, params.fireTypeId, params.intensity);
         if (fire)
         {

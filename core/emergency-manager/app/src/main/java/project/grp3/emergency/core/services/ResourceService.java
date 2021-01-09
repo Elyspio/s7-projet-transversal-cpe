@@ -61,37 +61,44 @@ public class ResourceService
         var availableFiremen = new ArrayList<FiremanEntity>();
         var resources = Database.resourceRepository.getAllActif();
         var exist = false;
-        for (FireTruckEntity truck : trucks)
-        {
-            exist = false;
-            for (ResourceEntity r : resources)
-            {
-                if (r.getFireTrucks().contains(truck))
-                {
-                    exist = true;
-                    break;
-                }
-            }
-            if (!exist && truck.getType().getFireTypes().contains(fire.getType()))
-            {
-                availableTrucks.add(truck);
-            }
+        if(resources.isEmpty()){
+            availableTrucks = (ArrayList<FireTruckEntity>) trucks;
+            availableFiremen = (ArrayList<FiremanEntity>) firemans;
         }
-        for (FiremanEntity fireman : firemans)
-        {
-            exist = false;
-            for (ResourceEntity r : resources)
-            {
-                if (!r.getFiremen().contains(fireman))
+        else {
+            for (FireTruckEntity truck : trucks)
                 {
-                    exist = true;
-                    break;
+                    exist = false;
+                    for (ResourceEntity r : resources)
+                    {
+                        if (r.getFireTrucks().contains(truck))
+                        {
+                            exist = true;
+                            break;
+                        }
+                    }
+                    if (!exist && fire.getType().getTruckTypes().contains(truck.getType()))
+                    {
+                        availableTrucks.add(truck);
+                    }
+                }
+            for (FiremanEntity fireman : firemans)
+            {
+                exist = false;
+                for (ResourceEntity r : resources)
+                {
+                    if (r.getFiremen().contains(fireman))
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+                if (!exist && fireman.getExhaustLevel().getValue() != 0)
+                {
+                    availableFiremen.add(fireman);
                 }
             }
-            if (!exist && fireman.getExhaustLevel().getValue() != 0)
-            {
-                availableFiremen.add(fireman);
-            }
+
         }
         availableFiremen.sort(Comparator.comparingInt(o -> o.getExhaustLevel().getValue()));
         availableTrucks.sort((o1, o2) -> (int) (o1.getType().getVolume() - o2.getType().getVolume()));
@@ -112,7 +119,7 @@ public class ResourceService
 
 
         var firemen = new ArrayList<FiremanEntity>();
-        while (firemen.size() < place)
+        while (firemen.size() < place && truckList.size() < availableFiremen.size())
         {
             firemen.add(availableFiremen.get(0));
         }

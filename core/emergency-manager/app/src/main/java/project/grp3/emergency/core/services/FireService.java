@@ -6,17 +6,23 @@ import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireTruckEntity;
 import project.grp3.emergency.core.database.entities.FiremanEntity;
 import project.grp3.emergency.core.database.enums.LogAction;
+import project.grp3.emergency.core.database.enums.TruckTravelState;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Logger;
 
-public class FireService
+public class FireService extends Services.Service
 {
 
-    public boolean handleFire(Long sensorId, Long fireTypeId, Integer intensity)
-    {
+    FireService(){
+        Logger logger = Logger.getLogger(FireService.class.getName());
+    }
+    
+    public boolean handleFire(Long sensorId, Long fireTypeId, Integer intensity) throws IOException {
         //var fire = new FireEntity();
         //Get The sensor Id linked to the fire
         var api = Apis.getTruckApp();
@@ -81,8 +87,9 @@ public class FireService
                 tMod.current(locationStart);
                 tMod.setId(BigDecimal.valueOf(t.getId()));
                 tMod.setDest(locationDest);
+                tMod.setStart(locationStart);
                 tMod.setResourceId(BigDecimal.valueOf(resource.getId()));
-                tMod.setTravelState(BigDecimal.valueOf(Long.parseLong(String.valueOf(resource.getTravelState()))));
+                tMod.setTravelState(BigDecimal.valueOf(resource.getTravelState().ordinal()));
                 tMod.setSpeed(BigDecimal.valueOf(t.getType().getSpeed()));
                 lT.add(tMod);
             }
@@ -91,8 +98,8 @@ public class FireService
             m.setFiremen(lP);
             m.setTrucks(lT);
             m.setLocations(locations);
-
-            api.resourceSend(m);
+            //logger.info("I will send the ressources to the Truck Appp");
+            api.resourceSend(m).execute();
         }
         return exist;
     }
