@@ -27,7 +27,11 @@ public class Database
 
     public static void init()
     {
-        instance = new Database();
+        if (instance == null)
+        {
+            Repository.DbAccess.init();
+            instance = new Database();
+        }
     }
 
 

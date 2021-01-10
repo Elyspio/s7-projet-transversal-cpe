@@ -2,10 +2,9 @@ import {LocationModel} from "../../controllers/resources/models";
 import {Repositories} from "../../database/repositories";
 import {Assemblers} from "../assembler";
 import {TruckLocationEntity} from "../../database/entities/TruckLocationEntity";
-import {TravelState, TruckEntity} from "../../database/entities/TruckEntity";
-import {getConnection} from "typeorm";
-import {TruckRepository} from "../../database/repositories/TruckRepository";
-import {Database} from "../../database";
+import {TravelDirection, TravelState} from "../../database/entities/TruckEntity";
+import {Apis} from "../apis";
+import {$log} from "@tsed/common";
 
 function deltaBetweenLocations(a: LocationModel, b: LocationModel) {
     const R = 6371; // km
@@ -20,6 +19,10 @@ function deltaBetweenLocations(a: LocationModel, b: LocationModel) {
         * Math.cos(toRad(b.longitude));
 
     const c = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+
+
+    $log.info("distance", R  * c)
+
     return R * c;
 }
 
@@ -37,6 +40,11 @@ export class LocationService {
         await Repositories.truckLocation.insert(f)
 
         if (f.current_longitude === f.truck.dest_longitude && f.current_latitude === f.truck.dest_latitude) {
+
+            if (f.truck.travelDirection === TravelDirection.BARRACK) {
+                await Apis.emergency.resource.resourceBack(f.truck.id_resource)
+            }
+
             await Repositories.truck.update({travelState: TravelState.DONE, id: f.truck.id});
         }
     }
@@ -44,10 +52,10 @@ export class LocationService {
     /**
      * Get Trucks near a location
      * @param location
-     * @param padding maximum distance between locations (in km)
+     * @param padding maximum distance between locations (in m)
      */
-    public async getNear(location: LocationModel, padding = 1) {
-        const actives = await Repositories.truckLocation.getActives()
+    public async getNear(location: LocationModel, padding = 1000) {
+        const actives = (await Repositories.truckLocation.getDones()).filter(tl => tl.truck.travelDirection === TravelDirection.FIRE)
         console.log("actives.length", actives.length)
         const ids = actives
             .filter(tl => deltaBetweenLocations({latitude: tl.current_latitude, longitude: tl.current_longitude}, location) < padding)

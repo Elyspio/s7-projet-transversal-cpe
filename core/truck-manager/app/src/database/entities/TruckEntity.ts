@@ -2,6 +2,18 @@ import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {TruckLocationEntity} from "./TruckLocationEntity";
 import {FiremanEntity} from "./FiremanEntity";
 
+
+export enum TravelState {
+    MOVING = "MOVING",
+    DONE = "DONE"
+}
+
+
+export enum TravelDirection {
+    FIRE = "fire",
+    BARRACK = "barrack"
+}
+
 @Entity({name: "truck"})
 export class TruckEntity {
 
@@ -34,8 +46,17 @@ export class TruckEntity {
     /**
      *
      */
-    @Column("int")
+    @Column({
+        type: "enum",
+        enum: TravelState,
+    })
     travelState: TravelState
+
+    @Column({
+        type: "enum",
+        enum: TravelDirection,
+    })
+    travelDirection: TravelDirection
 
     @OneToMany(() => TruckLocationEntity, truckLocation => truckLocation.truck)
     locations: TruckLocationEntity[]
@@ -44,15 +65,13 @@ export class TruckEntity {
     firemen: FiremanEntity[]
 
 
-    public get isActive() {
-        return ([TravelState.MOVING, TravelState.OPERATING].includes(this.travelState))
+    public get isMoving() {
+        return this.travelState === TravelState.MOVING
+    }
+
+    public get isArrived() {
+        return this.travelState === TravelState.DONE
     }
 
 }
 
-
-export enum TravelState {
-    MOVING,
-    OPERATING,
-    DONE
-}

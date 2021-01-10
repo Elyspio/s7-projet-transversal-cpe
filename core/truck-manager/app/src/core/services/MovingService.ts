@@ -2,7 +2,7 @@ import {MovementModel} from "../../controllers/resources/models";
 import {Repositories} from "../../database/repositories";
 import {FiremanEntity} from "../../database/entities/FiremanEntity";
 import {Assemblers} from "../assembler";
-import {TravelState} from "../../database/entities/TruckEntity";
+import {TravelDirection, TravelState} from "../../database/entities/TruckEntity";
 import {TruckLocationEntity} from "../../database/entities/TruckLocationEntity";
 import {LocationService} from "./LocationService";
 
@@ -32,8 +32,11 @@ export class MovingService {
         }
     }
 
-    async createMovement(movement: MovementModel) {
-        await Repositories.truck.insert(Assemblers.truck.collectionToEntity(movement.trucks.map(t => ({model: t, args: [movement.resourceId, t.start, movement.dest]}))))
+    async createMovement(movement: MovementModel, travelDirection: TravelDirection) {
+        await Repositories.truck.insert(Assemblers.truck.collectionToEntity(movement.trucks.map(t => ({
+            model: t,
+            args: [movement.resourceId, t.start, movement.dest, travelDirection]
+        }))))
 
         const firemen: FiremanEntity[] = await Promise.all(movement.firemen.map(async f => ({
             ...Assemblers.fireman.toEntity(f),
@@ -63,7 +66,7 @@ export class MovingService {
         await this.createMovement({
             ...movement,
             dest: movement.dest,
-        })
+        }, TravelDirection.BARRACK)
 
     }
 }

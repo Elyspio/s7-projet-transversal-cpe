@@ -33,6 +33,7 @@ public class Apis
     {
         return instance.truckApp;
     }
+
     public static GeocodingApi geocoding()
     {
         return instance.geocodingApi;

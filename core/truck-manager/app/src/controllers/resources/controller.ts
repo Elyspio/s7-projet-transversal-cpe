@@ -2,6 +2,7 @@ import {BodyParams, Controller, Get, PathParams, Post, QueryParams} from "@tsed/
 import {Description, Name, Returns} from "@tsed/schema";
 import {LocationModel, MovementModel, TruckModel} from "./models";
 import {Services} from "../../core/services";
+import {TravelDirection} from "../../database/entities/TruckEntity";
 
 @Name("Resource")
 @Controller("/resources")
@@ -10,7 +11,7 @@ export class ResourceController {
     @Post("/send")
     @Returns(204)
     async send(@BodyParams(MovementModel) params: MovementModel) {
-        await Services.moving.createMovement(params)
+        await Services.moving.createMovement(params, TravelDirection.FIRE)
     }
 
     @Post("/:id/back")

@@ -16,10 +16,11 @@ import java.util.Set;
 public class App extends Application
 {
 
+
     public App()
     {
+        super();
         BeanConfig beanConfig = new BeanConfig();
-
 
         beanConfig.setHost("localhost:" + NetworkConfig.getInstance().getSelf().getPort());
 
@@ -28,6 +29,14 @@ public class App extends Application
         beanConfig.setResourcePackage("project.grp3.emergency.web.resource");
         beanConfig.setVersion("1.0.2");
         beanConfig.setScan(true);
+    }
+
+    @Override
+    public Set<Object> getSingletons()
+    {
+        Database.init();
+        Services.init();
+        return super.getSingletons();
     }
 
     @Override
@@ -50,9 +59,6 @@ public class App extends Application
         resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
         resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
 
-
-        Database.init();
-        Services.init();
 
         return resources;
     }

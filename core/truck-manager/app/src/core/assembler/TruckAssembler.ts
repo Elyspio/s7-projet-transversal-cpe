@@ -1,9 +1,9 @@
 import {BaseAssembler} from "./json";
 import {LocationModel, TruckModel} from "../../controllers/resources/models";
-import {TravelState, TruckEntity} from "../../database/entities/TruckEntity";
+import {TravelDirection, TravelState, TruckEntity} from "../../database/entities/TruckEntity";
 
 export class TruckAssembler extends BaseAssembler<TruckModel, TruckEntity> {
-    toEntity(obj: TruckModel, [resourceId, start, dest]: [number, LocationModel, LocationModel]): TruckEntity {
+    toEntity(obj: TruckModel, [resourceId, start, dest, travelDirection]: [number, LocationModel, LocationModel, TravelDirection]): TruckEntity {
         const entity = new TruckEntity();
         entity.travelState = TravelState.MOVING;
         entity.id_truck = obj.id;
@@ -13,6 +13,7 @@ export class TruckAssembler extends BaseAssembler<TruckModel, TruckEntity> {
         entity.dest_longitude = dest.longitude
         entity.dest_latitude = dest.latitude
         entity.speed = obj.speed;
+        entity.travelDirection = travelDirection;
         return entity;
     }
 

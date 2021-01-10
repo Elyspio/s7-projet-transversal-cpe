@@ -29,29 +29,29 @@ public class FireRepository extends Repository<FireEntity>
 
     public boolean isExist(SensorEntity sensor)
     {
-        var cq = manager.getCriteriaBuilder().createQuery(FireEntity.class);
+        var cq = DbAccess.manager.getCriteriaBuilder().createQuery(FireEntity.class);
         var root = cq.from(FireEntity.class);
         List<Predicate> criteres = new ArrayList<>();
-        criteres.add(manager.getCriteriaBuilder().isNull(root.get("endDate")));
-        criteres.add(manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
+        criteres.add(DbAccess.manager.getCriteriaBuilder().isNull(root.get("endDate")));
+        criteres.add(DbAccess.manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
 
         cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true);
-        var res = manager.createQuery(cq).getResultStream().toArray();
+        var res = DbAccess.manager.createQuery(cq).getResultStream().toArray();
         return res.length > 0;
     }
 
     // FIXME DORIAN
     public FireEntity getActifBySensorId(SensorEntity sensor)
     {
-        CriteriaBuilder cb = manager.getCriteriaBuilder();
+        CriteriaBuilder cb = DbAccess.manager.getCriteriaBuilder();
         var cq = cb.createQuery(FireEntity.class);
         var root = cq.from(FireEntity.class);
         List<Predicate> criteres = new ArrayList<Predicate>();
-        criteres.add(manager.getCriteriaBuilder().isNull(root.get("endDate")));
-        criteres.add(manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
+        criteres.add(DbAccess.manager.getCriteriaBuilder().isNull(root.get("endDate")));
+        criteres.add(DbAccess.manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
 
         cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true);
-        return manager.createQuery(cq).getSingleResult();
+        return DbAccess.manager.createQuery(cq).getSingleResult();
     }
 
     public FireEntity update(FireEntity item)

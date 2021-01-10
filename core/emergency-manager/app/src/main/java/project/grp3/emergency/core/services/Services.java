@@ -1,7 +1,5 @@
 package project.grp3.emergency.core.services;
 
-import java.util.logging.Logger;
-
 public class Services
 {
 
@@ -17,7 +15,11 @@ public class Services
 
     public static void init()
     {
-        instance = new Services();
+        if (instance == null)
+        {
+            instance = new Services();
+
+        }
     }
 
     public static FireService fire()
@@ -32,6 +34,5 @@ public class Services
 
     public static abstract class Service
     {
-        protected Logger logger;
     }
 }

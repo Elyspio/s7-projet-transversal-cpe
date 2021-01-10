@@ -16,10 +16,10 @@ public class ResourceRepository extends Repository<ResourceEntity>
 
     public List<ResourceEntity> getAllActif()
     {
-        var cq = manager.getCriteriaBuilder().createQuery(ResourceEntity.class);
+        var cq = DbAccess.manager.getCriteriaBuilder().createQuery(ResourceEntity.class);
         var all = cq.select(cq.from(ResourceEntity.class));
-        all.where(manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"), TruckTravelState.AVAILABLE));
-        return manager.createQuery(cq).getResultList();
+        all.where(DbAccess.manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"), TruckTravelState.AVAILABLE));
+        return DbAccess.manager.createQuery(cq).getResultList();
     }
 
     public ResourceEntity create(FireEntity fire, ResourceEntity resource)
