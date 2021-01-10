@@ -1,4 +1,5 @@
 import {CollectionOf, Property} from "@tsed/schema";
+import {QueryDeepPartialEntity} from "typeorm/query-builder/QueryPartialEntity";
 
 export class LocationModel {
     @Property(Number)
@@ -49,3 +50,4 @@ export class MovementModel {
 
 
 
+export type  QueryDeepPartialEntityWithId<T> = QueryDeepPartialEntity<T> & {id: number}

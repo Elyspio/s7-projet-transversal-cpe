@@ -3,6 +3,9 @@ import {Repositories} from "../../database/repositories";
 import {Assemblers} from "../assembler";
 import {TruckLocationEntity} from "../../database/entities/TruckLocationEntity";
 import {TravelState, TruckEntity} from "../../database/entities/TruckEntity";
+import {getConnection} from "typeorm";
+import {TruckRepository} from "../../database/repositories/TruckRepository";
+import {Database} from "../../database";
 
 function deltaBetweenLocations(a: LocationModel, b: LocationModel) {
     const R = 6371; // km
@@ -34,9 +37,7 @@ export class LocationService {
         await Repositories.truckLocation.insert(f)
 
         if (f.current_longitude === f.truck.dest_longitude && f.current_latitude === f.truck.dest_latitude) {
-            const t: TruckEntity = f.truck;
-            t.travelState = TravelState.DONE;
-            await Repositories.truck.save(t)
+            await Repositories.truck.update({travelState: TravelState.DONE, id: f.truck.id});
         }
     }
 

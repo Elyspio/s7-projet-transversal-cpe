@@ -53,7 +53,7 @@ export class MovingService {
     }
 
     async stopMovement(movement: MovementModel) {
-        await Repositories.truck.update({id_resource: movement.resourceId}, {travelState: TravelState.DONE})
+        await Repositories.truck.updateAllByResource(movement.resourceId, {travelState: TravelState.DONE})
     }
 
     async back(resourceId: number) {

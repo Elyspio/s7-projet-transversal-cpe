@@ -1,5 +1,7 @@
-import {EntityRepository, Repository} from "typeorm";
+import {EntityRepository, getConnection, Repository} from "typeorm";
 import {TruckLocationEntity} from "../entities/TruckLocationEntity";
+import {TruckEntity} from "../entities/TruckEntity";
+import {QueryDeepPartialEntityWithId} from "../../controllers/resources/models";
 
 @EntityRepository(TruckLocationEntity)
 export class TruckLocationRepository extends Repository<TruckLocationEntity> {
@@ -19,5 +21,16 @@ export class TruckLocationRepository extends Repository<TruckLocationEntity> {
         })
 
         return tmp
+    }
+
+
+    // @ts-ignore
+    public async update(truckLocation: QueryDeepPartialEntityWithId<TruckLocationEntity>) {
+        return await getConnection()
+            .createQueryBuilder()
+            .update(TruckLocationEntity)
+            .set(truckLocation)
+            .where("id = :id", {id: truckLocation.id})
+            .execute();
     }
 }
