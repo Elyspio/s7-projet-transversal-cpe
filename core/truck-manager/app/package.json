@@ -9,13 +9,13 @@
       "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
    },
    "dependencies": {
-      "@tsed/common": "^6.14.3",
-      "@tsed/core": "^6.14.3",
-      "@tsed/di": "^6.14.3",
-      "@tsed/platform-express": "^6.14.3",
-      "@tsed/schema": "^6.14.3",
-      "@tsed/swagger": "^6.14.3",
-      "@tsed/typeorm": "^6.19.1",
+      "@tsed/common": "^6.20.1",
+      "@tsed/core": "^6.20.1",
+      "@tsed/di": "^6.20.1",
+      "@tsed/platform-express": "^6.20.1",
+      "@tsed/schema": "^6.20.1",
+      "@tsed/swagger": "^6.20.1",
+      "@tsed/typeorm": "^6.20.1",
       "axios": "^0.21.1",
       "body-parser": "^1.19.0",
       "compression": "^1.7.4",
@@ -23,16 +23,16 @@
       "cors": "^2.8.5",
       "method-override": "^3.0.0",
       "pg": "^8.5.1",
-      "reflect-metadata": "^0.1.10",
-      "tslib": "^2.0.3",
+      "reflect-metadata": "^0.1.13",
+      "tslib": "^2.1.0",
       "typeorm": "0.2.29"
    },
    "devDependencies": {
       "@types/express": "^4.17.9",
       "@types/cors": "^2.8.9",
-      "@types/node": "^8.0.29",
+      "@types/node": "^14.14.20",
       "nodemon": "latest",
       "ts-node": "9.1.1",
-      "typescript": "4.1.2"
+      "typescript": "4.1.3"
    }
 }

@@ -8,12 +8,12 @@
 		"docker": "powershell docker/dockerize.ps1"
 	},
 	"dependencies": {
-		"@tsed/common": "^6.19.1",
-		"@tsed/core": "^6.19.1",
-		"@tsed/di": "^6.19.1",
-		"@tsed/platform-express": "^6.19.1",
-		"@tsed/schema": "^6.19.1",
-		"@tsed/swagger": "^6.19.1",
+		"@tsed/common": "^6.20.1",
+		"@tsed/core": "^6.20.1",
+		"@tsed/di": "^6.20.1",
+		"@tsed/platform-express": "^6.20.1",
+		"@tsed/schema": "^6.20.1",
+		"@tsed/swagger": "^6.20.1",
 		"axios": "^0.21.1",
 		"body-parser": "^1.19.0",
 		"compression": "^1.7.4",
