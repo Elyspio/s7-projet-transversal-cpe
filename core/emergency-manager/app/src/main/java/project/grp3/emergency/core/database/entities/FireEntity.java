@@ -25,7 +25,7 @@ public class FireEntity
     @OneToOne
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "ressource_id")
-    private ResourceEntity ressource;
+    private ResourceEntity resource;
     @ManyToOne
     @JoinColumn(name = "sensor_id")
     private SensorEntity sensor;
@@ -85,14 +85,14 @@ public class FireEntity
         this.type = type;
     }
 
-    public ResourceEntity getRessource()
+    public ResourceEntity getResource()
     {
-        return ressource;
+        return resource;
     }
 
-    public void setRessource(ResourceEntity ressource)
+    public void setResource(ResourceEntity resource)
     {
-        this.ressource = ressource;
+        this.resource = resource;
     }
 
 

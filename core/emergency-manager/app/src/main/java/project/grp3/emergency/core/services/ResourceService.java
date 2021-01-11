@@ -96,7 +96,9 @@ public class ResourceService
         var resource = Database.resourceRepository().getOne(resourceId);
         for (FiremanEntity item : resource.getFiremen())
         {
-            item.getExhaustLevel().setValue(item.getExhaustLevel().getValue() - 25);
+            int newExhaustLevel = item.getExhaustLevel().getValue() - 25;
+            if(newExhaustLevel < 0) newExhaustLevel = 0;
+            item.getExhaustLevel().setValue(newExhaustLevel);
         }
         Database.resourceRepository().setArrived(resourceId);
     }

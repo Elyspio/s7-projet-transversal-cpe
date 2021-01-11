@@ -101,7 +101,14 @@ public class FireService extends Services.Service
 
     public void changeFireIntensity(FireEntity fire, Long intensity)
     {
+        if(intensity <= 0) {
+            fire.setEndDate(new Date());
+            intensity = 0L;
+        }
+
         fire.setIntensity(intensity);
+
+
         Database.fireRepository.update(fire);
 
         PostFireModel model = new PostFireModel();

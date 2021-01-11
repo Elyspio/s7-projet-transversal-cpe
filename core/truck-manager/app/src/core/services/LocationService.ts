@@ -9,7 +9,7 @@ import {$log} from "@tsed/common";
 function deltaBetweenLocations(a: LocationModel, b: LocationModel) {
     const R = 6371; // km
     const dLat = toRad(b.latitude - a.latitude);
-    const dLon = toRad(b.longitude - a.latitude);
+    const dLon = toRad(b.longitude - a.longitude);
 
     const x = Math.sin(dLat / 2)
         * Math.sin(dLat / 2)
@@ -37,6 +37,7 @@ export class LocationService {
         //todo Améliorer le déplacement
         f.current_latitude = f.truck.dest_latitude
         f.current_longitude = f.truck.dest_longitude
+        f.date = new Date();
         await Repositories.truckLocation.insert(f)
 
         if (f.current_longitude === f.truck.dest_longitude && f.current_latitude === f.truck.dest_latitude) {

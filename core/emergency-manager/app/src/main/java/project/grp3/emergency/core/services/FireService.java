@@ -8,6 +8,7 @@ import project.grp3.emergency.core.api.truck.model.TruckModel;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireTruckEntity;
 import project.grp3.emergency.core.database.entities.FiremanEntity;
+import project.grp3.emergency.core.database.entities.ResourceEntity;
 import project.grp3.emergency.core.database.enums.LogAction;
 
 import java.io.IOException;
@@ -35,16 +36,22 @@ public class FireService extends Services.Service
         if (exist)
         {
             //If the fire already exist, add a log line to indicate the new intensity
-            var fire = Database.fireRepository().getActifBySensorId(s);
-            var resource = Database.resourceRepository().getOne(fire.getRessource().getId());
+            var fire = Database.fireRepository().getActiveBySensorId(s);
+            Long resourceId = fire.getResource().getId();
+            ResourceEntity resource;
+            if(resourceId == null) {
+                resource = Database.resourceRepository().getByFire(fire);
+            }
+            else {
+                resource = Database.resourceRepository().getOne(resourceId);
+            }
             Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
-            //if Intensity is 0 the nthe fire is dead, call back thr truck to the Barrack
+            //if Intensity is 0  when the fire is dead, call back thr truck to the Barrack
             if (intensity == 0)
             {
-                fire.setEndDate(Date.from(Instant.now()));
+                fire.setEndDate(new Date());
                 Database.fireRepository().update(fire);
-                //TODO Faire l'appel vers le rapellage de camion
-                api.resourceBack(BigDecimal.valueOf(resource.getId()));
+                api.resourceBack(BigDecimal.valueOf(resource.getId())).execute();
             }
         }
         else

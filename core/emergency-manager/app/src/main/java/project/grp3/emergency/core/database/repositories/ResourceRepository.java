@@ -1,5 +1,9 @@
 package project.grp3.emergency.core.database.repositories;
 
+import org.hibernate.SQLQuery;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
+import project.grp3.emergency.core.api.truck.model.FiremanModel;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireEntity;
 import project.grp3.emergency.core.database.entities.ResourceEntity;
@@ -24,9 +28,9 @@ public class ResourceRepository extends Repository<ResourceEntity>
 
     public ResourceEntity create(FireEntity fire, ResourceEntity resource)
     {
-        fire.setRessource(resource);
+        fire.setResource(resource);
         fire = Database.fireRepository().update(fire);
-        return fire.getRessource();
+        return fire.getResource();
     }
 
     public void setArrived(Long ressourceId)
@@ -41,5 +45,15 @@ public class ResourceRepository extends Repository<ResourceEntity>
         return super.get(resourceId);
     }
 
-
+    public ResourceEntity getByFire(FireEntity fire)
+    {
+        String sql = "SELECT * FROM resource where fire_id = :fire_id";
+        NativeQuery<ResourceEntity> query = DbAccess.session.createNativeQuery(sql, ResourceEntity.class);
+        query.setParameter("fire_id", fire.getId());
+        return query.getSingleResult();
+//        var cq = DbAccess.manager.getCriteriaBuilder().createQuery(ResourceEntity.class);
+//        var all = cq.select(cq.from(ResourceEntity.class));
+//        all.where(DbAccess.manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("fire"), fire));
+//        return DbAccess.manager.createQuery(cq).getResultList().get(0);
+    }
 }

@@ -40,13 +40,12 @@ public class FireRepository extends Repository<FireEntity>
         return res.length > 0;
     }
 
-    // FIXME DORIAN
-    public FireEntity getActifBySensorId(SensorEntity sensor)
+    public FireEntity getActiveBySensorId(SensorEntity sensor)
     {
         CriteriaBuilder cb = DbAccess.manager.getCriteriaBuilder();
         var cq = cb.createQuery(FireEntity.class);
         var root = cq.from(FireEntity.class);
-        List<Predicate> criteres = new ArrayList<Predicate>();
+        List<Predicate> criteres = new ArrayList<>();
         criteres.add(DbAccess.manager.getCriteriaBuilder().isNull(root.get("endDate")));
         criteres.add(DbAccess.manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
 
