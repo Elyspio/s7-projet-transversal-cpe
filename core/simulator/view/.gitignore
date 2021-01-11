@@ -1,0 +1,9 @@
+lib
+*.map
+*.js
+*.css
+.idea
+build
+dist
+node_modules
+*.log

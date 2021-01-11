@@ -2,21 +2,21 @@ package project.grp3.simulator.web.data;
 
 public class Location
 {
-    private final Long latitude;
-    private final Long longitude;
+    private final Double latitude;
+    private final Double longitude;
 
-    public Location(Long latitude, Long longitude)
+    public Location(Double latitude, Double longitude)
     {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public Long getLatitude()
+    public Double getLatitude()
     {
         return latitude;
     }
 
-    public Long getLongitude()
+    public Double getLongitude()
     {
         return longitude;
     }
