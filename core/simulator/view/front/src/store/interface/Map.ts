@@ -1,31 +1,24 @@
 import {LatLngLiteral} from "leaflet";
-import {Poi} from "../../../../back/src/interfaces/Poi";
+import {FireElement} from "../../../../back/src/interfaces/FireElement";
 
 export interface Marker {
-	pos: LatLngLiteral,
-	type: MarkerType
-	data?: Poi
+    pos: LatLngLiteral,
+    type: MarkerType
+    data?: FireElement
 }
 
 export enum MarkerType {
-	startPoint,
-	destPoint,
-	chargePoint
+
+    fire
 }
 
 export  type BoundingBox = {
-	_southWest: LatLngLiteral, _northEast: LatLngLiteral
+    _southWest: LatLngLiteral, _northEast: LatLngLiteral
 };
 
 export interface State {
-	zoom: number,
-	pois: Poi[]
-	customMarker: Marker[]
+    zoom: number,
+    fires: FireElement[]
 }
 
-export type GroupedMarker = {
-	pois: Marker[],
-	dest: Marker,
-	start: Marker
-}
 

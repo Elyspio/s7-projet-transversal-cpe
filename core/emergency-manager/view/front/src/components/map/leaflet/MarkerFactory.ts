@@ -15,7 +15,7 @@ export class MarkerFactory {
 
 		return {
 			dest: dest[0],
-			pois: pois,
+			fires: pois,
 			start: start[0]
 		}
 	}

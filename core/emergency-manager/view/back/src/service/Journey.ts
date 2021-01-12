@@ -42,7 +42,7 @@ export class JourneyService {
 			const cost = this.getLenghtFromSteps(lastStep, lastLegSteps);
 			const remainingAutonomy = car.range - cost;
 			console.log("Remaning autonomy: ", car.range, cost, remainingAutonomy);
-			const poi = this.pois.find((p) => {
+			const poi = this.fires.find((p) => {
 				const number = distanceFromPoint(
 					CoordConverter.mapboxToLeaflet(lastStep.maneuver.location),
 					CoordConverter.openStreetMapToLeaflet(p.addressInfo)

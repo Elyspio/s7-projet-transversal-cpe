@@ -15,7 +15,7 @@ import {MarkerType, State} from "../interface/Map";
 
 const initialState: State = {
 	zoom: initMap.zoom,
-	pois: [],
+	fires: [],
 	customMarker: []
 };
 

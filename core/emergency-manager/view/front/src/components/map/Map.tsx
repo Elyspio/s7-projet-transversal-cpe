@@ -50,7 +50,7 @@ export type ContextMenuData = {
 type StoreProps = {
 	zoomLevel: number,
 	carId?: string;
-	pois: Poi[],
+	fires: Poi[],
 	customMarkers: Marker[],
 	geoJson?: GeoJSON.LineString | Error
 }
@@ -67,7 +67,7 @@ const mapStateToProps = (store: StoreState) => {
 	return {
 		zoomLevel: store.map.zoom,
 		carId: store.car.current,
-		pois: store.map.pois,
+		fires: store.map.fires,
 		customMarkers: store.map.customMarker,
 		geoJson: geoJson
 	}
@@ -128,7 +128,7 @@ class CustomMap extends Component<Props, State> {
 		refresh: {
 			car: true,
 			customMarkers: false,
-			pois: true,
+			fires: true,
 			polyline: false
 		},
 		car: {}
@@ -169,7 +169,7 @@ class CustomMap extends Component<Props, State> {
 			...state,
 			refresh: {
 				car: props.carId !== state.car?.id,
-				pois: stateMarkers.pois.length !== props.pois.length,
+				fires: stateMarkers.fires.length !== props.fires.length,
 				customMarkers: reloadCustomMarker,
 				polyline: polyline
 			},
@@ -177,7 +177,7 @@ class CustomMap extends Component<Props, State> {
 				id: props.carId,
 			},
 
-			markers: [...props.customMarkers, ...props.pois.map(MarkerFactory.convert)]
+			markers: [...props.customMarkers, ...props.fires.map(MarkerFactory.convert)]
 		}
 	}
 
@@ -259,12 +259,12 @@ class CustomMap extends Component<Props, State> {
 	private async refresh() {
 		const {start, dest, pois} = MarkerFactory.groupByTypes(this.state.markers);
 		const l = new Logger.Function("refresh");
-		l.log({start, dest, pois}, this.state.refresh)
+		l.log({start, dest, pois: fires}, this.state.refresh)
 		l.end();
 		if (this.state.refresh.customMarkers) {
 			await this.refreshCustomMakers({start, dest})
 		}
-		if (this.state.refresh.pois) {
+		if (this.state.refresh.fires) {
 			await this.refreshPoiMarkers(pois);
 		}
 
@@ -295,7 +295,7 @@ class CustomMap extends Component<Props, State> {
 		this.props.setPois(pois);
 	}
 
-	
+
 
 	private async refreshCustomMakers({start, dest}: { start: Marker, dest: Marker }) {
 		if (this.map) {

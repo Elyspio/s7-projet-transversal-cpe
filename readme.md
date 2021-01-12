@@ -42,6 +42,5 @@ https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-contain
 | Microbit Simulator | -             | 8086            | 8086         |
 | Microbit Emergency | -             | 8087            | 8087         |
 | MQTT               | 5438          | 8088            | -            |
-
-
-|
+| Simulator View     | -             | 6003            | -            |
+| Emergency View     | -             | 6004            | -            |

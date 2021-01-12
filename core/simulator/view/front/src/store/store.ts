@@ -5,10 +5,10 @@ import {enableMapSet} from "immer"
 
 enableMapSet();
 export const store = configureStore({
-	reducer: reducers,
-	devTools: true,
-	// @ts-ignore
-	middleware: [logger, ...getDefaultMiddleware()]
+    reducer: reducers,
+    devTools: true,
+    // @ts-ignore
+    middleware: [logger, ...getDefaultMiddleware()]
 });
 
 
