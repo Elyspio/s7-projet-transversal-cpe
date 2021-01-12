@@ -72,13 +72,18 @@ public class FireService extends Services.Service
                             {
                                 intensity -= (long) (tType.getVolume() / 10);
                             }
+                            else
+                            {
+                                intensity -= (long) (tType.getVolume() / 50);
+
+                            }
                         }
                     }
 
                     logger.info("New fire intensity " + intensity);
 
 
-                    return intensity;
+                    return intensity > 0 ? intensity : 0;
                 }
                 else
                 {
@@ -101,7 +106,8 @@ public class FireService extends Services.Service
 
     public void changeFireIntensity(FireEntity fire, Long intensity)
     {
-        if(intensity <= 0) {
+        if (intensity <= 0)
+        {
             fire.setEndDate(new Date());
             intensity = 0L;
         }
@@ -123,7 +129,7 @@ public class FireService extends Services.Service
         }
         catch (IOException e)
         {
-            System.err.println("Failed to fetch microbit server " + e.getMessage() );
+            System.err.println("Failed to fetch microbit server " + e.getMessage());
         }
     }
 
@@ -168,6 +174,7 @@ public class FireService extends Services.Service
 
     private FireEntity createFire(FireEntity fire)
     {
+        fire.setDetectionDate(new Date());
         var created = Database.fireRepository.create(fire);
 
         try

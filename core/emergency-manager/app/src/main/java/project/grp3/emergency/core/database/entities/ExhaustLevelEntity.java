@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Cascade;
+import project.grp3.emergency.core.database.enums.ExhaustLevel;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +26,21 @@ public class ExhaustLevelEntity
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JsonIgnore
     private List<FiremanEntity> firemen;
+
+
+    @Column(nullable = false, name = "core_id")
+    @Enumerated(EnumType.STRING)
+    private ExhaustLevel coreId;
+
+    public ExhaustLevel getCoreId()
+    {
+        return coreId;
+    }
+
+    public void setCoreId(ExhaustLevel coreId)
+    {
+        this.coreId = coreId;
+    }
 
     @Override
     public boolean equals(Object o)

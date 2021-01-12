@@ -32,20 +32,16 @@ public class FireResource
 
         try
         {
-            boolean fire = Services.fire().handleFire(params.sensorId, params.fireTypeId, params.intensity);
+            boolean created = Services.fire().handleFire(params.sensorId, params.fireTypeId, params.intensity);
 
-            if (fire)
-            {
-                return Response
-                        .status(Response.Status.CREATED)
-                        .build();
-            }
-            else
-            {
-                return Response
-                        .status(204)
-                        .build();
-            }
+
+            return Response
+                    .status(created
+                            ? Response.Status.CREATED.getStatusCode()
+                            : Response.Status.NO_CONTENT.getStatusCode()
+                    )
+                    .build();
+
 
         }
         catch (IOException e)

@@ -45,7 +45,6 @@ public class App extends Application
         Set<Class<?>> resources = new HashSet<>();
 
         // Resources
-        resources.add(HelloResource.class);
         resources.add(FiremanRessource.class);
         resources.add(FireTruckResource.class);
         resources.add(ResourceResource.class);

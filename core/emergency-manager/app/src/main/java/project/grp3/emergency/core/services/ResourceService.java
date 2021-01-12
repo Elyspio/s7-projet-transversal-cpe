@@ -2,6 +2,7 @@ package project.grp3.emergency.core.services;
 
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.*;
+import project.grp3.emergency.core.database.enums.ExhaustLevel;
 import project.grp3.emergency.core.database.enums.TruckTravelState;
 import project.grp3.emergency.core.exception.EntityNotFound;
 import project.grp3.emergency.web.resource.models.ResourceGetResource;
@@ -96,9 +97,11 @@ public class ResourceService
         var resource = Database.resourceRepository().getOne(resourceId);
         for (FiremanEntity item : resource.getFiremen())
         {
-            int newExhaustLevel = item.getExhaustLevel().getValue() - 25;
-            if(newExhaustLevel < 0) newExhaustLevel = 0;
-            item.getExhaustLevel().setValue(newExhaustLevel);
+            ExhaustLevelEntity level = item.getExhaustLevel();
+            int newExhaustLevel = level.getValue() + 25;
+            Integer maxValue = Database.getExhaustLevelRepository().fromCoreId(ExhaustLevel.KO).getValue();
+            if (newExhaustLevel > maxValue) newExhaustLevel = maxValue;
+            level.setValue(newExhaustLevel);
         }
         Database.resourceRepository().setArrived(resourceId);
     }

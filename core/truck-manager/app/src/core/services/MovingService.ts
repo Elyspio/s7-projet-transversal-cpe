@@ -10,15 +10,15 @@ import {LocationService} from "./LocationService";
 export class MovingService {
 
     public static async moveTrucks() {
-        const fireTrucks: TruckLocationEntity[] = await Repositories.truckLocation.getActives()
-        fireTrucks.filter(f => f.truck.travelState === TravelState.MOVING).forEach(f => {
-            LocationService.move(f);
-        })
+        const fireTrucks: TruckLocationEntity[] = await Repositories.truckLocation.getMoving()
+        await Promise.all(fireTrucks.map(f =>
+            LocationService.move(f)
+        ));
 
     }
 
     async getMovement(idResource: number): Promise<MovementModel> {
-        const trucks = await Repositories.truck.find({where: {id_resource: idResource}});
+        const trucks = await Repositories.truck.find({where: {id_resource: idResource}, relations: ["firemen", "firemen.truck"]});
         const firemen: FiremanEntity[] = trucks.reduce((acc, current) => [...acc, ...current.firemen], [])
 
         return {
@@ -62,11 +62,21 @@ export class MovingService {
     async back(resourceId: number) {
         let movement = await this.getMovement(resourceId);
         await this.stopMovement(movement)
+        const trucks = await Promise.all(movement.trucks.map(t => Repositories.truck.getByBusiness(t.id, resourceId)))
 
-        await this.createMovement({
-            ...movement,
-            dest: movement.dest,
-        }, TravelDirection.BARRACK)
+        const {dest, firemen} = movement;
+        await Promise.all(trucks.map(t => {
+            this.createMovement({
+                trucks: [{
+                    start: dest,
+                    id: t.id_truck,
+                    speed: t.speed
+                }],
+                dest: {longitude: t.start_longitude, latitude: t.start_latitude},
+                resourceId: resourceId,
+                firemen: firemen.filter(f => f.fireTruckId === t.id),
+            }, TravelDirection.BARRACK)
+        }))
 
     }
 }

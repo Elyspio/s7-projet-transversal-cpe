@@ -13,6 +13,5 @@
  */export * from './apis/fire-truck-api';
 export * from './apis/firemen-api';
 export * from './apis/fires-api';
-export * from './apis/hello-api';
 export * from './apis/resources-api';
 

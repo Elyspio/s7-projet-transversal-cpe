@@ -21,7 +21,7 @@ function deltaBetweenLocations(a: LocationModel, b: LocationModel) {
     const c = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
 
 
-    $log.info("distance", R  * c)
+    $log.info("distance", R * c)
 
     return R * c;
 }
@@ -43,7 +43,12 @@ export class LocationService {
         if (f.current_longitude === f.truck.dest_longitude && f.current_latitude === f.truck.dest_latitude) {
 
             if (f.truck.travelDirection === TravelDirection.BARRACK) {
-                await Apis.emergency.resource.resourceBack(f.truck.id_resource)
+                try {
+                    await Apis.emergency.resource.resourceBack(f.truck.id_resource)
+
+                } catch (e) {
+                    console.error(e);
+                }
             }
 
             await Repositories.truck.update({travelState: TravelState.DONE, id: f.truck.id});
@@ -56,7 +61,10 @@ export class LocationService {
      * @param padding maximum distance between locations (in m)
      */
     public async getNear(location: LocationModel, padding = 1000) {
-        const actives = (await Repositories.truckLocation.getDones()).filter(tl => tl.truck.travelDirection === TravelDirection.FIRE)
+        let dones = await Repositories.truckLocation.getDones();
+        const actives = dones.filter(tl => tl.truck.travelDirection === TravelDirection.FIRE
+            && dones.find(tl2 => tl2.truck.id_resource === tl.truck.id_resource && tl2.truck.travelDirection === TravelDirection.BARRACK) === undefined
+        )
         console.log("actives.length", actives.length)
         const ids = actives
             .filter(tl => deltaBetweenLocations({latitude: tl.current_latitude, longitude: tl.current_longitude}, location) < padding)
@@ -66,7 +74,7 @@ export class LocationService {
     }
 
     public async getLocations() {
-        return (await Repositories.truckLocation.getActives()).map(tl => Assemblers.truck.toModel(tl.truck));
+        return (await Repositories.truckLocation.getMoving()).map(tl => Assemblers.truck.toModel(tl.truck));
     }
 
 }

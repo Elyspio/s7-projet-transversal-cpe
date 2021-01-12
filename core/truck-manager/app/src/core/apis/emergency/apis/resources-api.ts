@@ -67,12 +67,17 @@ export const ResourcesApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary get notice that a resource is back
-         * @param {number} [resourceId] 
+         * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resourceBack: async (resourceId?: number, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/resources`;
+        resourceBack: async (id: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling resourceBack.');
+            }
+            const localVarPath = `/resources/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -82,14 +87,7 @@ export const ResourcesApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-            const localVarFormParams = new FormData();
 
-
-            if (resourceId !== undefined) { 
-                localVarFormParams.append('resourceId', resourceId as any);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -100,7 +98,6 @@ export const ResourcesApiAxiosParamCreator = function (configuration?: Configura
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = localVarFormParams;
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -133,12 +130,12 @@ export const ResourcesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary get notice that a resource is back
-         * @param {number} [resourceId] 
+         * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async resourceBack(resourceId?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await ResourcesApiAxiosParamCreator(configuration).resourceBack(resourceId, options);
+        async resourceBack(id: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await ResourcesApiAxiosParamCreator(configuration).resourceBack(id, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -166,12 +163,12 @@ export const ResourcesApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @summary get notice that a resource is back
-         * @param {number} [resourceId] 
+         * @param {number} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resourceBack(resourceId?: number, options?: any): AxiosPromise<void> {
-            return ResourcesApiFp(configuration).resourceBack(resourceId, options).then((request) => request(axios, basePath));
+        resourceBack(id: number, options?: any): AxiosPromise<void> {
+            return ResourcesApiFp(configuration).resourceBack(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -197,12 +194,12 @@ export class ResourcesApi extends BaseAPI {
     /**
      * 
      * @summary get notice that a resource is back
-     * @param {number} [resourceId] 
+     * @param {number} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ResourcesApi
      */
-    public resourceBack(resourceId?: number, options?: any) {
-        return ResourcesApiFp(this.configuration).resourceBack(resourceId, options).then((request) => request(this.axios, this.basePath));
+    public resourceBack(id: number, options?: any) {
+        return ResourcesApiFp(this.configuration).resourceBack(id, options).then((request) => request(this.axios, this.basePath));
     }
 }

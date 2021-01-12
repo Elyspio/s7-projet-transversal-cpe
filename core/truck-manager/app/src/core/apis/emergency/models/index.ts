@@ -1,5 +1,4 @@
 export * from './barack';
-export * from './body';
 export * from './entity-not-found-response';
 export * from './exhaust-level';
 export * from './fire-resource-new-fire';

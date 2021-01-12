@@ -1,13 +1,25 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
 services:
-  influxdb:
-    image: influxdb:alpine
-    restart: unless-stopped
-    environment:
-      INFLUXDB_DB: "project"
-      INFLUXDB_ADMIN_USER: "admin"
-      INFLUXDB_ADMIN_PASSWORD: "admin"
-      INFLUXDB_USER: "user"
-      INFLUXDB_PASSWORD: "user"
-    ports:
-      - 5438:8086
-    container_name: s7-project-mqtt-database
+ 
+    db_emergency:
+        image: postgres
+        restart: always
+        container_name: emergency_db
+        environment:
+            POSTGRES_PASSWORD: admin
+        volumes:
+            - ./database:/var/lib/postgresql/data
+            - ./dumps:/dumps
+        ports:
+            - "5433:5432" 
+    mqtt:
+        image: eclipse-mosquitto
+        restart: always
+        container_name: emergency_mqtt
+        ports:
+          - 1884:1883
+          - 9002:9001
+        volumes:
+            - ./log:/mosquitto/log

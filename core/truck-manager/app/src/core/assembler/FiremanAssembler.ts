@@ -16,7 +16,7 @@ export class FiremanAssembler extends BaseAssembler<FiremanModel, FiremanEntity>
     toModel(entity: FiremanEntity): FiremanModel {
         return {
             id: entity.id_fireman,
-            fireTruckId: entity.truck.id_truck
+            fireTruckId: entity.truck.id_truck,
         };
     }
 

@@ -14,9 +14,9 @@ abstract public class Repository<Entity>
 {
 
 
+    private static final StandardServiceRegistry registry = null;
     protected static EntityManager manager = null;
     protected static Session session = null;
-    private static final StandardServiceRegistry registry = null;
     private final Class<Entity> entity;
 
     protected Repository(Class<Entity> cls)

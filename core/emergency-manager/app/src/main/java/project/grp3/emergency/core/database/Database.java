@@ -15,6 +15,7 @@ public class Database
     private final FireRepository fireRepository;
     private final LogRepository logRepository;
     private final BarrackRepository barrackRepository;
+    private final ExhaustLevelRepository exhaustLevelRepository;
 
     private Database()
     {
@@ -26,6 +27,7 @@ public class Database
         fireRepository = new FireRepository();
         logRepository = new LogRepository();
         barrackRepository = new BarrackRepository();
+        exhaustLevelRepository = new ExhaustLevelRepository();
     }
 
     public static void init()
@@ -75,5 +77,10 @@ public class Database
 
     public static BarrackRepository barrackRepository(){
         return instance.barrackRepository;
+    }
+    
+    public static ExhaustLevelRepository getExhaustLevelRepository()
+    {
+        return instance.exhaustLevelRepository;
     }
 }

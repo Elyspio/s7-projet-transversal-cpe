@@ -18,14 +18,25 @@ public class ResourceResource
 {
     @PUT()
     @ApiOperation(value = "get notice that a resource is back")
-    @Produces("application/json")
-    public Response resourceBack(@FormParam("resourceId") Long resourceId)
+    @Path("{id}")
+    public Response resourceBack(@PathParam("id") Long resourceId)
     {
-        Services.resource().setArrived(resourceId);
+        try
+        {
+            Services.resource().setArrived(resourceId);
 
-        return Response
-                .ok()
-                .build();
+            return Response
+                    .ok()
+                    .build();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return Response
+                    .serverError()
+                    .entity(e)
+                    .build();
+        }
     }
 
 
@@ -52,7 +63,7 @@ public class ResourceResource
             entityNotFound.printStackTrace();
 
             return Response
-                    .status(404)
+                        .status(404)
                     .entity(new EntityNotFoundResponse(entityNotFound))
                     .build();
         }
