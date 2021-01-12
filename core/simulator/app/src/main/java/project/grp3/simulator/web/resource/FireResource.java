@@ -66,7 +66,6 @@ public class FireResource
     @Produces("application/json")
     @Path("/fires")
     public Response fires() throws IOException {
-
             var fires = Database.fireRepository.getActiveFire();
             var locations = new ArrayList<Location>();
             SensorEntity sensor = null;

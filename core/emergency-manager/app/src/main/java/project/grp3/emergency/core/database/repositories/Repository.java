@@ -29,7 +29,7 @@ abstract public class Repository<Entity>
         DbAccess.session.close();
     }
 
-    protected List<Entity> getAll()
+    public List<Entity> getAll()
     {
         var cq = DbAccess.manager.getCriteriaBuilder().createQuery(entity);
         var all = cq.select(cq.from(entity));

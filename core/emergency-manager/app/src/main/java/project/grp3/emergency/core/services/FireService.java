@@ -1,16 +1,21 @@
 package project.grp3.emergency.core.services;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import project.grp3.emergency.core.api.Apis;
 import project.grp3.emergency.core.api.truck.model.FiremanModel;
 import project.grp3.emergency.core.api.truck.model.LocationModel;
 import project.grp3.emergency.core.api.truck.model.MovementModel;
 import project.grp3.emergency.core.api.truck.model.TruckModel;
 import project.grp3.emergency.core.database.Database;
-import project.grp3.emergency.core.database.entities.FireTruckEntity;
-import project.grp3.emergency.core.database.entities.FiremanEntity;
-import project.grp3.emergency.core.database.entities.ResourceEntity;
+import project.grp3.emergency.core.database.entities.*;
 import project.grp3.emergency.core.database.enums.LogAction;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -159,5 +164,6 @@ public class FireService extends Services.Service
 
 
     }
+
 
 }

@@ -1,6 +1,7 @@
 package project.grp3.emergency.core.database;
 
 import project.grp3.emergency.core.database.repositories.*;
+import project.grp3.emergency.web.resource.BarrackRessource;
 
 public class Database
 {
@@ -13,6 +14,7 @@ public class Database
     private final ResourceRepository resourceRepository;
     private final FireRepository fireRepository;
     private final LogRepository logRepository;
+    private final BarrackRepository barrackRepository;
 
     private Database()
     {
@@ -23,6 +25,7 @@ public class Database
         resourceRepository = new ResourceRepository();
         fireRepository = new FireRepository();
         logRepository = new LogRepository();
+        barrackRepository = new BarrackRepository();
     }
 
     public static void init()
@@ -68,5 +71,9 @@ public class Database
     public static LogRepository logRepository()
     {
         return instance.logRepository;
+    }
+
+    public static BarrackRepository barrackRepository(){
+        return instance.barrackRepository;
     }
 }

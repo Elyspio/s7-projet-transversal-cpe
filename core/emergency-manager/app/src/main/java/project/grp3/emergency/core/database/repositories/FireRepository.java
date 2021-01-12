@@ -53,6 +53,17 @@ public class FireRepository extends Repository<FireEntity>
         return DbAccess.manager.createQuery(cq).getSingleResult();
     }
 
+    public List<FireEntity> getActive()
+    {
+        CriteriaBuilder cb = DbAccess.manager.getCriteriaBuilder();
+        var cq = cb.createQuery(FireEntity.class);
+        var root = cq.from(FireEntity.class);
+        List<Predicate> criteres = new ArrayList<>();
+        criteres.add(DbAccess.manager.getCriteriaBuilder().isNull(root.get("endDate")));
+        cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true);
+        return DbAccess.manager.createQuery(cq).getResultList();
+    }
+
     public FireEntity update(FireEntity item)
     {
         return super.update(item);
