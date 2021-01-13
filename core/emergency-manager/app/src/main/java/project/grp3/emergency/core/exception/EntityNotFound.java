@@ -4,8 +4,8 @@ public class EntityNotFound extends Exception
 {
 
 
-    private Class cls;
-    private Long id;
+    private final Class cls;
+    private final Long id;
 
     public EntityNotFound(Class cls, Long id)
     {

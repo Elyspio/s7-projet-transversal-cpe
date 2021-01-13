@@ -11,8 +11,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */export * from './apis/fire-truck-api';
+export * from './apis/fire-types-api';
 export * from './apis/firemen-api';
 export * from './apis/fires-api';
-export * from './apis/hello-api';
 export * from './apis/resources-api';
+export * from './apis/sensors-api';
 

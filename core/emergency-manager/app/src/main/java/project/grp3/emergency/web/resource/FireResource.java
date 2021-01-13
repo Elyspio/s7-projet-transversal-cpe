@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiResponses;
 import project.grp3.emergency.core.api.Apis;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireEntity;
-import project.grp3.emergency.core.database.entities.LocationEntity;
 import project.grp3.emergency.core.database.entities.SensorEntity;
 import project.grp3.emergency.core.services.Services;
 import project.grp3.emergency.web.entities.FireLocation;
@@ -15,7 +14,6 @@ import project.grp3.emergency.web.resource.models.FireResourceNewFire;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -26,7 +24,7 @@ public class FireResource
 {
 
     @POST()
-    @ApiOperation(value = "add or update a fire")
+    @ApiOperation(value = "add or update a fire", response = Long.class)
     @Consumes("application/json")
     @Produces("application/json")
     public Response newFire(FireResourceNewFire params)
@@ -34,17 +32,12 @@ public class FireResource
 
         try
         {
-            boolean created = Services.fire().handleFire(params.sensorId, params.fireTypeId, params.intensity);
-
+            var entity = Services.fire().handleFire(params.sensorId, params.fireTypeId, params.intensity);
 
             return Response
-                    .status(created
-                            ? Response.Status.CREATED.getStatusCode()
-                            : Response.Status.NO_CONTENT.getStatusCode()
-                    )
+                    .ok()
+                    .entity(entity.getId())
                     .build();
-
-
         }
         catch (IOException e)
         {
@@ -62,18 +55,21 @@ public class FireResource
     )
     @Produces("application/json")
     @Path("/firesLocations")
-    public Response fires() throws IOException {
+    public Response fires() throws IOException
+    {
         var fires = Database.fireRepository().getActive();
         var locations = new ArrayList<FireLocation>();
         SensorEntity sensor = null;
         String intensity = null;
-        for (FireEntity fire: fires) {
+        for (FireEntity fire : fires)
+        {
             sensor = fire.getSensor();
             var result = Apis.geocoding().search(sensor.getStreet(), sensor.getPostalCode(), "json").execute().body();
-            if (result != null) {
+            if (result != null)
+            {
                 var location = result.get(0);
                 intensity = Database.logRepository().getLastIntensity(fire);
-                locations.add(new FireLocation((Double.parseDouble(location.lat)),Double.parseDouble(location.lon),Double.parseDouble(intensity)));
+                locations.add(new FireLocation((Double.parseDouble(location.lat)), Double.parseDouble(location.lon), Double.parseDouble(intensity)));
             }
         }
         return Response

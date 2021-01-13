@@ -96,6 +96,40 @@ export const FireTruckApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary get all fireTruck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fireTruckLocations: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/fireTruck/locations`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                query.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -132,6 +166,19 @@ export const FireTruckApiFp = function(configuration?: Configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
+        /**
+         * 
+         * @summary get all fireTruck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async fireTruckLocations(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await FireTruckApiAxiosParamCreator(configuration).fireTruckLocations(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
     }
 };
 
@@ -159,6 +206,15 @@ export const FireTruckApiFactory = function (configuration?: Configuration, base
          */
         fireTruckById(id: number, options?: any): AxiosPromise<void> {
             return FireTruckApiFp(configuration).fireTruckById(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary get all fireTruck
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fireTruckLocations(options?: any): AxiosPromise<void> {
+            return FireTruckApiFp(configuration).fireTruckLocations(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -190,5 +246,15 @@ export class FireTruckApi extends BaseAPI {
      */
     public fireTruckById(id: number, options?: any) {
         return FireTruckApiFp(this.configuration).fireTruckById(id, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary get all fireTruck
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FireTruckApi
+     */
+    public fireTruckLocations(options?: any) {
+        return FireTruckApiFp(this.configuration).fireTruckLocations(options).then((request) => request(this.axios, this.basePath));
     }
 }

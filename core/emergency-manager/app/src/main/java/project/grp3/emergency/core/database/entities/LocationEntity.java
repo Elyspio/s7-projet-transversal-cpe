@@ -1,6 +1,7 @@
 package project.grp3.emergency.core.database.entities;
 
-public class LocationEntity {
+public class LocationEntity
+{
 
     private final Double latitude;
     private final Double longitude;

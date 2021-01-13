@@ -5,8 +5,7 @@ import {TruckElement} from "../../../../back/src/interfaces/TruckElement";
 export interface Marker {
     pos: LatLngLiteral,
     type: MarkerType
-    data?: FireElement
-    trucks?: TruckElement
+    data: FireElement | TruckElement
 }
 
 export enum MarkerType {

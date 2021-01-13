@@ -17,12 +17,47 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { FireResourceNewFire } from '../models';
+import { IOException } from '../models';
 /**
  * FiresApi - axios parameter creator
  * @export
  */
 export const FiresApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Returns the list of fires 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fires: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/fires/firesLocations`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.query) {
+                query.set(key, options.query[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary add or update a fire
@@ -73,12 +108,25 @@ export const FiresApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Returns the list of fires 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async fires(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await FiresApiAxiosParamCreator(configuration).fires(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary add or update a fire
          * @param {FireResourceNewFire} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async newFire(body?: FireResourceNewFire, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async newFire(body?: FireResourceNewFire, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
             const localVarAxiosArgs = await FiresApiAxiosParamCreator(configuration).newFire(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -96,12 +144,21 @@ export const FiresApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          * 
+         * @summary Returns the list of fires 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fires(options?: any): AxiosPromise<void> {
+            return FiresApiFp(configuration).fires(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary add or update a fire
          * @param {FireResourceNewFire} [body] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        newFire(body?: FireResourceNewFire, options?: any): AxiosPromise<void> {
+        newFire(body?: FireResourceNewFire, options?: any): AxiosPromise<number> {
             return FiresApiFp(configuration).newFire(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -114,6 +171,16 @@ export const FiresApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class FiresApi extends BaseAPI {
+    /**
+     * 
+     * @summary Returns the list of fires 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FiresApi
+     */
+    public fires(options?: any) {
+        return FiresApiFp(this.configuration).fires(options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * 
      * @summary add or update a fire

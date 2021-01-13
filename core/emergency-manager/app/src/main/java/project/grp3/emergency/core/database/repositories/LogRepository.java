@@ -26,7 +26,8 @@ public class LogRepository extends Repository<LogEntity>
         return super.create(logEntity);
     }
 
-    public String getLastIntensity(FireEntity fire){
+    public String getLastIntensity(FireEntity fire)
+    {
         CriteriaBuilder cb = DbAccess.manager.getCriteriaBuilder();
         var cq = cb.createQuery(LogEntity.class);
         var root = cq.from(LogEntity.class);
@@ -35,7 +36,8 @@ public class LogRepository extends Repository<LogEntity>
         criteres.add(DbAccess.manager.getCriteriaBuilder().equal(root.get("action"), LogAction.CHANGEMENT_INTENSITE_FEU));
         cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true).orderBy(cb.desc(root.get("id")));
         var logs = DbAccess.manager.createQuery(cq).getResultList();
-        if(logs.isEmpty()){
+        if (logs.isEmpty())
+        {
             return "0";
         }
         return logs.get(0).getValue();

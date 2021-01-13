@@ -1,24 +1,19 @@
 package project.grp3.emergency.core.services;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import project.grp3.emergency.core.api.Apis;
 import project.grp3.emergency.core.api.truck.model.FiremanModel;
 import project.grp3.emergency.core.api.truck.model.LocationModel;
 import project.grp3.emergency.core.api.truck.model.MovementModel;
 import project.grp3.emergency.core.api.truck.model.TruckModel;
 import project.grp3.emergency.core.database.Database;
-import project.grp3.emergency.core.database.entities.*;
+import project.grp3.emergency.core.database.entities.FireEntity;
+import project.grp3.emergency.core.database.entities.FireTruckEntity;
+import project.grp3.emergency.core.database.entities.FiremanEntity;
+import project.grp3.emergency.core.database.entities.ResourceEntity;
 import project.grp3.emergency.core.database.enums.LogAction;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -31,23 +26,26 @@ public class FireService extends Services.Service
         Logger logger = Logger.getLogger(FireService.class.getName());
     }
 
-    public boolean handleFire(Long sensorId, Long fireTypeId, Integer intensity) throws IOException
+    public FireEntity handleFire(Long sensorId, Long fireTypeId, Integer intensity) throws IOException
     {
         //var fire = new FireEntity();
         //Get The sensor Id linked to the fire
         var api = Apis.truck();
         var s = Database.sensorRepository().getOneById(sensorId);
         boolean exist = Database.fireRepository().isExist(s);
+        FireEntity fire;
         if (exist)
         {
             //If the fire already exist, add a log line to indicate the new intensity
-            var fire = Database.fireRepository().getActiveBySensorId(s);
+            fire = Database.fireRepository().getActiveBySensorId(s);
             Long resourceId = fire.getResource().getId();
             ResourceEntity resource;
-            if(resourceId == null) {
+            if (resourceId == null)
+            {
                 resource = Database.resourceRepository().getByFire(fire);
             }
-            else {
+            else
+            {
                 resource = Database.resourceRepository().getOne(resourceId);
             }
             Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
@@ -62,7 +60,7 @@ public class FireService extends Services.Service
         else
         {
             //Create a new fire and send resources
-            var fire = Database.fireRepository().create(sensorId, fireTypeId);
+            fire = Database.fireRepository().create(sensorId, fireTypeId);
             var resource = Services.resource().create(fire, intensity);
             //var resource = Database.resourceRepository.getOne(fire.getId());
             Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
@@ -121,7 +119,7 @@ public class FireService extends Services.Service
 
             api.resourceSend(callModel).execute();
         }
-        return exist;
+        return fire;
     }
 
 

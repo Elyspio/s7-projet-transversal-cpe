@@ -1,0 +1,591 @@
+13-Jan-2021 18:13:25.139 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.41
+13-Jan-2021 18:13:25.142 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Dec 3 2020 11:43:00 UTC
+13-Jan-2021 18:13:25.142 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.41.0
+13-Jan-2021 18:13:25.142 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+13-Jan-2021 18:13:25.142 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.19.128-microsoft-standard
+13-Jan-2021 18:13:25.142 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+13-Jan-2021 18:13:25.142 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/java/openjdk-15
+13-Jan-2021 18:13:25.142 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           15.0.1+9-18
+13-Jan-2021 18:13:25.143 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+13-Jan-2021 18:13:25.143 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+13-Jan-2021 18:13:25.143 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+13-Jan-2021 18:13:25.152 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+13-Jan-2021 18:13:25.152 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+13-Jan-2021 18:13:25.152 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+13-Jan-2021 18:13:25.152 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+13-Jan-2021 18:13:25.153 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+13-Jan-2021 18:13:25.156 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.25] using APR version [1.4.8].
+13-Jan-2021 18:13:25.157 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+13-Jan-2021 18:13:25.157 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+13-Jan-2021 18:13:25.159 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.0.2k-fips  26 Jan 2017]
+13-Jan-2021 18:13:25.352 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+13-Jan-2021 18:13:25.370 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [349] milliseconds
+13-Jan-2021 18:13:25.397 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+13-Jan-2021 18:13:25.397 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.41]
+13-Jan-2021 18:13:25.407 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/ROOT.war]
+13-Jan-2021 18:13:26.432 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+13-Jan-2021 18:13:26.879 INFO [Timer-0] org.hibernate.Version.logVersion HHH000412: Hibernate ORM core version 5.4.25.Final
+13-Jan-2021 18:13:27.120 INFO [Timer-0] org.hibernate.annotations.common.reflection.java.JavaReflectionManager.<clinit> HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+13-Jan-2021 18:13:27.210 WARN [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+13-Jan-2021 18:13:27.213 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://192.168.0.44:5433/postgres]
+13-Jan-2021 18:13:27.214 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001001: Connection properties: {password=****, pool_size=1, user=postgres}
+13-Jan-2021 18:13:27.214 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001003: Autocommit mode: false
+13-Jan-2021 18:13:27.216 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init> HHH000115: Hibernate connection pool size: 20 (min=1)
+13-Jan-2021 18:13:27.256 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/ROOT.war] has finished in [1,848] ms
+13-Jan-2021 18:13:27.260 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+13-Jan-2021 18:13:27.266 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1895] milliseconds
+13-Jan-2021 18:13:27.332 INFO [Timer-0] org.hibernate.dialect.Dialect.<init> HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+13-Jan-2021 18:13:27.619 INFO [Timer-0] org.hibernate.validator.internal.util.Version.<clinit> HV000001: Hibernate Validator 6.1.5.Final
+13-Jan-2021 18:13:27.996 INFO [Timer-0] org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4e705ac7] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+13-Jan-2021 18:13:28.081 INFO [Timer-0] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13-Jan-2021 18:13:28.140 WARN [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+13-Jan-2021 18:13:28.140 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://192.168.0.44:5433/postgres]
+13-Jan-2021 18:13:28.141 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001001: Connection properties: {password=****, pool_size=1, user=postgres}
+13-Jan-2021 18:13:28.141 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001003: Autocommit mode: false
+13-Jan-2021 18:13:28.141 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init> HHH000115: Hibernate connection pool size: 20 (min=1)
+13-Jan-2021 18:13:28.170 INFO [Timer-0] org.hibernate.dialect.Dialect.<init> HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+13-Jan-2021 18:13:28.248 INFO [Timer-0] org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@42eb9993] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+13-Jan-2021 18:13:28.300 INFO [Timer-0] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13-Jan-2021 18:13:28.316 WARN [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+13-Jan-2021 18:13:28.316 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://192.168.0.44:5433/postgres]
+13-Jan-2021 18:13:28.316 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001001: Connection properties: {password=****, pool_size=1, user=postgres}
+13-Jan-2021 18:13:28.316 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001003: Autocommit mode: false
+13-Jan-2021 18:13:28.316 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init> HHH000115: Hibernate connection pool size: 20 (min=1)
+13-Jan-2021 18:13:28.340 INFO [Timer-0] org.hibernate.dialect.Dialect.<init> HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+13-Jan-2021 18:13:28.411 INFO [Timer-0] org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@145b51d8] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+13-Jan-2021 18:13:28.462 INFO [Timer-0] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13-Jan-2021 18:13:31.847 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:13:33.538 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 67
+13-Jan-2021 18:13:36.847 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:13:37.147 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 64
+13-Jan-2021 18:13:41.847 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:13:42.123 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 61
+13-Jan-2021 18:13:46.847 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:13:47.142 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 58
+13-Jan-2021 18:13:51.847 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:13:52.123 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 55
+13-Jan-2021 18:13:56.848 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:13:57.707 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 52
+13-Jan-2021 18:14:01.848 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:02.156 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 49
+13-Jan-2021 18:14:06.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:07.145 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 46
+13-Jan-2021 18:14:11.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:12.164 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 43
+13-Jan-2021 18:14:16.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:17.128 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 40
+13-Jan-2021 18:14:21.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:22.169 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 37
+13-Jan-2021 18:14:26.850 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:27.168 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 34
+13-Jan-2021 18:14:31.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:32.122 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 31
+13-Jan-2021 18:14:36.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:37.161 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 28
+13-Jan-2021 18:14:41.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:42.130 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 25
+13-Jan-2021 18:14:46.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:47.120 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 22
+13-Jan-2021 18:14:51.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:52.134 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 19
+13-Jan-2021 18:14:56.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:14:57.157 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 16
+13-Jan-2021 18:15:01.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:15:02.146 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 13
+13-Jan-2021 18:15:06.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:15:07.179 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 10
+13-Jan-2021 18:15:11.853 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:15:12.172 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 7
+13-Jan-2021 18:15:16.850 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:15:17.136 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 4
+13-Jan-2021 18:15:21.850 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:15:22.194 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 1
+13-Jan-2021 18:15:26.850 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=311
+13-Jan-2021 18:15:27.152 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -2
+13-Jan-2021 18:15:36.850 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=312
+13-Jan-2021 18:15:37.077 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 79
+13-Jan-2021 18:15:41.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=312
+13-Jan-2021 18:15:42.094 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 31
+13-Jan-2021 18:15:46.850 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=312
+13-Jan-2021 18:15:47.071 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -17
+13-Jan-2021 18:15:56.849 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:15:57.067 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 102
+13-Jan-2021 18:16:01.850 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:02.083 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 94
+13-Jan-2021 18:16:06.851 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:07.076 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 81
+13-Jan-2021 18:16:11.852 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:12.103 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 68
+13-Jan-2021 18:16:16.852 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:17.120 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 55
+13-Jan-2021 18:16:21.852 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:22.073 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 42
+13-Jan-2021 18:16:26.852 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:27.114 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 29
+13-Jan-2021 18:16:31.852 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:32.085 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 16
+13-Jan-2021 18:16:36.853 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:37.074 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 3
+13-Jan-2021 18:16:41.852 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=313
+13-Jan-2021 18:16:42.090 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -10
+13-Jan-2021 18:16:51.852 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=314
+13-Jan-2021 18:16:52.147 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -48
+13-Jan-2021 18:17:01.853 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:02.175 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 115
+13-Jan-2021 18:17:06.853 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:07.160 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 97
+13-Jan-2021 18:17:11.854 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:12.229 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 79
+13-Jan-2021 18:17:16.853 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:19.042 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 61
+13-Jan-2021 18:17:21.854 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:26.853 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:31.853 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:32.211 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 43
+13-Jan-2021 18:17:33.579 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+13-Jan-2021 18:17:33.584 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+13-Jan-2021 18:17:33.594 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+13-Jan-2021 18:17:33.595 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [Timer-0] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/java.lang.Object.wait(Native Method)
+ java.base@15.0.1/java.util.TimerThread.mainLoop(Timer.java:553)
+ java.base@15.0.1/java.util.TimerThread.run(Timer.java:506)
+13-Jan-2021 18:17:33.595 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [Hibernate Connection Pool Validation Thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@15.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1661)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1056)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1116)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.596 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [Hibernate Connection Pool Validation Thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@15.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1661)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1056)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1116)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.596 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [Hibernate Connection Pool Validation Thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@15.0.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1661)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1056)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1116)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.596 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [OkHttp ConnectionPool] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/java.lang.Object.wait(Native Method)
+ java.base@15.0.1/java.lang.Object.wait(Object.java:455)
+ okhttp3.internal.connection.RealConnectionPool.lambda$new$0(RealConnectionPool.java:62)
+ okhttp3.internal.connection.RealConnectionPool$$Lambda$375/0x00000008011c3a38.run(Unknown Source)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.597 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [Okio Watchdog] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/java.lang.Object.wait(Native Method)
+ java.base@15.0.1/java.lang.Object.wait(Object.java:455)
+ okio.AsyncTimeout.awaitTimeout(AsyncTimeout.java:362)
+ okio.AsyncTimeout$Watchdog.run(AsyncTimeout.java:313)
+13-Jan-2021 18:17:33.598 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [OkHttp nominatim.openstreetmap.org] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/sun.nio.ch.Net.poll(Native Method)
+ java.base@15.0.1/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:181)
+ java.base@15.0.1/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:190)
+ java.base@15.0.1/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:314)
+ java.base@15.0.1/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:350)
+ java.base@15.0.1/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:803)
+ java.base@15.0.1/java.net.Socket$SocketInputStream.read(Socket.java:981)
+ java.base@15.0.1/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:478)
+ java.base@15.0.1/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:472)
+ java.base@15.0.1/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
+ java.base@15.0.1/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1434)
+ java.base@15.0.1/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1038)
+ okio.Okio$2.read(Okio.java:140)
+ okio.AsyncTimeout$2.read(AsyncTimeout.java:237)
+ okio.RealBufferedSource.request(RealBufferedSource.java:72)
+ okio.RealBufferedSource.require(RealBufferedSource.java:65)
+ okhttp3.internal.http2.Http2Reader.nextFrame(Http2Reader.java:96)
+ okhttp3.internal.http2.Http2Connection$ReaderRunnable.execute(Http2Connection.java:668)
+ okhttp3.internal.NamedRunnable.run(NamedRunnable.java:32)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.598 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [OkHttp ConnectionPool] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/java.lang.Object.wait(Native Method)
+ java.base@15.0.1/java.lang.Object.wait(Object.java:455)
+ okhttp3.internal.connection.RealConnectionPool.lambda$new$0(RealConnectionPool.java:62)
+ okhttp3.internal.connection.RealConnectionPool$$Lambda$375/0x00000008011c3a38.run(Unknown Source)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.598 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [OkHttp nominatim.openstreetmap.org Writer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@15.0.1/java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:505)
+ java.base@15.0.1/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3137)
+ java.base@15.0.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1614)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1170)
+ java.base@15.0.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1056)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1116)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.599 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [OkHttp ConnectionPool] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/java.lang.Object.wait(Native Method)
+ java.base@15.0.1/java.lang.Object.wait(Object.java:455)
+ okhttp3.internal.connection.RealConnectionPool.lambda$new$0(RealConnectionPool.java:62)
+ okhttp3.internal.connection.RealConnectionPool$$Lambda$375/0x00000008011c3a38.run(Unknown Source)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.599 WARNING [Thread-4] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [OkHttp ConnectionPool] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@15.0.1/java.lang.Object.wait(Native Method)
+ java.base@15.0.1/java.lang.Object.wait(Object.java:455)
+ okhttp3.internal.connection.RealConnectionPool.lambda$new$0(RealConnectionPool.java:62)
+ okhttp3.internal.connection.RealConnectionPool$$Lambda$375/0x00000008011c3a38.run(Unknown Source)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base@15.0.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+ java.base@15.0.1/java.lang.Thread.run(Thread.java:832)
+13-Jan-2021 18:17:33.604 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+13-Jan-2021 18:17:33.633 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+13-Jan-2021 18:17:35.732 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.41
+13-Jan-2021 18:17:35.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Dec 3 2020 11:43:00 UTC
+13-Jan-2021 18:17:35.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.41.0
+13-Jan-2021 18:17:35.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+13-Jan-2021 18:17:35.735 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.19.128-microsoft-standard
+13-Jan-2021 18:17:35.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+13-Jan-2021 18:17:35.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/java/openjdk-15
+13-Jan-2021 18:17:35.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           15.0.1+9-18
+13-Jan-2021 18:17:35.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+13-Jan-2021 18:17:35.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+13-Jan-2021 18:17:35.736 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+13-Jan-2021 18:17:35.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+13-Jan-2021 18:17:35.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+13-Jan-2021 18:17:35.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+13-Jan-2021 18:17:35.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+13-Jan-2021 18:17:35.744 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+13-Jan-2021 18:17:35.745 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+13-Jan-2021 18:17:35.745 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+13-Jan-2021 18:17:35.745 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+13-Jan-2021 18:17:35.745 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+13-Jan-2021 18:17:35.745 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+13-Jan-2021 18:17:35.745 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+13-Jan-2021 18:17:35.746 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+13-Jan-2021 18:17:35.749 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.25] using APR version [1.4.8].
+13-Jan-2021 18:17:35.749 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+13-Jan-2021 18:17:35.749 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+13-Jan-2021 18:17:35.752 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.0.2k-fips  26 Jan 2017]
+13-Jan-2021 18:17:35.963 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+13-Jan-2021 18:17:35.989 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [362] milliseconds
+13-Jan-2021 18:17:36.017 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+13-Jan-2021 18:17:36.017 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.41]
+13-Jan-2021 18:17:36.031 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/ROOT.war]
+13-Jan-2021 18:17:37.041 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+13-Jan-2021 18:17:37.478 INFO [Timer-0] org.hibernate.Version.logVersion HHH000412: Hibernate ORM core version 5.4.25.Final
+13-Jan-2021 18:17:37.719 INFO [Timer-0] org.hibernate.annotations.common.reflection.java.JavaReflectionManager.<clinit> HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+13-Jan-2021 18:17:37.802 WARN [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+13-Jan-2021 18:17:37.805 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://192.168.0.44:5433/postgres]
+13-Jan-2021 18:17:37.805 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001001: Connection properties: {password=****, pool_size=1, user=postgres}
+13-Jan-2021 18:17:37.805 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001003: Autocommit mode: false
+13-Jan-2021 18:17:37.807 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init> HHH000115: Hibernate connection pool size: 20 (min=1)
+13-Jan-2021 18:17:37.858 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/ROOT.war] has finished in [1,827] ms
+13-Jan-2021 18:17:37.863 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+13-Jan-2021 18:17:37.871 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1881] milliseconds
+13-Jan-2021 18:17:37.930 INFO [Timer-0] org.hibernate.dialect.Dialect.<init> HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+13-Jan-2021 18:17:38.222 INFO [Timer-0] org.hibernate.validator.internal.util.Version.<clinit> HV000001: Hibernate Validator 6.1.5.Final
+13-Jan-2021 18:17:38.609 INFO [Timer-0] org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3bf4ab90] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+13-Jan-2021 18:17:38.689 INFO [Timer-0] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13-Jan-2021 18:17:38.757 WARN [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+13-Jan-2021 18:17:38.757 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://192.168.0.44:5433/postgres]
+13-Jan-2021 18:17:38.757 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001001: Connection properties: {password=****, pool_size=1, user=postgres}
+13-Jan-2021 18:17:38.757 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001003: Autocommit mode: false
+13-Jan-2021 18:17:38.757 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init> HHH000115: Hibernate connection pool size: 20 (min=1)
+13-Jan-2021 18:17:38.783 INFO [Timer-0] org.hibernate.dialect.Dialect.<init> HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+13-Jan-2021 18:17:38.860 INFO [Timer-0] org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1adc834b] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+13-Jan-2021 18:17:38.914 INFO [Timer-0] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13-Jan-2021 18:17:38.930 WARN [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+13-Jan-2021 18:17:38.930 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001005: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://192.168.0.44:5433/postgres]
+13-Jan-2021 18:17:38.930 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001001: Connection properties: {password=****, pool_size=1, user=postgres}
+13-Jan-2021 18:17:38.930 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildCreator HHH10001003: Autocommit mode: false
+13-Jan-2021 18:17:38.931 INFO [Timer-0] org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init> HHH000115: Hibernate connection pool size: 20 (min=1)
+13-Jan-2021 18:17:38.955 INFO [Timer-0] org.hibernate.dialect.Dialect.<init> HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+13-Jan-2021 18:17:39.021 INFO [Timer-0] org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@378734e7] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+13-Jan-2021 18:17:39.073 INFO [Timer-0] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13-Jan-2021 18:17:39.171 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:39.835 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 25
+13-Jan-2021 18:17:42.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:42.734 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 7
+13-Jan-2021 18:17:47.446 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=315
+13-Jan-2021 18:17:47.724 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -11
+13-Jan-2021 18:17:57.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=316
+13-Jan-2021 18:17:57.721 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -95
+13-Jan-2021 18:18:07.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=317
+13-Jan-2021 18:18:07.715 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -36
+13-Jan-2021 18:18:17.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=318
+13-Jan-2021 18:18:17.681 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 86
+13-Jan-2021 18:18:22.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=318
+13-Jan-2021 18:18:22.686 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 68
+13-Jan-2021 18:18:27.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=318
+13-Jan-2021 18:18:27.698 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 50
+13-Jan-2021 18:18:32.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=318
+13-Jan-2021 18:18:32.667 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 32
+13-Jan-2021 18:18:37.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=318
+13-Jan-2021 18:18:37.674 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 14
+13-Jan-2021 18:18:42.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=318
+13-Jan-2021 18:18:42.663 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -4
+13-Jan-2021 18:18:52.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=319
+13-Jan-2021 18:18:52.643 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 82
+13-Jan-2021 18:18:57.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=319
+13-Jan-2021 18:18:57.649 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 64
+13-Jan-2021 18:19:02.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=319
+13-Jan-2021 18:19:02.670 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 46
+13-Jan-2021 18:19:07.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=319
+13-Jan-2021 18:19:07.681 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 28
+13-Jan-2021 18:19:12.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=319
+13-Jan-2021 18:19:12.652 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 10
+13-Jan-2021 18:19:17.447 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=319
+13-Jan-2021 18:19:17.662 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -8
+13-Jan-2021 18:19:27.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=320
+13-Jan-2021 18:19:27.734 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -49
+13-Jan-2021 18:19:37.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=321
+13-Jan-2021 18:19:37.660 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -8
+13-Jan-2021 18:19:47.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=322
+13-Jan-2021 18:19:47.666 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -89
+13-Jan-2021 18:19:57.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=323
+13-Jan-2021 18:19:57.678 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -10
+13-Jan-2021 18:20:07.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=324
+13-Jan-2021 18:20:07.655 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 52
+13-Jan-2021 18:20:12.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=324
+13-Jan-2021 18:20:12.718 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -46
+13-Jan-2021 18:20:22.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=325
+13-Jan-2021 18:20:22.677 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 76
+13-Jan-2021 18:20:27.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=325
+13-Jan-2021 18:20:27.683 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -22
+13-Jan-2021 18:20:37.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=326
+13-Jan-2021 18:20:37.707 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -43
+13-Jan-2021 18:20:47.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:20:47.697 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 179
+13-Jan-2021 18:20:52.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:20:52.676 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 161
+13-Jan-2021 18:20:57.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:20:57.703 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 143
+13-Jan-2021 18:21:02.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:02.676 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 125
+13-Jan-2021 18:21:07.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:07.696 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 107
+13-Jan-2021 18:21:12.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:12.713 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 89
+13-Jan-2021 18:21:17.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:17.690 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 71
+13-Jan-2021 18:21:22.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:22.677 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 53
+13-Jan-2021 18:21:27.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:27.713 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 35
+13-Jan-2021 18:21:32.448 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:32.673 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 17
+13-Jan-2021 18:21:37.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=327
+13-Jan-2021 18:21:37.684 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -1
+13-Jan-2021 18:21:47.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=328
+13-Jan-2021 18:21:47.648 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -52
+13-Jan-2021 18:21:57.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=329
+13-Jan-2021 18:21:57.724 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -87
+13-Jan-2021 18:22:07.449 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=330
+13-Jan-2021 18:22:07.653 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 90
+13-Jan-2021 18:22:12.450 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=330
+13-Jan-2021 18:22:12.656 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -8
+13-Jan-2021 18:22:22.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=331
+13-Jan-2021 18:22:22.717 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 100
+13-Jan-2021 18:22:27.450 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=331
+13-Jan-2021 18:22:27.701 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 2
+13-Jan-2021 18:22:32.450 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=331
+13-Jan-2021 18:22:32.664 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -96
+13-Jan-2021 18:22:42.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=332
+13-Jan-2021 18:22:42.770 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -53
+13-Jan-2021 18:22:52.450 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=333
+13-Jan-2021 18:22:52.698 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 60
+13-Jan-2021 18:22:57.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=333
+13-Jan-2021 18:22:57.723 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -38
+13-Jan-2021 18:23:07.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=334
+13-Jan-2021 18:23:07.678 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 92
+13-Jan-2021 18:23:12.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=334
+13-Jan-2021 18:23:12.681 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 74
+13-Jan-2021 18:23:17.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=334
+13-Jan-2021 18:23:17.654 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 56
+13-Jan-2021 18:23:22.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=334
+13-Jan-2021 18:23:22.656 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 38
+13-Jan-2021 18:23:27.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=334
+13-Jan-2021 18:23:27.685 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 20
+13-Jan-2021 18:23:32.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=334
+13-Jan-2021 18:23:32.686 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 2
+13-Jan-2021 18:23:37.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=334
+13-Jan-2021 18:23:37.658 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -16
+13-Jan-2021 18:23:47.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:23:47.713 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 175
+13-Jan-2021 18:23:52.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:23:52.695 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 157
+13-Jan-2021 18:23:57.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:23:57.684 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 139
+13-Jan-2021 18:24:02.451 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:02.658 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 121
+13-Jan-2021 18:24:07.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:07.695 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 103
+13-Jan-2021 18:24:12.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:12.695 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 85
+13-Jan-2021 18:24:17.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:17.687 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 67
+13-Jan-2021 18:24:22.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:22.683 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 49
+13-Jan-2021 18:24:27.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:27.662 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 31
+13-Jan-2021 18:24:32.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:32.697 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 13
+13-Jan-2021 18:24:37.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=335
+13-Jan-2021 18:24:37.696 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -5
+13-Jan-2021 18:24:47.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=336
+13-Jan-2021 18:24:47.671 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 94
+13-Jan-2021 18:24:52.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=336
+13-Jan-2021 18:24:52.687 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 76
+13-Jan-2021 18:24:57.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=336
+13-Jan-2021 18:24:57.679 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 58
+13-Jan-2021 18:25:02.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=336
+13-Jan-2021 18:25:02.739 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 40
+13-Jan-2021 18:25:07.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=336
+13-Jan-2021 18:25:07.699 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 22
+13-Jan-2021 18:25:12.452 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=336
+13-Jan-2021 18:25:12.698 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 4
+13-Jan-2021 18:25:17.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=336
+13-Jan-2021 18:25:17.681 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity -14
+13-Jan-2021 18:25:27.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:25:27.740 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 108
+13-Jan-2021 18:25:32.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:25:32.732 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 110
+13-Jan-2021 18:25:37.453 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:25:37.721 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 112
+13-Jan-2021 18:25:42.454 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:25:42.735 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 114
+13-Jan-2021 18:25:47.454 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:25:47.762 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 116
+13-Jan-2021 18:25:52.454 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:25:52.726 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 118
+13-Jan-2021 18:25:57.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:25:57.752 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 120
+13-Jan-2021 18:26:02.454 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:02.694 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 122
+13-Jan-2021 18:26:07.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:07.721 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 124
+13-Jan-2021 18:26:12.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:12.724 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 126
+13-Jan-2021 18:26:17.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:17.729 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 128
+13-Jan-2021 18:26:22.456 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:22.727 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 130
+13-Jan-2021 18:26:27.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:27.725 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 132
+13-Jan-2021 18:26:32.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:32.729 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 134
+13-Jan-2021 18:26:37.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:37.738 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 136
+13-Jan-2021 18:26:42.456 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:42.737 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 138
+13-Jan-2021 18:26:47.456 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:47.732 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 140
+13-Jan-2021 18:26:52.456 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:52.709 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 142
+13-Jan-2021 18:26:57.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:26:57.716 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 144
+13-Jan-2021 18:27:02.455 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:02.725 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 146
+13-Jan-2021 18:27:07.456 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:07.736 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 148
+13-Jan-2021 18:27:12.456 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:12.751 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 150
+13-Jan-2021 18:27:17.457 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:17.729 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 152
+13-Jan-2021 18:27:22.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:22.773 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 154
+13-Jan-2021 18:27:27.457 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:27.750 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 156
+13-Jan-2021 18:27:32.457 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:32.719 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 158
+13-Jan-2021 18:27:37.457 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:37.727 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 160
+13-Jan-2021 18:27:42.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:42.736 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 162
+13-Jan-2021 18:27:47.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:47.748 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 164
+13-Jan-2021 18:27:52.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:52.734 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 166
+13-Jan-2021 18:27:57.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:27:57.730 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 168
+13-Jan-2021 18:28:02.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:02.771 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 170
+13-Jan-2021 18:28:07.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:07.757 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 172
+13-Jan-2021 18:28:12.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:12.770 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 174
+13-Jan-2021 18:28:17.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:17.730 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 176
+13-Jan-2021 18:28:22.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:22.712 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 178
+13-Jan-2021 18:28:27.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:27.696 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 180
+13-Jan-2021 18:28:32.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:32.763 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 177
+13-Jan-2021 18:28:37.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:37.722 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 174
+13-Jan-2021 18:28:42.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:42.680 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 171
+13-Jan-2021 18:28:47.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:47.736 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 168
+13-Jan-2021 18:28:52.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:53.412 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 165
+13-Jan-2021 18:28:57.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:28:57.733 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 162
+13-Jan-2021 18:29:02.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:02.720 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 159
+13-Jan-2021 18:29:07.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:07.729 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 156
+13-Jan-2021 18:29:12.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:12.708 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 153
+13-Jan-2021 18:29:17.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:17.715 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 150
+13-Jan-2021 18:29:22.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:22.756 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 147
+13-Jan-2021 18:29:27.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:27.753 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 144
+13-Jan-2021 18:29:32.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:32.744 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 141
+13-Jan-2021 18:29:37.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:37.735 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 138
+13-Jan-2021 18:29:42.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:42.723 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 135
+13-Jan-2021 18:29:47.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:47.742 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 132
+13-Jan-2021 18:29:52.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:52.744 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 129
+13-Jan-2021 18:29:57.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:29:57.729 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 126
+13-Jan-2021 18:30:02.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:30:02.738 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 123
+13-Jan-2021 18:30:07.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:30:07.734 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 120
+13-Jan-2021 18:30:12.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:30:12.781 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 117
+13-Jan-2021 18:30:17.459 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:30:17.772 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 114
+13-Jan-2021 18:30:22.458 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity Calculation of new fire intensity for fire with id=337
+13-Jan-2021 18:30:22.758 INFO [Timer-0] project.grp3.simulator.core.services.FireService.getNewFireIntencity New fire intensity 111
+13-Jan-2021 18:30:27.489 WARN [Timer-0] org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions SQL Error: 0, SQLState: 08006
+13-Jan-2021 18:30:27.489 ERROR [Timer-0] org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions An I/O error occurred while sending to the backend.
+13-Jan-2021 18:30:27.505 WARN [26] org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions SQL Error: 0, SQLState: 08003
+13-Jan-2021 18:30:27.506 ERROR [26] org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions This connection has been closed.

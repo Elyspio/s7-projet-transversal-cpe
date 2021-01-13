@@ -1,9 +1,6 @@
 package project.grp3.emergency.core.database.repositories;
 
-import org.hibernate.SQLQuery;
 import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
-import project.grp3.emergency.core.api.truck.model.FiremanModel;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireEntity;
 import project.grp3.emergency.core.database.entities.ResourceEntity;

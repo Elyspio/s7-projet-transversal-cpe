@@ -1,7 +1,6 @@
 package project.grp3.emergency.core.database;
 
 import project.grp3.emergency.core.database.repositories.*;
-import project.grp3.emergency.web.resource.BarrackRessource;
 
 public class Database
 {
@@ -75,10 +74,11 @@ public class Database
         return instance.logRepository;
     }
 
-    public static BarrackRepository barrackRepository(){
+    public static BarrackRepository barrackRepository()
+    {
         return instance.barrackRepository;
     }
-    
+
     public static ExhaustLevelRepository getExhaustLevelRepository()
     {
         return instance.exhaustLevelRepository;

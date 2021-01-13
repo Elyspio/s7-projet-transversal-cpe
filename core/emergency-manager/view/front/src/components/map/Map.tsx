@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as L from 'leaflet'
-import {LatLng, LatLngExpression, LeafletMouseEvent} from 'leaflet'
+import {LatLngExpression} from 'leaflet'
 import 'leaflet.markercluster';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
@@ -11,6 +11,8 @@ import {Marker, MarkerType} from "../../store/interface/Map";
 import {init as defaultPosition} from "../../constants/map"
 import {createMarker} from "./MarkerFactory"
 import {Services} from "../../services/Services";
+import {FireElement} from "../../../../back/src/interfaces/FireElement";
+
 export type ContextMenuData = {
     screenPos: {
         x: number,
@@ -40,8 +42,7 @@ type Props = ConnectedProps<typeof connector> & {}
 
 
 type State = {
-    markersFire: Marker[],
-    markersTruck: Marker[],
+    markers: Marker[],
     refresh: {
         fires: boolean,
         trucks: boolean
@@ -51,11 +52,10 @@ type State = {
 
 class CustomMap extends Component<Props, State> {
     public state: State = {
-        markersFire: [],
-        markersTruck: [],
+        markers: [],
         refresh: {
             fires: true,
-            trucks:true
+            trucks: true
         },
     }
     private map?: L.Map;
@@ -63,24 +63,21 @@ class CustomMap extends Component<Props, State> {
     private cluster?: L.MarkerClusterGroup;
 
     static getDerivedStateFromProps = (props: Props, state: State): State | null => {
-        if(props.fires.length !== state.markersFire.length) {
+
+        if (props.fires.length + props.trucks.length !== state.markers.length) {
             return {
-                markers: props.fires.map(f => ({data: f, pos: {lat: f.latitude, lng: f.longitude}, type: MarkerType.fire})),
+                ...state,
+                markers: [
+                    ...props.fires.map(f => ({data: f, pos: {lat: f.latitude, lng: f.longitude}, type: MarkerType.fire})),
+                    ...props.trucks.map(t => ({data: t, pos: {lat: t.latitude, lng: t.longitude}, type: MarkerType.truck})),
+                ],
                 refresh: {
                     ...state.refresh,
                     fires: true
                 }
             }
         }
-        if(props.trucks.length !== state.markersTruck.length) {
-            return {
-                markers: props.trucks.map(t => ({trucks: t, pos: {lat: t.latitude, lng: t.longitude}, type: MarkerType.truck})),
-                refresh: {
-                    ...state.refresh,
-                    trucks: true
-                }
-            }
-        }
+
         return null;
 
     }
@@ -103,11 +100,8 @@ class CustomMap extends Component<Props, State> {
 
 
     private async refresh() {
-        if (this.state.refresh.fires) {
-            await this.refreshPoiMarkersFire(this.state.markersFire);
-        }
-        if (this.state.refresh.trucks) {
-            await this.refreshPoiMarkers(this.state.markersTruck);
+        if (this.state.refresh.fires || this.state.refresh.trucks) {
+            await this.refreshPoiMarkers(this.state.markers);
         }
     }
 
@@ -115,24 +109,26 @@ class CustomMap extends Component<Props, State> {
     private async refreshPoiMarkers(fires: Marker[]) {
         if (this.map) {
             if (this.cluster) {
-                this.map?.removeLayer(this.cluster);
+                this.map.removeLayer(this.cluster);
             }
 
-            if (this.state.markersFire) {
+            if (this.state.markers) {
                 // @ts-ignore
                 this.cluster = L.markerClusterGroup();
                 this.cluster.addLayers(fires.map(poi => {
 
-                    // @ts-ignore
-                    return createMarker(poi.pos, MarkerType.fire,poi.data.intensity).on("click", (event: LeafletMouseEvent) => {
-                        const marker = fires.find(poi => poi.pos as LatLng === event.latlng);
-                        if (marker === undefined) {
-                            throw new Error(`Can not find poi marker with coords=${JSON.stringify(poi.pos)}`)
-                        }
-                    })
+                    const intensity = poi.type === MarkerType.fire ? (poi.data as FireElement).intensity  : undefined
+
+                    return createMarker(poi.pos, poi.type, intensity)
+                    //     .on("click", (event: LeafletMouseEvent) => {
+                    //     const marker = fires.find(poi => poi.pos as LatLng === event.latlng);
+                    //     if (marker === undefined) {
+                    //         throw new Error(`Can not find poi marker with coords=${JSON.stringify(poi.pos)}`)
+                    //     }
+                    // })
                 }))
 
-                this.map?.addLayer(this.cluster);
+                this.map.addLayer(this.cluster);
             }
         }
 

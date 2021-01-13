@@ -35,7 +35,7 @@ services:
       - 8084:8080
     container_name: s7-project-emergency-manager-engine
 
-    
+
   manager-swagger:
     image: swaggerapi/swagger-ui
     restart: always
@@ -44,7 +44,17 @@ services:
     ports:
       - 8094:8080
     container_name: s7-project-emergency-manager-swagger
-  
+
+  # manager-microbit:
+  #   image: elyspio/cpe-s7-project:emergency-microbit
+  #   restart: always
+  #   environment:
+  #     EMERGENCY_URL: ${OWN_HOST}
+  #     MQTT_HOST: ${MQTT_HOST}
+  #   ports:
+  #     - 8087:8087
+  #   container_name: s7-project-emergency-microbit
+
   # web:
   #   image: elyspio/cpe-s7-project:emergency-web
   #   restart: always

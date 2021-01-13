@@ -63,7 +63,7 @@ public class ResourceResource
             entityNotFound.printStackTrace();
 
             return Response
-                        .status(404)
+                    .status(404)
                     .entity(new EntityNotFoundResponse(entityNotFound))
                     .build();
         }

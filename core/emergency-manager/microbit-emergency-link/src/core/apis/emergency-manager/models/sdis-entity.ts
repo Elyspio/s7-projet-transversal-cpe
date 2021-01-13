@@ -14,13 +14,31 @@
 /**
  * 
  * @export
- * @interface Body
+ * @interface SdisEntity
  */
-export interface Body {
+export interface SdisEntity {
     /**
      * 
      * @type {number}
-     * @memberof Body
+     * @memberof SdisEntity
      */
-    ressourceId?: any;
+    id?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof SdisEntity
+     */
+    name?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof SdisEntity
+     */
+    department?: any;
+    /**
+     * 
+     * @type {Array&lt;BarrackEntity&gt;}
+     * @memberof SdisEntity
+     */
+    barracks?: any;
 }
