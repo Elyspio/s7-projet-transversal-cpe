@@ -1,12 +1,14 @@
 import {createAction as _createAction} from '@reduxjs/toolkit'
 import {LatLngLiteral} from "leaflet";
-import {Poi} from "../../../../back/src/interfaces/Poi";
+import {FireElement} from "../../../../back/src/interfaces/FireElement";
 import {BoundingBox, Marker} from "../interface/Map";
+import {TruckElement} from "../../../../back/src/interfaces/TruckElement";
 
 
 const createAction = <P>(name: string) => _createAction<P>(`map/${name}`);
 
-export const setPois = createAction<Poi[]>("setPois")
+export const setFires = createAction<FireElement[]>("setPois")
+export const setTrucks = createAction<TruckElement[]>("setPois")
 export const setBoundingBox = createAction<BoundingBox>("setBoundingBox")
 //
 

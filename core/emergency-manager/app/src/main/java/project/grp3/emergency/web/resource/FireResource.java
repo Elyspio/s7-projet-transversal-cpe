@@ -10,10 +10,12 @@ import project.grp3.emergency.core.database.entities.FireEntity;
 import project.grp3.emergency.core.database.entities.LocationEntity;
 import project.grp3.emergency.core.database.entities.SensorEntity;
 import project.grp3.emergency.core.services.Services;
+import project.grp3.emergency.web.entities.FireLocation;
 import project.grp3.emergency.web.resource.models.FireResourceNewFire;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -62,14 +64,16 @@ public class FireResource
     @Path("/firesLocations")
     public Response fires() throws IOException {
         var fires = Database.fireRepository().getActive();
-        var locations = new ArrayList<LocationEntity>();
+        var locations = new ArrayList<FireLocation>();
         SensorEntity sensor = null;
+        String intensity = null;
         for (FireEntity fire: fires) {
             sensor = fire.getSensor();
             var result = Apis.geocoding().search(sensor.getStreet(), sensor.getPostalCode(), "json").execute().body();
             if (result != null) {
                 var location = result.get(0);
-                locations.add(new LocationEntity((Double.parseDouble(location.lat)),Double.parseDouble(location.lon)));
+                intensity = Database.logRepository().getLastIntensity(fire);
+                locations.add(new FireLocation((Double.parseDouble(location.lat)),Double.parseDouble(location.lon),Double.parseDouble(intensity)));
             }
         }
         return Response

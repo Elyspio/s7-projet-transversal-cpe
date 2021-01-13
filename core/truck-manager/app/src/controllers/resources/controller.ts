@@ -3,6 +3,7 @@ import {Description, Name, Returns} from "@tsed/schema";
 import {LocationModel, MovementModel, TruckModel} from "./models";
 import {Services} from "../../core/services";
 import {TravelDirection} from "../../database/entities/TruckEntity";
+import {TruckLocationEntity} from "../../database/entities/TruckLocationEntity";
 
 @Name("Resource")
 @Controller("/resources")
@@ -30,8 +31,10 @@ export class ResourceController {
 
     @Get("/location")
     @Description("Returns a list of trucks that are in operation")
-    @Returns(200, Array).Of(TruckModel)
-    async location(): Promise<TruckModel[]> {
+    @Returns(200, Array).Of(TruckLocationEntity)
+    async location(): Promise<TruckLocationEntity[]> {
         return Services.location.getLocations()
     }
+
+
 }

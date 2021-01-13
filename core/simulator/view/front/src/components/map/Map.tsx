@@ -106,7 +106,8 @@ class CustomMap extends Component<Props, State> {
                 this.cluster = L.markerClusterGroup();
                 this.cluster.addLayers(fires.map(poi => {
 
-                    return createMarker(poi.pos, MarkerType.fire).on("click", (event: LeafletMouseEvent) => {
+                    // @ts-ignore
+                    return createMarker(poi.pos, MarkerType.fire,poi.data.intensity).on("click", (event: LeafletMouseEvent) => {
                         const marker = fires.find(poi => poi.pos as LatLng === event.latlng);
                         if (marker === undefined) {
                             throw new Error(`Can not find poi marker with coords=${JSON.stringify(poi.pos)}`)

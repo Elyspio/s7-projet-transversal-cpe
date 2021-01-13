@@ -74,7 +74,9 @@ export class LocationService {
     }
 
     public async getLocations() {
-        return (await Repositories.truckLocation.getMoving()).map(tl => Assemblers.truck.toModel(tl.truck));
+        return (await Repositories.truckLocation.getMoving());
     }
+
+
 
 }

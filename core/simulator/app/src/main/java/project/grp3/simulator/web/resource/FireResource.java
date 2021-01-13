@@ -74,7 +74,7 @@ public class FireResource
             var result = Apis.geocoding().search(sensor.getStreet(), sensor.getPostalCode(), "json").execute().body();
             if (result != null) {
                 var location = result.get(0);
-                locations.add(new Location((Double.parseDouble(location.lat)),Double.parseDouble(location.lon)));
+                locations.add(new Location((Double.parseDouble(location.lat)),Double.parseDouble(location.lon),Double.parseDouble(""+fire.getIntensity())));
             }
         }
             return Response
