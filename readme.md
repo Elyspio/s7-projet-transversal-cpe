@@ -41,6 +41,6 @@ https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-contain
 | Truck Simulator    | 5435          | 8085            | 8095         |
 | Microbit Simulator | -             | 8086            | 8086         |
 | Microbit Emergency | -             | 8087            | 8087         |
-| MQTT               | 5438          | 8088            | -            |
+| MQTT               | 5438          | 8088 - 1883     |              |
 | Simulator View     | -             | 6003            | -            |
 | Emergency View     | -             | 6004            | -            |

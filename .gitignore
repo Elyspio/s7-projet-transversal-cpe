@@ -9,3 +9,4 @@ core/simulator/database
 core/simulator/database-truck
 core/truck-manager/database
 core/.vscode
+core/mqtt/database
