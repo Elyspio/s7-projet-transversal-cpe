@@ -138,9 +138,19 @@ public class FireService extends Services.Service
     {
         var entity = new FireEntity();
         entity.setIntensity(intensity);
-        entity.setDetectionDate(new Date());
         entity.setType(Database.fireTypeRepository.getById(fireTypeId));
         entity.setSensor(Database.sensorRepository.getById(sensorId));
+        entity.setDetectionDate(new Date());
+        var sensor = Database.sensorRepository.getById(sensorId);
+        if(Database.fireRepository.isExist(sensor)){
+            var oldFire = Database.fireRepository.getActiveBySensorId(sensor);
+            if (oldFire.getType().equals(entity.getType())){
+                changeFireIntensity(oldFire,intensity);
+            }
+            else{
+                return oldFire;
+            }
+        }
         entity = createFire(entity);
         return entity;
     }
