@@ -29,12 +29,10 @@ export class ResourceController {
         return Services.location.getNear(loc)
     }
 
-    @Get("/location")
+    @Get("/operating")
     @Description("Returns a list of trucks that are in operation")
     @Returns(200, Array).Of(TruckLocationEntity)
     async location(): Promise<TruckLocationEntity[]> {
-        return Services.location.getLocations()
+        return Services.location.getOperating()
     }
-
-
 }

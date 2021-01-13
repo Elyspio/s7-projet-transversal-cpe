@@ -7,8 +7,8 @@ import {TruckElement} from "../../../../back/src/interfaces/TruckElement";
 
 const createAction = <P>(name: string) => _createAction<P>(`map/${name}`);
 
-export const setFires = createAction<FireElement[]>("setPois")
-export const setTrucks = createAction<TruckElement[]>("setPois")
+export const setFires = createAction<FireElement[]>("setFires")
+export const setTrucks = createAction<TruckElement[]>("setTrucks")
 export const setBoundingBox = createAction<BoundingBox>("setBoundingBox")
 //
 

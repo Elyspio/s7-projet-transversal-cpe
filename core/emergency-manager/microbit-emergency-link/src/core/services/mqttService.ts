@@ -10,22 +10,26 @@ export class MqttService {
 
     async init() {
 
-        const that = this;
+        if (this.client === undefined) {
+            const that = this;
 
-        that.client = connect(mqttHost)
+            that.client = connect(mqttHost)
 
-        const sensors = (await Apis.emergencyManager.sensor.getAll()).data as unknown as SensorFromEmergency[]
+            const sensors = (await Apis.emergencyManager.sensor.getAll()).data as unknown as SensorFromEmergency[]
 
-        const fireTypes = (await Apis.emergencyManager.fireTypes.getAll()).data as unknown as FireType[]
+            const fireTypes = (await Apis.emergencyManager.fireTypes.getAll()).data as unknown as FireType[]
 
-        return new Promise<void>(resolve => {
-            that.client.on('connect', () => {
-                Promise.all([
-                    ...sensors.map(s => that.emit<"sensor">("sensor", {data: s, action: "add"})),
-                    ...fireTypes.map(ft => that.emit<"fireType">("fireType", {data: ft, action: "add"}))
-                ]).then(() => resolve())
+            return new Promise<MqttService>(resolve => {
+                that.client.on('connect', () => {
+                    Promise.all([
+                        ...sensors.map(s => that.emit<"sensor">("sensor", {data: s, action: "add"})),
+                        ...fireTypes.map(ft => that.emit<"fireType">("fireType", {data: ft, action: "add"}))
+                    ]).then(() => resolve(that))
+                })
             })
-        })
+        }
+
+        return this;
     }
 
     on(topic: keyof typeof topics, func: (val: TopicsTypes[typeof topic]) => void) {

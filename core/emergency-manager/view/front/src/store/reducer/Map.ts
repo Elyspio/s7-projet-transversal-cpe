@@ -2,7 +2,7 @@ import {createReducer} from "@reduxjs/toolkit";
 
 import {init as initMap} from "../../constants/map"
 
-import {setFires} from "../action/Map";
+import {setFires, setTrucks} from "../action/Map";
 import {State} from "../interface/Map";
 
 
@@ -16,9 +16,10 @@ export const reducer = createReducer<State>(initialState, builder => {
 
     builder.addCase(setFires, (state, action) => {
         state.fires = action.payload;
-
     })
-
+    builder.addCase(setTrucks, (state, action) => {
+        state.trucks = action.payload;
+    })
 
 });
 

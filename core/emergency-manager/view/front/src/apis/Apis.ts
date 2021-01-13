@@ -1,4 +1,6 @@
-import {FiresApi,FireTruckApi} from "./backend";
+import {FiresApi, FireTruckApi} from "./backend";
+import {ResourceApi} from "./truck";
+import {endpoints} from "../config/web";
 
 const getEnv = (name: string, fallback: string) => {
     return process.env[name] ?? fallback;
@@ -6,6 +8,6 @@ const getEnv = (name: string, fallback: string) => {
 
 
 export const Apis = {
-    backend: new FiresApi({basePath: getEnv("EMERGENCY_HOST", "http://localhost:8084")}),
-    truckBackend: new FireTruckApi({basePath:getEnv("EMERGENCY_HOST","http://localhost:8084")})
+    backend: new FiresApi({basePath: endpoints.emergency}),
+    truck: new ResourceApi({basePath: endpoints.truck})
 }

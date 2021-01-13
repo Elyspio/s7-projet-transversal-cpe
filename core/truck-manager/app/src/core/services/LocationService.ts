@@ -61,10 +61,7 @@ export class LocationService {
      * @param padding maximum distance between locations (in m)
      */
     public async getNear(location: LocationModel, padding = 1000) {
-        let dones = await Repositories.truckLocation.getDones();
-        const actives = dones.filter(tl => tl.truck.travelDirection === TravelDirection.FIRE
-            && dones.find(tl2 => tl2.truck.id_resource === tl.truck.id_resource && tl2.truck.travelDirection === TravelDirection.BARRACK) === undefined
-        )
+        const actives = await this.getOperating();
         console.log("actives.length", actives.length)
         const ids = actives
             .filter(tl => deltaBetweenLocations({latitude: tl.current_latitude, longitude: tl.current_longitude}, location) < padding)
@@ -73,8 +70,12 @@ export class LocationService {
         return [...new Set(ids)];
     }
 
-    public async getLocations() {
-        return (await Repositories.truckLocation.getMoving());
+    public async getOperating() {
+        let dones = await Repositories.truckLocation.getDones();
+        const actives = dones.filter(tl => tl.truck.travelDirection === TravelDirection.FIRE
+            && dones.find(tl2 => tl2.truck.id_resource === tl.truck.id_resource && tl2.truck.travelDirection === TravelDirection.BARRACK) === undefined
+        )
+        return actives;
     }
 
 

@@ -31,20 +31,6 @@ public class FireTruckResource
                 .build();
     }
 
-    @GET
-    @Path("/locations")
-    @ApiOperation(value = "get all fireTruck")
-    @Produces("application/json")
-    public Response fireTruckLocations() throws IOException
-    {
-
-        var api = Apis.truck();
-        return Response
-                .status(Response.Status.OK)
-                .entity(api.resourceLocation().execute().body())
-                .build();
-
-    }
 
 
     @GET
