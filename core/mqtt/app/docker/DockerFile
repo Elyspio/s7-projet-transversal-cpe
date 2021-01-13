@@ -1,10 +1,12 @@
 FROM node:14-alpine
 
 # Create app directory
-WORKDIR /app
 
 # Server
 RUN mkdir -p /app/back
+
+WORKDIR /app
+
 COPY build ./back
 COPY package.json ./back/package.json
 RUN cd back && npm i --only=production

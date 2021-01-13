@@ -2,12 +2,12 @@ $origin=Get-Location
 
 $DIR=$PSScriptRoot
 
-cp "$DIR/DockerFile" "$DIR/../DockerFile"
+cp "$DIR/Dockerfile" "$DIR/../Dockerfile"
 
-cd "$DIR/.." ; npm run build ;  docker buildx build --platform "linux/amd64,linux/arm64"  -f ./DockerFile -t elyspio/cpe-s7-project:truck-manager --push .
+cd "$DIR/.." ; npm run build ;  docker buildx build --platform "linux/amd64,linux/arm64"  -f ./Dockerfile -t elyspio/cpe-s7-project:truck-manager --push .
 
 rm -Recurse -Force "$DIR/../build/"
-rm "$DIR/../DockerFile"
+rm "$DIR/../Dockerfile"
 
 cd $origin
 

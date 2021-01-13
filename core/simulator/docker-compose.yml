@@ -54,3 +54,14 @@ services:
     ports:
       - 8093:8080
     container_name: s7-project-simulator-swagger      
+
+
+
+  front:
+    image: elyspio/cpe-s7-project:simulator-front
+    restart: always
+    environment:
+      SIMULATOR_HOST: ${OWN_HOST}
+    ports:
+      - 6003:5000
+    container_name: s7-project-simulator-front      
