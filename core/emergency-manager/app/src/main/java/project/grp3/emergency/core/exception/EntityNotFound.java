@@ -24,5 +24,13 @@ public class EntityNotFound extends Exception
     {
         return id;
     }
+
+    public EntityNotFound(String msg, Class cls)
+    {
+        super(msg);
+        this.cls = cls;
+        this.id = 0L;
+    }
+
 }
 

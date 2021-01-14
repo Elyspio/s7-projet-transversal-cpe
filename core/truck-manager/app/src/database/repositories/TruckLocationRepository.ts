@@ -47,4 +47,9 @@ export class TruckLocationRepository extends Repository<TruckLocationEntity> {
 
         return tmp
     }
+
+
+    async getLastLocation(truck: TruckEntity) {
+        return (await super.find({where: {truck: truck}, order: {date: "DESC"}, take: 1}))[0];
+    }
 }

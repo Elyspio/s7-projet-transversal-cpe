@@ -2,7 +2,7 @@ import {LocationModel} from "../../controllers/resources/models";
 import {Repositories} from "../../database/repositories";
 import {Assemblers} from "../assembler";
 import {TruckLocationEntity} from "../../database/entities/TruckLocationEntity";
-import {TravelDirection, TravelState} from "../../database/entities/TruckEntity";
+import {TravelDirection, TravelState, TruckEntity} from "../../database/entities/TruckEntity";
 import {Apis} from "../apis";
 import {$log} from "@tsed/common";
 
@@ -33,25 +33,29 @@ function toRad(Value) {
 
 export class LocationService {
 
-    public static async move(f: TruckLocationEntity) {
-        //todo Améliorer le déplacement
-        f.current_latitude = f.truck.dest_latitude
-        f.current_longitude = f.truck.dest_longitude
-        f.date = new Date();
-        await Repositories.truckLocation.insert(f)
+    public static async move(truck: TruckEntity) {
 
-        if (f.current_longitude === f.truck.dest_longitude && f.current_latitude === f.truck.dest_latitude) {
+        const newLocation = new TruckLocationEntity();
+        //todo Upgrade moving algorithm
+        //  const current = await  Repositories.truckLocation.getLastLocation(truck);
+        newLocation.current_latitude = truck.dest_latitude
+        newLocation.current_longitude = truck.dest_longitude
+        newLocation.date = new Date();
+        newLocation.speed = truck.speed;
+        newLocation.truck = truck;
+        await Repositories.truckLocation.insert(newLocation)
 
-            if (f.truck.travelDirection === TravelDirection.BARRACK) {
+        if (newLocation.current_longitude === truck.dest_longitude && newLocation.current_latitude === truck.dest_latitude) {
+
+            if (truck.travelDirection === TravelDirection.BARRACK) {
                 try {
-                    await Apis.emergency.resource.resourceBack(f.truck.id_resource)
-
+                    await Apis.emergency.resource.resourceBack(truck.id_resource)
                 } catch (e) {
                     console.error(e);
                 }
             }
 
-            await Repositories.truck.update({travelState: TravelState.DONE, id: f.truck.id});
+            await Repositories.truck.update({travelState: TravelState.DONE, id: truck.id});
         }
     }
 

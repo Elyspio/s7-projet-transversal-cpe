@@ -61,63 +61,83 @@ public class FireService extends Services.Service
         {
             //Create a new fire and send resources
             fire = Database.fireRepository().create(sensorId, fireTypeId);
-            var resource = Services.resource().create(fire, intensity);
-            //var resource = Database.resourceRepository.getOne(fire.getId());
-            Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
-            Database.logRepository().create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
+
+            ResourceEntity resource = null;
+            try
+            {
+                resource = Services.resource().create(fire, intensity);
+                Database.logRepository().create(intensity, resource, LogAction.CHANGEMENT_INTENSITE_FEU);
+                Database.logRepository().create(intensity, resource, LogAction.ENVOIE_DE_CAMION_VERS_FEU);
 
 
-            var geocodingApi = Apis.geocoding();
+                var geocodingApi = Apis.geocoding();
 
-            //Call the truck app to notice it to handle the resource movement.
-            var callModel = new MovementModel();
+                //Call the truck app to notice it to handle the resource movement.
+                var callModel = new MovementModel();
 
-            callModel.setResourceId(BigDecimal.valueOf(resource.getId()));
+                callModel.setResourceId(BigDecimal.valueOf(resource.getId()));
 
 
-            List<TruckModel> truckModels = resource.getFireTrucks().stream().map(truck -> {
-                var model = new TruckModel();
-                model.setId(BigDecimal.valueOf(truck.getId()));
-                model.setSpeed(BigDecimal.valueOf(truck.getType().getSpeed()));
-                var barrack = truck.getBarrack();
-                var location = new LocationModel();
+                List<TruckModel> truckModels = resource.getFireTrucks().stream().map(truck -> {
+                    var model = new TruckModel();
+                    model.setId(BigDecimal.valueOf(truck.getId()));
+                    model.setSpeed(BigDecimal.valueOf(truck.getType().getSpeed()));
+                    var barrack = truck.getBarrack();
+                    var location = new LocationModel();
 
-                try
+                    try
+                    {
+                        var locationData = geocodingApi.search(barrack.getStreet(), barrack.getPostalCode(), "json").execute().body().get(0);
+                        location.setLatitude(BigDecimal.valueOf(Double.parseDouble(locationData.lat)));
+                        location.setLongitude(BigDecimal.valueOf(Double.parseDouble(locationData.lon)));
+                        model.setStart(location);
+                    }
+                    catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                    return model;
+                }).collect(Collectors.toList());
+
+
+                List<FiremanModel> firemenModel = affectFiremanToTruck(resource.getFireTrucks(), resource.getFiremen());
+
+
+                callModel.setFiremen(firemenModel);
+                callModel.setTrucks(truckModels);
+
+                LocationModel destLocation = new LocationModel();
+
+                var destLocationData = geocodingApi.search(fire.getSensor().getStreet(), fire.getSensor().getPostalCode(), "json")
+                        .execute()
+                        .body()
+                        .get(0);
+
+                destLocation.setLatitude(BigDecimal.valueOf(Double.parseDouble(destLocationData.lat)));
+                destLocation.setLongitude(BigDecimal.valueOf(Double.parseDouble(destLocationData.lon)));
+
+
+                callModel.setDest(destLocation);
+
+                api.resourceSend(callModel).execute();
+            }
+            catch (Exception e)
+            {
+                if (fire.getId() != null)
                 {
-                    var locationData = geocodingApi.search(barrack.getStreet(), barrack.getPostalCode(), "json").execute().body().get(0);
-                    location.setLatitude(BigDecimal.valueOf(Double.parseDouble(locationData.lat)));
-                    location.setLongitude(BigDecimal.valueOf(Double.parseDouble(locationData.lon)));
-                    model.setStart(location);
+                    if (fire.getId() != null)
+                    {
+                        Database.fireRepository().delete(fire);
+                    }
+                    if (resource.getId() != null)
+                    {
+                        Database.resourceRepository().delete(resource);
+                    }
                 }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
+                throw e;
+            }
 
-                return model;
-            }).collect(Collectors.toList());
-
-
-            List<FiremanModel> firemenModel = affectFiremanToTruck(resource.getFireTrucks(), resource.getFiremen());
-
-
-            callModel.setFiremen(firemenModel);
-            callModel.setTrucks(truckModels);
-
-            LocationModel destLocation = new LocationModel();
-
-            var destLocationData = geocodingApi.search(fire.getSensor().getStreet(), fire.getSensor().getPostalCode(), "json")
-                    .execute()
-                    .body()
-                    .get(0);
-
-            destLocation.setLatitude(BigDecimal.valueOf(Double.parseDouble(destLocationData.lat)));
-            destLocation.setLongitude(BigDecimal.valueOf(Double.parseDouble(destLocationData.lon)));
-
-
-            callModel.setDest(destLocation);
-
-            api.resourceSend(callModel).execute();
         }
         return fire;
     }

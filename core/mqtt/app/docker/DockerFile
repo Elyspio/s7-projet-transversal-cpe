@@ -5,11 +5,10 @@ FROM node:14-alpine
 # Server
 RUN mkdir -p /app/back
 
-WORKDIR /app
 
-COPY build ./back
-COPY package.json ./back/package.json
-RUN cd back && npm i --only=production
+COPY build /app/back
+COPY package.json /app/back/package.json
+RUN cd /app/back && npm i --only=production
 
 # Setting environment variables
 ENV LOG_FOLDER /app/logs

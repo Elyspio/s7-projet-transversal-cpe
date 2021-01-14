@@ -174,7 +174,7 @@ public class FireService extends Services.Service
         var fire = new FireEntity();
         fire.setSensor(sensor);
         fire.setType(fireType);
-        fire.setIntensity((long) rand.nextInt(201));
+        fire.setIntensity((long) rand.nextInt(1000));
 
         createFire(fire);
 

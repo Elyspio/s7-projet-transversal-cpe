@@ -37,4 +37,7 @@ export class TruckRepository extends Repository<TruckEntity> {
             .execute();
     }
 
+    async getMoving(): Promise<TruckEntity[]> {
+        return super.find({where: {travelState: TravelState.MOVING}});
+    }
 }

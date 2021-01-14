@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import project.grp3.emergency.core.database.enums.LogAction;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -25,6 +26,19 @@ public class LogEntity
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private LogAction action;
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate(Date date)
+    {
+        this.date = date;
+    }
+
+    private Date date;
+
 
     @Override
     public boolean equals(Object o)

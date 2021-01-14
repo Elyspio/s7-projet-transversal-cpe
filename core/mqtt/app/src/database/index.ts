@@ -3,6 +3,8 @@ import {Repositories} from "./repositories";
 
 import {databaseOptions} from "../config/database";
 import {SensorRepository} from "./repositories/SensorRepository";
+import {FireTypeRepository} from "./repositories/FireTypeRepository";
+import {FireRepository} from "./repositories/FireRepository";
 
 
 const $log = console;
@@ -14,6 +16,8 @@ export class Database {
     public static async init() {
         const con = await Database.get();
         Repositories.sensor = new SensorRepository();
+        Repositories.fireType = new FireTypeRepository();
+        Repositories.fire = new FireRepository();
     }
 
     private static async connect() {

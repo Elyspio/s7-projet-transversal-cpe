@@ -43,23 +43,30 @@ abstract public class Repository<Entity>
 
     protected Entity update(Entity item)
     {
-        var trans = DbAccess.session.beginTransaction();
+//        var trans = DbAccess.session.beginTransaction();
         Entity item2 = (Entity) DbAccess.session.merge(item);
-        trans.commit();
+//        trans.commit();
         return item2;
     }
 
     public Entity create(Entity item)
     {
-        var trans = DbAccess.session.beginTransaction();
+//        var trans = DbAccess.session.beginTransaction();
         var id = DbAccess.session.save(item);
-        trans.commit();
+//        trans.commit();
         return this.getById((Long) id);
     }
 
     protected Entity get(Object primaryKey)
     {
         return DbAccess.manager.find(entity, primaryKey);
+    }
+
+    public void delete(Entity item)
+    {
+//        var trans = DbAccess.session.beginTransaction();
+        DbAccess.session.delete(item);
+//        trans.commit();
     }
 
     public static class DbAccess

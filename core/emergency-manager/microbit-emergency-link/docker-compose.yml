@@ -4,6 +4,7 @@ services:
     restart: always
     environment:
       EMERGENCY_URL: "192.168.0.40:8084"
+      SERIAL_PORT: "/dev/com1"
     ports:
       - 8087:8087
     container_name: s7-project-microbit-emergency-link

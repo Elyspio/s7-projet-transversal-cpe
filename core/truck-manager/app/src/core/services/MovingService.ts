@@ -10,7 +10,7 @@ import {LocationService} from "./LocationService";
 export class MovingService {
 
     public static async moveTrucks() {
-        const fireTrucks: TruckLocationEntity[] = await Repositories.truckLocation.getMoving()
+        const fireTrucks =  await Repositories.truck.getMoving()
         await Promise.all(fireTrucks.map(f =>
             LocationService.move(f)
         ));
