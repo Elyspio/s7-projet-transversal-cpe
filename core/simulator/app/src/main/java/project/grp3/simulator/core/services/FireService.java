@@ -64,24 +64,27 @@ public class FireService extends Services.Service
 
                     for (ResourceGetResource res : resources)
                     {
-                        var trucks = res.getTrucks();
-                        for (FireTruck t : trucks)
-                        {
-                            TruckType tType = t.getType();
-                            if (tType.getFireTypes().stream().anyMatch(type -> type.getId().equals(fireType.getId())))
+                        if(res == null) {
+                            Database.fireRepository.delete(fire);
+                        }
+                        else {
+                            var trucks = res.getTrucks();
+                            for (FireTruck t : trucks)
                             {
-                                intensity -= (long) (tType.getVolume() / 10);
-                            }
-                            else
-                            {
-                                intensity -= (long) (tType.getVolume() / 50);
-
+                                TruckType tType = t.getType();
+                                if (tType.getFireTypes().stream().anyMatch(type -> type.getId().equals(fireType.getId())))
+                                {
+                                    intensity -= (long) (tType.getVolume() / 10);
+                                }
+                                else
+                                {
+                                    intensity -= (long) (tType.getVolume() / 50);
+                                }
                             }
                         }
                     }
 
                     logger.info("New fire intensity " + intensity);
-
 
                     return intensity > 0 ? intensity : 0;
                 }
@@ -142,12 +145,15 @@ public class FireService extends Services.Service
         entity.setSensor(Database.sensorRepository.getById(sensorId));
         entity.setDetectionDate(new Date());
         var sensor = Database.sensorRepository.getById(sensorId);
-        if(Database.fireRepository.isExist(sensor)){
+        if (Database.fireRepository.isExist(sensor))
+        {
             var oldFire = Database.fireRepository.getActiveBySensorId(sensor);
-            if (oldFire.getType().equals(entity.getType())){
-                changeFireIntensity(oldFire,intensity);
+            if (oldFire.getType().equals(entity.getType()))
+            {
+                changeFireIntensity(oldFire, intensity);
             }
-            else{
+            else
+            {
                 return oldFire;
             }
         }

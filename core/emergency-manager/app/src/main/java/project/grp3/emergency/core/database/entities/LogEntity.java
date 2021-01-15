@@ -3,6 +3,7 @@ package project.grp3.emergency.core.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.Cascade;
 import project.grp3.emergency.core.database.enums.LogAction;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class LogEntity
     private String value;
     @ManyToOne
     @JoinColumn(name = "resource_id", nullable = false)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private ResourceEntity resource;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

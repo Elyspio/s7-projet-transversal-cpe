@@ -10,6 +10,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FireRepository extends Repository<FireEntity>
 {
@@ -29,39 +30,25 @@ public class FireRepository extends Repository<FireEntity>
 
     public boolean isExist(SensorEntity sensor)
     {
-        var cq = DbAccess.manager.getCriteriaBuilder().createQuery(FireEntity.class);
-        var root = cq.from(FireEntity.class);
-        List<Predicate> criteres = new ArrayList<>();
-        criteres.add(DbAccess.manager.getCriteriaBuilder().isNull(root.get("endDate")));
-        criteres.add(DbAccess.manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
-
-        cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true);
-        var res = DbAccess.manager.createQuery(cq).getResultStream().toArray();
-        return res.length > 0;
+        return getActiveBySensorId(sensor) != null;
     }
 
     public FireEntity getActiveBySensorId(SensorEntity sensor)
     {
-        CriteriaBuilder cb = DbAccess.manager.getCriteriaBuilder();
-        var cq = cb.createQuery(FireEntity.class);
-        var root = cq.from(FireEntity.class);
-        List<Predicate> criteres = new ArrayList<>();
-        criteres.add(DbAccess.manager.getCriteriaBuilder().isNull(root.get("endDate")));
-        criteres.add(DbAccess.manager.getCriteriaBuilder().equal(root.get("sensor"), sensor));
-
-        cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true);
-        return DbAccess.manager.createQuery(cq).getSingleResult();
+        return getActive()
+                .stream()
+                .filter(f -> f.getSensor().equals(sensor))
+                .findFirst()
+                .orElse(null);
     }
 
     public List<FireEntity> getActive()
     {
-        CriteriaBuilder cb = DbAccess.manager.getCriteriaBuilder();
-        var cq = cb.createQuery(FireEntity.class);
-        var root = cq.from(FireEntity.class);
-        List<Predicate> criteres = new ArrayList<>();
-        criteres.add(DbAccess.manager.getCriteriaBuilder().isNull(root.get("endDate")));
-        cq.select(root).where(criteres.toArray(Predicate[]::new)).distinct(true);
-        return DbAccess.manager.createQuery(cq).getResultList();
+
+        return getAll()
+                .stream()
+                .filter(f -> f.getEndDate() == null)
+                .collect(Collectors.toList());
     }
 
     public FireEntity update(FireEntity item)

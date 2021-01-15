@@ -2,10 +2,6 @@ package project.grp3.simulator.web.resource;
 
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import project.grp3.simulator.core.api.Apis;
 import project.grp3.simulator.core.api.microbitsimulator.model.PostFireModel;
 import project.grp3.simulator.core.database.Database;
@@ -74,7 +70,7 @@ public class FireResource
             {
                 var location = result.get(0);
 
-                locations.add(new Location(Double.parseDouble(location.lat), Double.parseDouble(location.lon),  fire.getIntensity() * 1.0));
+                locations.add(new Location(Double.parseDouble(location.lat), Double.parseDouble(location.lon), fire.getIntensity() * 1.0));
             }
         }
         return Response

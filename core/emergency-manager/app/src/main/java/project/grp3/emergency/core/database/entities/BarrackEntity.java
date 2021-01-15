@@ -34,6 +34,7 @@ public class BarrackEntity
     @JsonIgnore
     private List<FireTruckEntity> fireTrucks;
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "sdis_id")
     private SdisEntity sdis;
 

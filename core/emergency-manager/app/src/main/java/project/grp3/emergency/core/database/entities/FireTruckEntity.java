@@ -18,12 +18,17 @@ public class FireTruckEntity
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     @ManyToOne(optional = false)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "barrack_id")
     private BarrackEntity barrack;
+
     @ManyToOne(optional = false)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "truck_type_id")
     private TruckTypeEntity type;
+
     @ManyToMany(mappedBy = "fireTrucks")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<ResourceEntity> resources;

@@ -124,12 +124,10 @@ public class FireService extends Services.Service
             }
             catch (Exception e)
             {
-                if (fire.getId() != null)
+                if (fire != null && fire.getId() != null)
                 {
-                    if (fire.getId() != null)
-                    {
-                        Database.fireRepository().delete(fire);
-                    }
+                    Database.fireRepository().delete(fire);
+
                     if (resource.getId() != null)
                     {
                         Database.resourceRepository().delete(resource);

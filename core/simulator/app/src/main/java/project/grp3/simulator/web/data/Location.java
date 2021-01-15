@@ -6,7 +6,7 @@ public class Location
     private final Double longitude;
     private final Double intensity;
 
-    public Location(Double latitude, Double longitude,Double intensity)
+    public Location(Double latitude, Double longitude, Double intensity)
     {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -22,6 +22,7 @@ public class Location
     {
         return longitude;
     }
+
     public Double getIntensity()
     {
         return intensity;

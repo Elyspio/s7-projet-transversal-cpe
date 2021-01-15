@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"start": "cross-env SERIAL_PORT=COM6  nodemon src/app.ts",
+		"start": "cross-env SERIAL_PORT=COM3  nodemon src/app.ts",
 		"build": "tsc",
 		"docker": "powershell docker/dockerize.ps1"
 	},

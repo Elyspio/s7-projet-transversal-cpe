@@ -20,6 +20,7 @@ public class FireEntity
     private Date detectionDate;
     private Date endDate;
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "fire_type_id")
     private FireTypeEntity type;
     @OneToOne

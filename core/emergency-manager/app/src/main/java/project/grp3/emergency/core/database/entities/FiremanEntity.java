@@ -21,12 +21,14 @@ public class FiremanEntity
     private String name;
     private String lastname;
     @ManyToOne()
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "exhaust_level_id")
     private ExhaustLevelEntity exhaustLevel;
     @ManyToMany(mappedBy = "firemen")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<ResourceEntity> resources;
     @ManyToOne()
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "barrack_id")
     private BarrackEntity barrack;
 

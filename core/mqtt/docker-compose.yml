@@ -28,15 +28,15 @@ services:
     container_name: s7-project-mqtt-db
 
 
-  mqtt-app:
-    image: elyspio/cpe-s7-project:mqtt-app
-    restart: always
-    environment:
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_URL: ${DATABASE_URL}
-      DATABASE_USER: ${DATABASE_USER}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      DATABASE_DATABASE: ${DATABASE_DATABASE}
-      MQTT_HOST: ${MQTT_HOST}
+  # mqtt-app:
+  #   image: elyspio/cpe-s7-project:mqtt-app
+  #   restart: always
+  #   environment:
+  #     DATABASE_PORT: ${DATABASE_PORT}
+  #     DATABASE_URL: ${DATABASE_URL}
+  #     DATABASE_USER: ${DATABASE_USER}
+  #     DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+  #     DATABASE_DATABASE: ${DATABASE_DATABASE}
+  #     MQTT_HOST: ${MQTT_HOST}
 
-    container_name: s7-project-mqtt-engine
+  #   container_name: s7-project-mqtt-engine

@@ -1,12 +1,12 @@
 package project.grp3.emergency.core.database.repositories;
 
-import org.hibernate.query.NativeQuery;
 import project.grp3.emergency.core.database.Database;
 import project.grp3.emergency.core.database.entities.FireEntity;
 import project.grp3.emergency.core.database.entities.ResourceEntity;
 import project.grp3.emergency.core.database.enums.TruckTravelState;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResourceRepository extends Repository<ResourceEntity>
 {
@@ -17,10 +17,10 @@ public class ResourceRepository extends Repository<ResourceEntity>
 
     public List<ResourceEntity> getAllActif()
     {
-        var cq = DbAccess.manager.getCriteriaBuilder().createQuery(ResourceEntity.class);
-        var all = cq.select(cq.from(ResourceEntity.class));
-        all.where(DbAccess.manager.getCriteriaBuilder().notEqual(cq.from(ResourceEntity.class).get("travelState"), TruckTravelState.AVAILABLE));
-        return DbAccess.manager.createQuery(cq).getResultList();
+        return getAll()
+                .stream()
+                .filter(res -> res.getTravelState().equals(TruckTravelState.AVAILABLE))
+                .collect(Collectors.toList());
     }
 
     public ResourceEntity create(FireEntity fire, ResourceEntity resource)
@@ -44,11 +44,7 @@ public class ResourceRepository extends Repository<ResourceEntity>
 
     public ResourceEntity getByFire(FireEntity fire)
     {
-        String sql = "SELECT * FROM resource where fire_id = :fire_id";
-        NativeQuery<ResourceEntity> query = DbAccess.session.createNativeQuery(sql, ResourceEntity.class);
-        query.setParameter("fire_id", fire.getId());
-        return query.getSingleResult();
-
+        return getAll().stream().filter(res -> res.getFire().equals(fire)).findFirst().orElseGet(null);
     }
 
 

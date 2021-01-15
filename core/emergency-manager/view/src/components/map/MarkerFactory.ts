@@ -33,7 +33,7 @@ function createFire() {
 function createTruck() {
     return L.icon({
         iconUrl: 'https://www.pinclipart.com/picdir/big/188-1887013_truck-lorry-wagon-vehicle-traffic-camion-svg-png.png',
-        iconSize: [25, 41],
+        iconSize: [60, 41],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
         shadowSize: [41, 41]

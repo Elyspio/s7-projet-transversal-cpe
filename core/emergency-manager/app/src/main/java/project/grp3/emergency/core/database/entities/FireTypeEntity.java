@@ -2,6 +2,7 @@ package project.grp3.emergency.core.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,11 +21,16 @@ public class FireTypeEntity
     @Column(nullable = true)
     private String description;
     @ManyToMany(mappedBy = "fireTypes")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<TruckTypeEntity> truckTypes;
+
     @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "fire_type_id")
     private List<FireEntity> fires;
+
     @ManyToMany(mappedBy = "fireTypes")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<SensorEntity> sensors;
 
     @Override

@@ -20,6 +20,7 @@ public class ResourceEntity
     private Long id;
     @OneToOne
     @JoinColumn(name = "fire_id", nullable = false)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private FireEntity fire;
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)

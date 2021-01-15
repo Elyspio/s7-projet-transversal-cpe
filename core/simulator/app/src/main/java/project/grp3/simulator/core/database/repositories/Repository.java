@@ -86,6 +86,13 @@ abstract public class Repository<Entity>
         return item2;
     }
 
+    public void delete(Entity item)
+    {
+        var trans = session.beginTransaction();
+        session.delete(item);
+        trans.commit();
+    }
+
     public Entity create(Entity item)
     {
         var trans = session.beginTransaction();
